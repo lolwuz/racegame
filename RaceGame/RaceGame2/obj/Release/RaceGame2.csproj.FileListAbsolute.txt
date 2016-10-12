@@ -1,0 +1,9 @@
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\bin\Release\car.jpg
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\bin\Release\RaceGame2.exe.config
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\bin\Release\RaceGame2.exe
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\bin\Release\RaceGame2.pdb
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\obj\Release\RaceGame2.Game.resources
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\obj\Release\RaceGame2.Properties.Resources.resources
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\obj\Release\RaceGame2.csproj.GenerateResource.Cache
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\obj\Release\RaceGame2.exe
+C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\obj\Release\RaceGame2.pdb
