@@ -21,7 +21,7 @@ namespace RaceGame2
             switch (caseSwitch)
             {
                 case 1:
-                    map1 = new Bitmap(Properties.Resources.formula);
+                    map1 = new Bitmap(Properties.Resources.bigracemap);
                     PickUp pick1 = new PickUp();
                     pick1.position = new Point(20, 100);
 

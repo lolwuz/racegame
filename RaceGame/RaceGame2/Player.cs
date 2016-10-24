@@ -60,7 +60,7 @@ namespace RaceGame2
             }
 
 
-            map = new Bitmap(Properties.Resources.formula);
+            map = new Bitmap(Properties.Resources.bigracemap);
             maxSteerAngle = 1;
             speed = 0;
         }

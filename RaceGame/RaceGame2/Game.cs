@@ -114,13 +114,13 @@ namespace RaceGame2
             p1.posX = 100;
             p1.posY = 100;
             p1.accel = 0.1f;
-            p1.maxSpeed = 5;
+            p1.maxSpeed = 6;
 
             p2 = new Player(this);
             p2.posX = 300;
             p2.posY = 200;
             p2.accel = 0.05f;
-            p2.maxSpeed = 4;
+            p2.maxSpeed = 6;
             p2.keyLeft = Keys.A;
             p2.keyRight = Keys.D;
             p2.keyDown = Keys.S;
@@ -137,6 +137,8 @@ namespace RaceGame2
             GameTimer.Interval = 1;
             GameTimer.Tick += new EventHandler(GameTimer_Tick);
             GameTimer.Start();
+
+          
 
             InitializeComponent();
 
