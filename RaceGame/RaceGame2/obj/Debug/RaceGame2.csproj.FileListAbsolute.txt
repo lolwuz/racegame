@@ -34,3 +34,12 @@ C:\Users\Marten Hoekstra\Google Drive\School\RaceGame\RaceGame2\obj\Debug\RaceGa
 C:\Users\Marten Hoekstra\Google Drive\School\RaceGame\RaceGame2\obj\Debug\RaceGame2.csproj.GenerateResource.Cache
 C:\Users\Marten Hoekstra\Google Drive\School\RaceGame\RaceGame2\obj\Debug\RaceGame2.csprojResolveAssemblyReference.cache
 C:\Users\Marten Hoekstra\Desktop\RaceGame\RaceGame2\obj\Debug\RaceGame2.csprojResolveAssemblyReference.cache
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\car.jpg
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\RaceGame2.exe.config
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\RaceGame2.exe
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\RaceGame2.pdb
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.Game.resources
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.Properties.Resources.resources
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.csproj.GenerateResource.Cache
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.exe
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.pdb

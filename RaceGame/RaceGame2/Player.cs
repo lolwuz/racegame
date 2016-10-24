@@ -49,7 +49,17 @@ namespace RaceGame2
        
         public Player(Game form)
         {
-            image = new Bitmap(Properties.Resources.car2);
+            int caseSwitch = 1;
+            switch (caseSwitch)
+            {
+                case 1:
+                    image = new Bitmap(Properties.Resources.car2);
+                    break;
+                default:
+                    break;
+            }
+
+
             map = new Bitmap(Properties.Resources.formula);
             maxSteerAngle = 1;
             speed = 0;

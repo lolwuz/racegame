@@ -107,6 +107,8 @@ namespace RaceGame2
 
         public void Start()
         {
+
+            
             // Init players.
             p1 = new Player(this);
             p1.posX = 100;
@@ -128,6 +130,8 @@ namespace RaceGame2
             playerList.Add(p1);
             playerList.Add(p2);
 
+           
+
             // Game timer
             Timer GameTimer = new Timer();
             GameTimer.Interval = 1;
@@ -135,6 +139,9 @@ namespace RaceGame2
             GameTimer.Start();
 
             InitializeComponent();
+
+
+
         }
     }
 }
