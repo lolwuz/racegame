@@ -54,3 +54,5 @@ C:\Users\Koen\Documents\GitHub\Race Game\racegame\RaceGame\RaceGame2\obj\Debug\R
 C:\Users\Koen\Documents\GitHub\Race Game\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.Properties.Resources.resources
 C:\Users\Koen\Documents\GitHub\Race Game\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.csproj.GenerateResource.Cache
 C:\Users\Koen\Documents\GitHub\Race Game\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.Menu.resources
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.Menu.resources
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.csprojResolveAssemblyReference.cache

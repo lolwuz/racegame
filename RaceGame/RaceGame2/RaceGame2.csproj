@@ -112,6 +112,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\basicTrack.png" />
+    <None Include="Resources\Baan1.jpg" />
     <None Include="Resources\menu_background.jpg" />
     <None Include="bigracemap.jpg" />
     <Content Include="car.jpg">

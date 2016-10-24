@@ -21,7 +21,7 @@ namespace RaceGame2
             switch (caseSwitch)
             {
                 case 1:
-                    map1 = new Bitmap(Properties.Resources.bigracemap);
+                    map1 = new Bitmap(Properties.Resources.basicTrack);
                     PickUp pick1 = new PickUp();
                     pick1.position = new Point(20, 100);
 
@@ -46,10 +46,7 @@ namespace RaceGame2
 
             foreach(PickUp pick in pickUpList)
             {
-                g.DrawRectangle(new Pen(Color.Blue, 3),
-                    Convert.ToInt32(width + (pick.position.X - p.posX)),
-                    Convert.ToInt32(height + (pick.position.Y - p.posY)),
-                    10,10);       
+                pick.Draw(g, p, width, height);
             }
         }
     }
@@ -67,6 +64,13 @@ namespace RaceGame2
             int randomEnum = rnd.Next(types.Length);
             var ret = Enum.Parse(typeof(type), types[randomEnum]);
             Console.WriteLine(ret);
+        }
+        public void Draw(Graphics g, Player p, double width, double height)
+        {
+            g.DrawRectangle(new Pen(Color.Blue, 3),
+                    Convert.ToInt32(width + (position.X - p.posX)),
+                    Convert.ToInt32(height + (position.Y - p.posY)),
+                    10, 10);
         }
     }
 }

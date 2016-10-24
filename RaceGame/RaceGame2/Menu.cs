@@ -46,7 +46,7 @@ namespace RaceGame2
 
         private void lblStartGame_Click(object sender, EventArgs e)
         {
-            Game gameForm = new Game();
+            Game gameForm = new Game("Aafke", "Aafke", "MoederTrack");
             gameForm.Show();
             this.Hide();
         }
