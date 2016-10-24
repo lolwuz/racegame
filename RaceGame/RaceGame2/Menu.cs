@@ -15,6 +15,7 @@ namespace RaceGame2
         public Menu()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,6 +42,13 @@ namespace RaceGame2
         private void lblStartGame_MouseLeave(object sender, EventArgs e)
         {
             lblStartGame.Font = new Font(lblStartGame.Font, FontStyle.Regular);
+        }
+
+        private void lblStartGame_Click(object sender, EventArgs e)
+        {
+            Game gameForm = new Game();
+            gameForm.Show();
+            this.Hide();
         }
     }
 }

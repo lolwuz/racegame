@@ -145,5 +145,10 @@ namespace RaceGame2
 
 
         }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
