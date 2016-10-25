@@ -17,23 +17,18 @@ namespace RaceGame2
 
         public Map()
         {
-            int caseSwitch = 1;
+            int caseSwitch = 2;
             switch (caseSwitch)
             {
                 case 1:
                     map1 = new Bitmap(Properties.Resources.basicTrack);
-                    PickUp pick1 = new PickUp();
-                    pick1.position = new Point(20, 100);
+                    pickUpList.Add(new PickUp(10, 20));
+                    break;
 
-                    PickUp pick2 = new PickUp();
-                    pick1.position = new Point(200, 100);
+                case 2:
+                    map1 = new Bitmap(Properties.Resources.Baan2);
+                    pickUpList.Add(new PickUp(300, 200));
 
-                    PickUp pick3 = new PickUp();
-                    pick1.position = new Point(400, 500);
-
-                    pickUpList.Add(pick1);
-                    pickUpList.Add(pick2);
-                    pickUpList.Add(pick3);
                     break;
                 default:
                     break;
@@ -53,13 +48,17 @@ namespace RaceGame2
 
     public class PickUp
     {
-        public Point position { get; set; }
+        public Point position;
 
         public enum type {projectile, oil, fuelDrain };
         public static Random rnd = new Random();
 
-        public PickUp()
+        public PickUp(int x, int y)
         {
+
+            position.X = x;
+            position.Y = y;
+
             string[] types = Enum.GetNames(typeof(type));
             int randomEnum = rnd.Next(types.Length);
             var ret = Enum.Parse(typeof(type), types[randomEnum]);

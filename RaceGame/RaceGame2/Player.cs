@@ -50,6 +50,9 @@ namespace RaceGame2
 
         private bool isShooting = false;
 
+        private int checkPointColor = 255;
+        public int checkPointCount = 0; 
+
         // Grafisch
         private Bitmap image;
         private Bitmap map;
@@ -76,7 +79,7 @@ namespace RaceGame2
             }
 
 
-            map = new Bitmap(Properties.Resources.basicTrack);
+            map = new Bitmap(Properties.Resources.Baan2colormap);
             speed = 0;
 
             _controller = new Controller(UserIndex.One);
@@ -94,29 +97,30 @@ namespace RaceGame2
 
         private void Move()
         {
+
+            /* Controller
             var state = _controller.GetState();
-
-            // Snelheid Omhoog en beneden.
-
-
-            if(speed < maxSpeed)
+            steerAngle = state.Gamepad.LeftThumbX / 81920.0f;
+            if (speed < maxSpeed)
             {
                 speed = speed + state.Gamepad.LeftTrigger / 5100.0f;
             }
-            
+            */
 
+
+            // Toetsen input
             if (isUp)
             {
                 if (speed < maxSpeed)
                 {
-                    //speed += accel;
+                    speed += accel;
                 }
             }
             else if (isDown)
             {
                 if (speed > 0)
                 {
-                    // speed -= accel / 2; 
+                    speed -= accel / 2; 
                 }
                 else
                 {
@@ -127,7 +131,7 @@ namespace RaceGame2
             {
                 if (speed > 0)
                 {
-                    //speed -= 0.02f;
+                    speed -= 0.02f;
                 }
                 if (speed < 0 && !isDown)
                 {
@@ -140,7 +144,7 @@ namespace RaceGame2
             {
                 if (steerAngle > -maxSteerAngle)
                 {
-                    //steerAngle = steerAngle - 0.04f;
+                    steerAngle = steerAngle - 0.04f;
                 }
             }
             
@@ -148,22 +152,20 @@ namespace RaceGame2
             {
                 if (steerAngle < maxSteerAngle)
                 {
-                    //steerAngle = steerAngle + 0.04f;
+                    steerAngle = steerAngle + 0.04f;
                 }
             }
-
-            steerAngle = state.Gamepad.LeftThumbX / 81920.0f;      
 
             if (!left && !isRight)
             {
 
                 if (steerAngle > 0)
                 {
-                    //steerAngle = 0;
+                    steerAngle = 0;
                 }
                 if(steerAngle < 0)
                 {
-                    //steerAngle = 0;
+                    steerAngle = 0;
                 } 
             }
             
@@ -217,15 +219,36 @@ namespace RaceGame2
 
         private void Collision(List<Player> playerList)
         {
-            // Check color of the map
+            // Lijst met kleuren:
+
+            // Note: achtergrond kleur is per map verschillend.
+            // Checkpoint1: groen RGB(0, 255, 0) , checkpoint2: RGB(0, 250, 0), enzovoorts.
+            // Brug: RGB (192, 192, 192) 
+            // Pitstop: RGB (143, 143, 142)
+
             try
             {
                 color = map.GetPixel(Convert.ToInt16(posX), Convert.ToInt16(posY));
                 if (color.R == 39)
                 {       
-                    if (speed > 1){
+                    if (speed > 1)
+                    {
                         speed -= 0.2f;
                     }
+                }
+
+                if(color.G == checkPointColor)
+                {
+                    checkPointColor -= 5;
+                    checkPointCount += 1;
+
+                    Console.WriteLine("Check Point: " + checkPointCount);
+
+                    if (checkPointCount == 7)
+                    {
+                        checkPointCount = 0;
+                        checkPointColor = 255;
+                    } 
                 }
             }
             catch (Exception){}
@@ -286,9 +309,7 @@ namespace RaceGame2
             
             g.RotateTransform(-(float)rotation);
             g.ResetTransform();
-            g.RotateTransform(0);
-
-            
+            g.RotateTransform(0);        
         }
     }
 
@@ -321,8 +342,6 @@ namespace RaceGame2
         }
     }
 
-
- 
 }
 
  

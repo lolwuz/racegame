@@ -55,14 +55,14 @@ namespace RaceGame2
 
 
             p1 = new Player(this);
-            p1.posX = 100;
-            p1.posY = 100;
+            p1.posX = 1300;
+            p1.posY = 1690;
             p1.accel = 0.1f;
             p1.maxSpeed = 6;
 
             p2 = new Player(this);
-            p2.posX = 300;
-            p2.posY = 200;
+            p2.posX = 1300;
+            p2.posY = 1760;
             p2.accel = 0.05f;
             p2.maxSpeed = 6;
             p2.keyLeft = Keys.A;

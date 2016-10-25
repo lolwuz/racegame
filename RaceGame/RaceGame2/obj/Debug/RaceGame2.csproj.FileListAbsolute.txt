@@ -59,3 +59,4 @@ C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\
 C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\SharpDX.XInput.dll
 C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\SharpDX.xml
 C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\bin\Debug\SharpDX.XInput.xml
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.csprojResolveAssemblyReference.cache

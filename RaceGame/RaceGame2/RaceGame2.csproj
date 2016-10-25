@@ -121,6 +121,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Baan2colormap.jpg" />
+    <None Include="Resources\Baan2.jpg" />
     <None Include="Resources\basicTrack.png" />
     <None Include="Resources\Baan1.jpg" />
     <None Include="Resources\menu_background.jpg" />
