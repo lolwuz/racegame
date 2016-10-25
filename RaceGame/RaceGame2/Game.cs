@@ -25,7 +25,10 @@ namespace RaceGame2
         public Map map;
 
         public Game(String moederSelectP1, String moederSelectP2, String mapSelect)
-        {  
+        {
+            // Window full screen
+            this.WindowState = FormWindowState.Maximized;
+
             // Window style   
             this.SetStyle(
             ControlStyles.UserPaint |
@@ -141,6 +144,19 @@ namespace RaceGame2
             p1.Draw(e.Graphics, projectileList,
                 pictureBox2.Width / 2 + (p1.posX - p2.posX), 
                 pictureBox2.Height / 2 + (p1.posY - p2.posY));
+        }
+
+        // press escape to go back to menu
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                //Menu menuForm = new Menu();
+                //menuForm.Show();
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         public void Start()
