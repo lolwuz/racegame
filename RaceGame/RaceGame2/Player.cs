@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Numerics;
 using System.Threading.Tasks;
+using SharpDX.XInput;
 
 namespace RaceGame2
 {
     public class Player 
     {
         // Beweging variabelen
-        public float speed { get; set; }
+        public double speed { get; set; }
         public float maxSpeed { get; set; }
         public float accel { get; set; }
 
@@ -54,6 +55,11 @@ namespace RaceGame2
         private Bitmap map;
         private Color color;
 
+        private string _leftAxis;
+        private string _rightAxis;
+        private string _buttons;
+        private Controller _controller;
+
 
 
 
@@ -71,34 +77,46 @@ namespace RaceGame2
 
 
             map = new Bitmap(Properties.Resources.basicTrack);
-            
             speed = 0;
+
+            _controller = new Controller(UserIndex.One);
+            if (_controller.IsConnected) return;
+            MessageBox.Show("Game Controller is not connected ... you know ;)");
+          
         }
 
         public void Update(List<Player> playerList, List<Projectile> projectileList)
-        {   
+        {
             Move();
             Collision(playerList);
-            Special(playerList, projectileList);
-
-            
+            Special(playerList, projectileList);      
         }
 
         private void Move()
         {
+            var state = _controller.GetState();
+
             // Snelheid Omhoog en beneden.
+
+
+            if(speed < maxSpeed)
+            {
+                speed = speed + state.Gamepad.LeftTrigger / 5100.0f;
+            }
+            
+
             if (isUp)
             {
                 if (speed < maxSpeed)
                 {
-                    speed += accel;
+                    //speed += accel;
                 }
             }
             else if (isDown)
             {
                 if (speed > 0)
                 {
-                    speed -= accel / 2; 
+                    // speed -= accel / 2; 
                 }
                 else
                 {
@@ -109,7 +127,7 @@ namespace RaceGame2
             {
                 if (speed > 0)
                 {
-                    speed -= 0.02f;
+                    //speed -= 0.02f;
                 }
                 if (speed < 0 && !isDown)
                 {
@@ -122,7 +140,7 @@ namespace RaceGame2
             {
                 if (steerAngle > -maxSteerAngle)
                 {
-                    steerAngle = steerAngle - 0.04f;
+                    //steerAngle = steerAngle - 0.04f;
                 }
             }
             
@@ -130,20 +148,22 @@ namespace RaceGame2
             {
                 if (steerAngle < maxSteerAngle)
                 {
-                    steerAngle = steerAngle + 0.04f;
+                    //steerAngle = steerAngle + 0.04f;
                 }
             }
 
-            if(!left && !isRight)
+            steerAngle = state.Gamepad.LeftThumbX / 81920.0f;      
+
+            if (!left && !isRight)
             {
 
                 if (steerAngle > 0)
                 {
-                    steerAngle = 0;
+                    //steerAngle = 0;
                 }
                 if(steerAngle < 0)
                 {
-                    steerAngle = 0;
+                    //steerAngle = 0;
                 } 
             }
             
@@ -245,8 +265,7 @@ namespace RaceGame2
                         if (distance < 25)
                         {
                             speed = 0;
-                        }
-                              
+                        }              
                     }
                 }
             }           
