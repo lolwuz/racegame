@@ -48,7 +48,7 @@ namespace RaceGame2
         {
             Game gameForm = new Game("Aafke", "Aafke", "MoederTrack");
             gameForm.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }
