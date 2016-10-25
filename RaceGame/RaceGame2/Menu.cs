@@ -28,7 +28,7 @@ namespace RaceGame2
         {
             if (keyData == Keys.Escape)
             {
-                this.Close();
+                Application.Exit();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -49,6 +49,11 @@ namespace RaceGame2
             Game gameForm = new Game("Aafke", "Aafke", "MoederTrack");
             gameForm.Show();
             this.Close();
+        }
+
+        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

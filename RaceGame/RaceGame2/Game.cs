@@ -151,8 +151,8 @@ namespace RaceGame2
         {
             if (keyData == Keys.Escape)
             {
-                //Menu menuForm = new Menu();
-                //menuForm.Show();
+                Menu menuForm = new Menu();
+                menuForm.Show();
                 this.Close();
                 return true;
             }
@@ -178,7 +178,7 @@ namespace RaceGame2
 
         private void Game_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            
         }
     }
 }
