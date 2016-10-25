@@ -54,7 +54,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(1024, 96);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Race Game 2";
+            this.lblTitle.Text = "Je Moeder Kart";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblCloseMenu
@@ -77,9 +77,9 @@
             this.lblPlayer1.ForeColor = System.Drawing.Color.Azure;
             this.lblPlayer1.Location = new System.Drawing.Point(62, 117);
             this.lblPlayer1.Name = "lblPlayer1";
-            this.lblPlayer1.Size = new System.Drawing.Size(165, 63);
+            this.lblPlayer1.Size = new System.Drawing.Size(186, 63);
             this.lblPlayer1.TabIndex = 2;
-            this.lblPlayer1.Text = "Player 1";
+            this.lblPlayer1.Text = "Moeder 1";
             // 
             // lblPlayer2
             // 
@@ -89,9 +89,9 @@
             this.lblPlayer2.ForeColor = System.Drawing.Color.Violet;
             this.lblPlayer2.Location = new System.Drawing.Point(708, 117);
             this.lblPlayer2.Name = "lblPlayer2";
-            this.lblPlayer2.Size = new System.Drawing.Size(179, 63);
+            this.lblPlayer2.Size = new System.Drawing.Size(200, 63);
             this.lblPlayer2.TabIndex = 3;
-            this.lblPlayer2.Text = "Player 2";
+            this.lblPlayer2.Text = "Moeder 2";
             // 
             // pictureBox1
             // 
@@ -117,7 +117,7 @@
             this.lblRaceTrack.BackColor = System.Drawing.Color.Transparent;
             this.lblRaceTrack.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRaceTrack.ForeColor = System.Drawing.Color.Turquoise;
-            this.lblRaceTrack.Location = new System.Drawing.Point(375, 145);
+            this.lblRaceTrack.Location = new System.Drawing.Point(358, 145);
             this.lblRaceTrack.Name = "lblRaceTrack";
             this.lblRaceTrack.Size = new System.Drawing.Size(233, 63);
             this.lblRaceTrack.TabIndex = 6;
@@ -126,7 +126,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(414, 211);
+            this.pictureBox3.Location = new System.Drawing.Point(397, 211);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(155, 155);
             this.pictureBox3.TabIndex = 7;
@@ -138,7 +138,7 @@
             this.lblStartGame.BackColor = System.Drawing.Color.Transparent;
             this.lblStartGame.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStartGame.ForeColor = System.Drawing.Color.Black;
-            this.lblStartGame.Location = new System.Drawing.Point(352, 433);
+            this.lblStartGame.Location = new System.Drawing.Point(352, 438);
             this.lblStartGame.Name = "lblStartGame";
             this.lblStartGame.Size = new System.Drawing.Size(244, 63);
             this.lblStartGame.TabIndex = 8;
@@ -173,6 +173,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCloseMenu);
             this.Controls.Add(this.lblTitle);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
