@@ -15,6 +15,15 @@ namespace RaceGame2
         public Menu()
         {
             InitializeComponent();
+
+            // background
+            Bitmap BackImg = Properties.Resources.menu_background;
+            Bitmap BackBmp = new Bitmap(BackImg.Width, BackImg.Height);
+            Graphics memoryGraphics = Graphics.FromImage(BackBmp);
+            memoryGraphics.DrawImage(BackImg, 0, 0, BackImg.Width, BackImg.Height);
+            BackgroundImage = BackBmp;
+            
+            // maximize
             this.WindowState = FormWindowState.Maximized;
         }
 
