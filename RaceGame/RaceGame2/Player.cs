@@ -63,15 +63,15 @@ namespace RaceGame2
         private Controller _controller;
         private Vibration fullShake;
         private Vibration noShake;
-        
+        private bool isUsingController;
 
 
 
 
-        public Player(Game form)
+        public Player(Game form, int player)
         {
 
-            int player = 1;
+            
             int caseSwitch = 1;
             switch (caseSwitch)
             {
@@ -93,17 +93,22 @@ namespace RaceGame2
 
             if (player == 1)
             {
+                isUsingController = true;
                 _controller = new Controller(UserIndex.One);
+                if (_controller.IsConnected) return;
+                MessageBox.Show("Geen controller gevonden.");
+            }
+
+            if(player == 2)
+            {
+
             }
 
             else
             {
+                isUsingController = false;
                 //_controller = new Controller(UserIndex.Two);
-            }
-            
-            if (_controller.IsConnected) return;
-            MessageBox.Show("Geen controller gevonden.");
-          
+            }       
         }
 
         public void Update(List<Player> playerList, List<Projectile> projectileList)
@@ -115,84 +120,113 @@ namespace RaceGame2
 
         private void Move()
         {
-
-            controllerState = _controller.GetState();
-
-            
-            
-            steerAngle = controllerState.Gamepad.LeftThumbX / 81920.0f;
-            if (speed < maxSpeed)
+            if (isUsingController)
             {
-                speed = speed + controllerState.Gamepad.LeftTrigger / 5100.0f;
-            }
-            
+                try
+                {
+                    controllerState = _controller.GetState();
+                }
+                catch
+                {
+                    isUsingController = false;
+                }
 
-
-            // Toetsen input
-
-            /*
-            if (isUp)
-            {
+               
+                steerAngle = controllerState.Gamepad.LeftThumbX / 81920.0f;
                 if (speed < maxSpeed)
                 {
-                    speed += accel;
+                    speed = speed + controllerState.Gamepad.LeftTrigger / 5100.0f;
+                }
+                if (controllerState.Gamepad.LeftTrigger == 0)
+                {
+                    if (speed > 0)
+                    {
+                        speed -= 0.02f;
+                    }
+                    if (speed < 0)
+                    {
+                        speed = 0;
+                    }
+                }
+
+                string[] words = System.Text.RegularExpressions.Regex.Split(controllerState.Gamepad.Buttons.ToString(), ", ");
+                
+                foreach (string word in words)
+                {
+                    if (word == "B")
+                    {
+                        speed = 0;
+               
+                    }
                 }
             }
-            else if (isDown)
+
+
+            if (!isUsingController)
             {
-                if (speed > 0)
+                if (isUp)
                 {
-                    speed -= accel / 2; 
+                    if (speed < maxSpeed)
+                    {
+                        speed += accel;
+                    }
+                }
+                else if (isDown)
+                {
+                    if (speed > 0)
+                    {
+                        speed -= accel / 2;
+                    }
+                    else
+                    {
+                        if (speed > -maxSpeed / 2) { speed -= accel / 2; }
+                    }
                 }
                 else
                 {
-                    if (speed > -maxSpeed / 2) { speed -= accel / 2; }
-                }    
-            }
-            else
-            {
-                if (speed > 0)
-                {
-                    speed -= 0.02f;
+                    if (speed > 0)
+                    {
+                        speed -= 0.02f;
+                    }
+                    if (speed < 0 && !isDown)
+                    {
+                        speed = 0;
+                    }
                 }
-                if (speed < 0 && !isDown)
-                {
-                    speed = 0;
-                }
-            }
 
-            
 
-            // Stuur Angle 
-            if (left)
-            {
-                if (steerAngle > -maxSteerAngle)
+
+                // Stuur Angle 
+                if (left)
                 {
-                    steerAngle = steerAngle - 0.04f;
+                    if (steerAngle > -maxSteerAngle)
+                    {
+                        steerAngle = steerAngle - 0.04f;
+                    }
+                }
+
+                if (isRight)
+                {
+                    if (steerAngle < maxSteerAngle)
+                    {
+                        steerAngle = steerAngle + 0.04f;
+                    }
+                }
+
+                if (!left && !isRight)
+                {
+
+                    if (steerAngle > 0)
+                    {
+                        steerAngle = 0;
+                    }
+                    if (steerAngle < 0)
+                    {
+                        steerAngle = 0;
+                    }
                 }
             }
-            
-            if (isRight)
-            {
-                if (steerAngle < maxSteerAngle)
-                {
-                    steerAngle = steerAngle + 0.04f;
-                }
-            }
-
-            if (!left && !isRight)
-            {
-
-                if (steerAngle > 0)
-                {
-                    steerAngle = 0;
-                }
-                if(steerAngle < 0)
-                {
-                    steerAngle = 0;
-                } 
-            }
-            */
+          
 
             
 
@@ -252,12 +286,16 @@ namespace RaceGame2
             // Brug: RGB (192, 192, 192) 
             // Pitstop: RGB (143, 143, 142)
 
+            
             try
             {
                 color = map.GetPixel(Convert.ToInt16(posX), Convert.ToInt16(posY));
                 if (color.R == 182 && color.G == 255 && color.B == 254)
                 {
-                    _controller.SetVibration(fullShake);
+                    if (isUsingController){
+                        _controller.SetVibration(fullShake);
+                    }
+                   
                     if (speed > 1)
                     {
                         speed -= 0.2f;
@@ -266,7 +304,11 @@ namespace RaceGame2
 
                 else
                 {
-                    _controller.SetVibration(noShake);
+                    if (isUsingController)
+                    {
+                        _controller.SetVibration(noShake);
+                    }
+                        
                 }
 
                
@@ -286,7 +328,9 @@ namespace RaceGame2
                     } 
                 }
             }
-            catch (Exception){}
+            catch{}
+
+            
             
          
             foreach (Player p in playerList)
