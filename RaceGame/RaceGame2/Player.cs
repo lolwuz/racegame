@@ -48,6 +48,8 @@ namespace RaceGame2
         public Keys keyUp = Keys.Up;
         public Keys keySpecial = Keys.Enter;
 
+        public State controllerState;
+
         private bool isShooting = false;
 
         private int checkPointColor = 255;
@@ -59,12 +61,17 @@ namespace RaceGame2
         private Color color;
 
         private Controller _controller;
+        private Vibration fullShake;
+        private Vibration noShake;
+        
 
 
 
 
         public Player(Game form)
         {
+
+            int player = 1;
             int caseSwitch = 1;
             switch (caseSwitch)
             {
@@ -75,11 +82,25 @@ namespace RaceGame2
                     break;
             }
 
+            fullShake.LeftMotorSpeed = 65535;
+            fullShake.RightMotorSpeed = 65535;
+
+            noShake.LeftMotorSpeed = 0;
+            noShake.RightMotorSpeed = 0;
 
             map = new Bitmap(Properties.Resources.Baan2color1);
             speed = 0;
 
-            _controller = new Controller(UserIndex.One);
+            if (player == 1)
+            {
+                _controller = new Controller(UserIndex.One);
+            }
+
+            else
+            {
+                //_controller = new Controller(UserIndex.Two);
+            }
+            
             if (_controller.IsConnected) return;
             MessageBox.Show("Geen controller gevonden.");
           
@@ -95,17 +116,21 @@ namespace RaceGame2
         private void Move()
         {
 
-            /* Controller
-            var state = _controller.GetState();
-            steerAngle = state.Gamepad.LeftThumbX / 81920.0f;
+            controllerState = _controller.GetState();
+
+            
+            
+            steerAngle = controllerState.Gamepad.LeftThumbX / 81920.0f;
             if (speed < maxSpeed)
             {
-                speed = speed + state.Gamepad.LeftTrigger / 5100.0f;
+                speed = speed + controllerState.Gamepad.LeftTrigger / 5100.0f;
             }
-            */
+            
 
 
             // Toetsen input
+
+            /*
             if (isUp)
             {
                 if (speed < maxSpeed)
@@ -136,6 +161,8 @@ namespace RaceGame2
                 }
             }
 
+            
+
             // Stuur Angle 
             if (left)
             {
@@ -165,6 +192,8 @@ namespace RaceGame2
                     steerAngle = 0;
                 } 
             }
+            */
+
             
 
             // Bij een bepaalde stuurhoek gaan de achterbanden slippen.
@@ -226,12 +255,18 @@ namespace RaceGame2
             try
             {
                 color = map.GetPixel(Convert.ToInt16(posX), Convert.ToInt16(posY));
-                if (color.R == 39)
-                {       
+                if (color.R == 182 && color.G == 255 && color.B == 254)
+                {
+                    _controller.SetVibration(fullShake);
                     if (speed > 1)
                     {
                         speed -= 0.2f;
                     }
+                }
+
+                else
+                {
+                    _controller.SetVibration(noShake);
                 }
 
                
