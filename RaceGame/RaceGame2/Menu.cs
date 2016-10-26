@@ -22,7 +22,9 @@ namespace RaceGame2
             Graphics memoryGraphics = Graphics.FromImage(BackBmp);
             memoryGraphics.DrawImage(BackImg, 0, 0, BackImg.Width, BackImg.Height);
             BackgroundImage = BackBmp;
-            
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
+
             // maximize
             this.WindowState = FormWindowState.Maximized;
         }
@@ -42,16 +44,10 @@ namespace RaceGame2
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+        
+        private void lblStartGame_MouseEnter(object sender, EventArgs e) { lblStartGame.Font = new Font(lblStartGame.Font, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline); }
 
-        private void lblStartGame_MouseEnter(object sender, EventArgs e)
-        {
-            lblStartGame.Font = new Font(lblStartGame.Font, FontStyle.Underline);
-        }
-
-        private void lblStartGame_MouseLeave(object sender, EventArgs e)
-        {
-            lblStartGame.Font = new Font(lblStartGame.Font, FontStyle.Regular);
-        }
+        private void lblStartGame_MouseLeave(object sender, EventArgs e) { lblStartGame.Font = new Font(lblStartGame.Font, FontStyle.Bold | FontStyle.Italic); }
 
         private void lblStartGame_Click(object sender, EventArgs e)
         {

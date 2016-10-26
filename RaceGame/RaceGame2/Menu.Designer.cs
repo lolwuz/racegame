@@ -38,6 +38,12 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblStartGame = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCar1Back = new System.Windows.Forms.Label();
+            this.lblCar1Next = new System.Windows.Forms.Label();
+            this.lblTrackBack = new System.Windows.Forms.Label();
+            this.lblCar2Back = new System.Windows.Forms.Label();
+            this.lblTrackNext = new System.Windows.Forms.Label();
+            this.lblCar2Next = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -151,6 +157,12 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.lblCar2Next);
+            this.panel1.Controls.Add(this.lblTrackNext);
+            this.panel1.Controls.Add(this.lblCar2Back);
+            this.panel1.Controls.Add(this.lblTrackBack);
+            this.panel1.Controls.Add(this.lblCar1Next);
+            this.panel1.Controls.Add(this.lblCar1Back);
             this.panel1.Controls.Add(this.lblPlayer1);
             this.panel1.Controls.Add(this.lblStartGame);
             this.panel1.Controls.Add(this.lblPlayer2);
@@ -163,11 +175,82 @@
             this.panel1.Size = new System.Drawing.Size(949, 501);
             this.panel1.TabIndex = 9;
             // 
+            // lblCar1Back
+            // 
+            this.lblCar1Back.AutoSize = true;
+            this.lblCar1Back.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar1Back.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar1Back.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar1Back.Location = new System.Drawing.Point(11, 221);
+            this.lblCar1Back.Name = "lblCar1Back";
+            this.lblCar1Back.Size = new System.Drawing.Size(56, 77);
+            this.lblCar1Back.TabIndex = 9;
+            this.lblCar1Back.Text = "<";
+            // 
+            // lblCar1Next
+            // 
+            this.lblCar1Next.AutoSize = true;
+            this.lblCar1Next.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar1Next.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar1Next.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar1Next.Location = new System.Drawing.Point(234, 221);
+            this.lblCar1Next.Name = "lblCar1Next";
+            this.lblCar1Next.Size = new System.Drawing.Size(56, 77);
+            this.lblCar1Next.TabIndex = 10;
+            this.lblCar1Next.Text = ">";
+            // 
+            // lblTrackBack
+            // 
+            this.lblTrackBack.AutoSize = true;
+            this.lblTrackBack.BackColor = System.Drawing.Color.Transparent;
+            this.lblTrackBack.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrackBack.ForeColor = System.Drawing.Color.Yellow;
+            this.lblTrackBack.Location = new System.Drawing.Point(335, 252);
+            this.lblTrackBack.Name = "lblTrackBack";
+            this.lblTrackBack.Size = new System.Drawing.Size(56, 77);
+            this.lblTrackBack.TabIndex = 11;
+            this.lblTrackBack.Text = "<";
+            // 
+            // lblCar2Back
+            // 
+            this.lblCar2Back.AutoSize = true;
+            this.lblCar2Back.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar2Back.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar2Back.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar2Back.Location = new System.Drawing.Point(657, 221);
+            this.lblCar2Back.Name = "lblCar2Back";
+            this.lblCar2Back.Size = new System.Drawing.Size(56, 77);
+            this.lblCar2Back.TabIndex = 12;
+            this.lblCar2Back.Text = "<";
+            // 
+            // lblTrackNext
+            // 
+            this.lblTrackNext.AutoSize = true;
+            this.lblTrackNext.BackColor = System.Drawing.Color.Transparent;
+            this.lblTrackNext.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrackNext.ForeColor = System.Drawing.Color.Yellow;
+            this.lblTrackNext.Location = new System.Drawing.Point(558, 252);
+            this.lblTrackNext.Name = "lblTrackNext";
+            this.lblTrackNext.Size = new System.Drawing.Size(56, 77);
+            this.lblTrackNext.TabIndex = 13;
+            this.lblTrackNext.Text = ">";
+            // 
+            // lblCar2Next
+            // 
+            this.lblCar2Next.AutoSize = true;
+            this.lblCar2Next.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar2Next.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar2Next.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar2Next.Location = new System.Drawing.Point(880, 221);
+            this.lblCar2Next.Name = "lblCar2Next";
+            this.lblCar2Next.Size = new System.Drawing.Size(56, 77);
+            this.lblCar2Next.TabIndex = 14;
+            this.lblCar2Next.Text = ">";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCloseMenu);
@@ -204,6 +287,12 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblStartGame;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblCar2Next;
+        private System.Windows.Forms.Label lblTrackNext;
+        private System.Windows.Forms.Label lblCar2Back;
+        private System.Windows.Forms.Label lblTrackBack;
+        private System.Windows.Forms.Label lblCar1Next;
+        private System.Windows.Forms.Label lblCar1Back;
     }
 }
 
