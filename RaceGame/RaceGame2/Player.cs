@@ -1,35 +1,43 @@
-﻿using System;
+﻿using SharpDX.XInput;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Numerics;
 using System.Threading.Tasks;
-using SharpDX.XInput;
+using System.Windows.Forms;
 
 namespace RaceGame2
 {
+    /// <summary>
+    /// De class Player bevat alle informatie over de speler. Auto bitmap, beweging en input van controller.
+    /// </summary>
     public class Player 
     {
+        // Voor display
+        public int displaySpeed
+        {
+            get
+            {
+                return Convert.ToInt16(speed * 40);
+            }
+        }
+
         // Beweging variabelen
         public double speed { get; set; }
         public float maxSpeed { get; set; }
         public float accel { get; set; }
-
         public double posX { get; set; }
-        public double posY { get; set; }
-    
+        public double posY { get; set; }   
         public double rotation { get; set; }
-        public double angle;
-       
+        public double angle;       
         private double backWheelX, backWheelY, frontWheelX, frontWheelY;
         private double wheelBase = 80;
         private double steerAngle = 0;
         public double maxSteerAngle { get; set; } = 0.4;
-
         private float slipAngle = 0;
 
         // Collsion vars
@@ -48,30 +56,33 @@ namespace RaceGame2
         public Keys keyUp = Keys.Up;
         public Keys keySpecial = Keys.Enter;
 
-        public State controllerState;
-
+        // Items
         private bool isShooting = false;
 
+        // Checkpoints
         private int checkPointColor = 255;
-        public int checkPointCount = 0; 
+        private int checkPointCount = 0;
+        public int round = 0;
 
         // Grafisch
         private Bitmap image;
         private Bitmap map;
         private Color color;
+        private Map workingMap;
+        
 
+        // Controller
+        public State controllerState;
         private Controller _controller;
         private Vibration fullShake;
         private Vibration noShake;
+        private Vibration gasShake;
         private bool isUsingController;
 
-
-
-
+        
         public Player(Game form, int player)
         {
-
-            
+            workingMap = form.map;    
             int caseSwitch = 1;
             switch (caseSwitch)
             {
@@ -84,9 +95,10 @@ namespace RaceGame2
 
             fullShake.LeftMotorSpeed = 65535;
             fullShake.RightMotorSpeed = 65535;
-
             noShake.LeftMotorSpeed = 0;
             noShake.RightMotorSpeed = 0;
+            gasShake.LeftMotorSpeed = 0;
+            gasShake.RightMotorSpeed = 0;
 
             map = new Bitmap(Properties.Resources.Baan2color1);
             speed = 0;
@@ -110,7 +122,6 @@ namespace RaceGame2
                 //_controller = new Controller(UserIndex.Two);
             }       
         }
-
         public void Update(List<Player> playerList, List<Projectile> projectileList)
         {
             Move();
@@ -131,11 +142,12 @@ namespace RaceGame2
                     isUsingController = false;
                 }
 
-               
+                string[] words = System.Text.RegularExpressions.Regex.Split(controllerState.Gamepad.Buttons.ToString(), ", ");
+
                 steerAngle = controllerState.Gamepad.LeftThumbX / 81920.0f;
                 if (speed < maxSpeed)
                 {
-                    speed = speed + controllerState.Gamepad.LeftTrigger / 5100.0f;
+                    speed = speed + controllerState.Gamepad.RightTrigger / 5100.0f;
                 }
                 if (controllerState.Gamepad.LeftTrigger == 0)
                 {
@@ -149,14 +161,21 @@ namespace RaceGame2
                     }
                 }
 
-                string[] words = System.Text.RegularExpressions.Regex.Split(controllerState.Gamepad.Buttons.ToString(), ", ");
-                
+                gasShake.LeftMotorSpeed = (ushort)(controllerState.Gamepad.RightTrigger * 28);
+                gasShake.RightMotorSpeed = (ushort)(controllerState.Gamepad.RightTrigger * 28);
+
                 foreach (string word in words)
                 {
                     if (word == "B")
                     {
-                        speed = 0;
-               
+                        if (speed > 0)
+                        {
+                            speed -= accel / 2;
+                        }
+                        else
+                        {
+                            if (speed > -maxSpeed / 2) { speed -= accel / 2; }
+                        }
                     }
                 }
             }
@@ -276,66 +295,18 @@ namespace RaceGame2
             posX = (frontWheelX + backWheelX) / 2;
             posY = (frontWheelY + backWheelY) / 2;            
         }
-
         private void Collision(List<Player> playerList)
         {
-            // Lijst met kleuren:
+            CheckPlayerCollision(playerList);
+            CheckSpecialCollision(playerList);
+            CheckColorCollision();
+        }
 
-            // Note: achtergrond kleur is per map verschillend.
-            // Checkpoint1: groen RGB(0, 255, 0) , checkpoint2: RGB(0, 250, 0), enzovoorts.
-            // Brug: RGB (192, 192, 192) 
-            // Pitstop: RGB (143, 143, 142)
-
-            
-            try
-            {
-                color = map.GetPixel(Convert.ToInt16(posX), Convert.ToInt16(posY));
-                if (color.R == 182 && color.G == 255 && color.B == 254)
-                {
-                    if (isUsingController){
-                        _controller.SetVibration(fullShake);
-                    }
-                   
-                    if (speed > 1)
-                    {
-                        speed -= 0.2f;
-                    }
-                }
-
-                else
-                {
-                    if (isUsingController)
-                    {
-                        _controller.SetVibration(noShake);
-                    }
-                        
-                }
-
-               
-
-                if(color.R == 0 && color.G == checkPointColor && color.B == 0)
-                {
-                    checkPointColor -= 5;
-                    checkPointCount += 1;
-
-                    Console.WriteLine("Check Point: " + checkPointCount);
-                    Console.WriteLine("Next checkpointcolor: " + checkPointColor);
-
-                    if (checkPointCount == 7)
-                    {
-                        checkPointCount = 0;
-                        checkPointColor = 255;
-                    } 
-                }
-            }
-            catch{}
-
-            
-            
-         
+        private void CheckPlayerCollision(List<Player> playerList)
+        {
             foreach (Player p in playerList)
             {
-                if(p != this)
+                if (p != this)
                 {
                     distance = Math.Sqrt(Math.Pow((p.posX - this.posX), 2) + Math.Pow((p.posY - this.posY), 2));
 
@@ -343,9 +314,78 @@ namespace RaceGame2
                     {
                         p.speed = speed;
                         speed = speed / 2;
-                    }                  
+                    }
                 }
-            }     
+            }
+        }
+        private void CheckSpecialCollision(List<Player> playerList)
+        {
+            foreach (Player p in playerList)
+            {
+                if (p != this)
+                {
+                    foreach (PickUp pick in workingMap.pickUpList)
+                    {
+                        distance = Math.Sqrt(Math.Pow((pick.position.X - this.posX), 2) + Math.Pow((pick.position.Y - this.posY), 2));
+                        if (distance < 50)
+                        {
+                            Console.WriteLine("Botsing met PickUP"); 
+                        }
+                    }
+                }
+            }
+        }
+        private void CheckColorCollision()
+        {
+            // Collision op basis van bitmap GetPixel() functie
+            // Note: achtergrond kleur is per map verschillend.
+            // Brug: RGB (192, 192, 192) 
+            // Pitstop: RGB (143, 143, 142)
+
+            try
+            {
+                color = map.GetPixel(Convert.ToInt16(posX), Convert.ToInt16(posY));
+            }
+            catch { } // Komt buiten de map
+
+            if (color.R == 182 && color.G == 255 && color.B == 254)
+            {
+                if (isUsingController)
+                {
+                    _controller.SetVibration(fullShake);
+                }
+
+                if (speed > 1)
+                {
+                    speed -= 0.2f;
+                }
+            }
+
+            else
+            {
+                if (isUsingController)
+                {
+                    _controller.SetVibration(gasShake);
+                }
+            }
+
+            // Checken voor checkpoints.
+            // Checkpoint1: groen: RGB(0, 255, 0) , checkpoint2: RGB(0, 250, 0), enzovoorts. 
+            if (color.R == 0 && color.G == checkPointColor && color.B == 0)
+            {
+                checkPointColor -= 5;
+                checkPointCount += 1;
+
+                Console.WriteLine("Check Point: " + checkPointCount);
+                Console.WriteLine("Next checkpointcolor: " + checkPointColor);
+
+                if (checkPointCount == 7)
+                {
+                    round += 1;
+                    checkPointCount = 0;
+                    checkPointColor = 255;
+                }
+            }
         }
 
         private void Special(List<Player> playerList, List<Projectile> projectileList)
@@ -392,6 +432,9 @@ namespace RaceGame2
         }
     }
 
+    /// <summary>
+    /// Geschoten projectiel. 
+    /// </summary>
     public class Projectile
     {
         public double posX { get; set; }

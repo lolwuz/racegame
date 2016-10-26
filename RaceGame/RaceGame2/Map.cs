@@ -10,14 +10,16 @@ using System.Numerics;
 
 namespace RaceGame2
 {
-    public class Map
+    public class Map 
     {
         public Bitmap map1;
-        public static List<PickUp> pickUpList = new List<PickUp>();
+        public List<PickUp> pickUpList = new List<PickUp>();
 
         public Map()
         {
             int caseSwitch = 2;
+
+            // Baan keuze + pickUp's voor de baan + (extra's?)
             switch (caseSwitch)
             {
                 case 1:
@@ -27,8 +29,17 @@ namespace RaceGame2
 
                 case 2:
                     map1 = new Bitmap(Properties.Resources.Baan2);
-                    pickUpList.Add(new PickUp(300, 200));
+                    pickUpList.Add(new PickUp(684, 1000));
+                    pickUpList.Add(new PickUp(755, 1000));
 
+                    pickUpList.Add(new PickUp(1112, 860));
+                    pickUpList.Add(new PickUp(1190, 860));
+
+                    pickUpList.Add(new PickUp(1905, 440));
+                    pickUpList.Add(new PickUp(1839, 440));
+
+                    pickUpList.Add(new PickUp(1330, 1476));
+                    pickUpList.Add(new PickUp(1330, 1404));
                     break;
                 default:
                     break;
@@ -66,7 +77,7 @@ namespace RaceGame2
         }
         public void Draw(Graphics g, Player p, double width, double height)
         {
-            g.DrawRectangle(new Pen(Color.Blue, 3),
+            g.DrawRectangle(new Pen(Color.Red, 5),
                     Convert.ToInt32(width + (position.X - p.posX)),
                     Convert.ToInt32(height + (position.Y - p.posY)),
                     10, 10);

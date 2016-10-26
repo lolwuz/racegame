@@ -63,7 +63,7 @@ namespace RaceGame2
             p2 = new Player(this, 2);
             p2.posX = 1300;
             p2.posY = 1760;
-            p2.accel = 0.05f;
+            p2.accel = 0.1f;
             p2.maxSpeed = 6;
             p2.keyLeft = Keys.A;
             p2.keyRight = Keys.D;
@@ -116,10 +116,21 @@ namespace RaceGame2
             pictureBox1.Invalidate();
             pictureBox2.Invalidate();
              
-            Speler1Ronde.Location = new Point(0, 50);
+            Speler1Ronde.Location = new Point(0, 50);          
             Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
+            Speler1Speed.Location = new Point(0, ClientSize.Height - 50);
+            Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), ClientSize.Height - 50);
             
-                  
+
+
+
+            Speler1Ronde.Text = "Ronde: " + p1.round + "/ 5";
+            Speler2Ronde.Text = "Ronde: " + p2.round + "/ 5";
+
+
+            Speler1Speed.Text = "Snelheid: " + p1.displaySpeed + "km/h";
+            Speler2Speed.Text = "Snelheid: " + p2.displaySpeed + "km/h";
+
             //Tijd.Text = System.DateTime.Now.Second.ToString();
         }
 
