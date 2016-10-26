@@ -145,22 +145,13 @@ namespace RaceGame2
                 string[] words = System.Text.RegularExpressions.Regex.Split(controllerState.Gamepad.Buttons.ToString(), ", ");
 
                 steerAngle = controllerState.Gamepad.LeftThumbX / 81920.0f;
+
+             
                 if (speed < maxSpeed)
                 {
-                    speed = speed + controllerState.Gamepad.RightTrigger / 5100.0f;
+                    speed = speed + controllerState.Gamepad.RightTrigger / 2550.0f;
                 }
-                if (controllerState.Gamepad.LeftTrigger == 0)
-                {
-                    if (speed > 0)
-                    {
-                        speed -= 0.02f;
-                    }
-                    if (speed < 0)
-                    {
-                        speed = 0;
-                    }
-                }
-
+                
                 gasShake.LeftMotorSpeed = (ushort)(controllerState.Gamepad.RightTrigger * 28);
                 gasShake.RightMotorSpeed = (ushort)(controllerState.Gamepad.RightTrigger * 28);
 
@@ -178,6 +169,8 @@ namespace RaceGame2
                         }
                     }
                 }
+
+          
             }
 
 
@@ -201,20 +194,8 @@ namespace RaceGame2
                         if (speed > -maxSpeed / 2) { speed -= accel / 2; }
                     }
                 }
-                else
-                {
-                    if (speed > 0)
-                    {
-                        speed -= 0.02f;
-                    }
-                    if (speed < 0 && !isDown)
-                    {
-                        speed = 0;
-                    }
-                }
 
-
-
+                          
                 // Stuur Angle 
                 if (left)
                 {
@@ -234,7 +215,6 @@ namespace RaceGame2
 
                 if (!left && !isRight)
                 {
-
                     if (steerAngle > 0)
                     {
                         steerAngle = 0;
@@ -245,9 +225,16 @@ namespace RaceGame2
                     }
                 }
             }
-          
 
-            
+
+            if (speed > 0)
+            {
+                speed -= 0.02f;
+            }
+            if (speed < 0)
+            {
+                speed += 0.02f;
+            }
 
             // Bij een bepaalde stuurhoek gaan de achterbanden slippen.
             if (steerAngle > 0.2)
