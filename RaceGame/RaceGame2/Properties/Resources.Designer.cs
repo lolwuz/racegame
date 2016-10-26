@@ -73,9 +73,19 @@ namespace RaceGame2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Baan2colormap {
+        internal static System.Drawing.Bitmap Baan2color {
             get {
-                object obj = ResourceManager.GetObject("Baan2colormap", resourceCulture);
+                object obj = ResourceManager.GetObject("Baan2color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Baan2color1 {
+            get {
+                object obj = ResourceManager.GetObject("Baan2color1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

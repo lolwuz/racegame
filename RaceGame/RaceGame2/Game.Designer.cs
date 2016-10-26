@@ -30,7 +30,8 @@
         {
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Tijd = new System.Windows.Forms.Label();
+            this.Speler1Ronde = new System.Windows.Forms.Label();
+            this.Speler2Ronde = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -38,10 +39,10 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(88)))), ((int)(((byte)(64)))));
-            this.pictureBox2.Location = new System.Drawing.Point(503, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(1006, 0);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(512, 724);
+            this.pictureBox2.Size = new System.Drawing.Size(1024, 1392);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
@@ -52,32 +53,47 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(512, 724);
+            this.pictureBox1.Size = new System.Drawing.Size(1024, 1392);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // Tijd
+            // Speler1Ronde
             // 
-            this.Tijd.AutoSize = true;
-            this.Tijd.Location = new System.Drawing.Point(488, 484);
-            this.Tijd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Tijd.Name = "Tijd";
-            this.Tijd.Size = new System.Drawing.Size(24, 13);
-            this.Tijd.TabIndex = 2;
-            this.Tijd.Text = "Tijd";
+            this.Speler1Ronde.AutoSize = true;
+            this.Speler1Ronde.BackColor = System.Drawing.Color.Black;
+            this.Speler1Ronde.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speler1Ronde.ForeColor = System.Drawing.Color.White;
+            this.Speler1Ronde.Location = new System.Drawing.Point(0, 50);
+            this.Speler1Ronde.Name = "Speler1Ronde";
+            this.Speler1Ronde.Size = new System.Drawing.Size(204, 67);
+            this.Speler1Ronde.TabIndex = 2;
+            this.Speler1Ronde.Text = "Ronde";
+            // 
+            // Speler2Ronde
+            // 
+            this.Speler2Ronde.AutoSize = true;
+            this.Speler2Ronde.BackColor = System.Drawing.Color.Black;
+            this.Speler2Ronde.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speler2Ronde.ForeColor = System.Drawing.Color.White;
+            this.Speler2Ronde.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Speler2Ronde.Location = new System.Drawing.Point(1713, 50);
+            this.Speler2Ronde.Name = "Speler2Ronde";
+            this.Speler2Ronde.Size = new System.Drawing.Size(204, 67);
+            this.Speler2Ronde.TabIndex = 3;
+            this.Speler2Ronde.Text = "Ronde";
             // 
             // Game
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(958, 548);
-            this.Controls.Add(this.Tijd);
+            this.ClientSize = new System.Drawing.Size(1916, 1054);
+            this.Controls.Add(this.Speler2Ronde);
+            this.Controls.Add(this.Speler1Ronde);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Game";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -98,7 +114,8 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label Tijd;
+        private System.Windows.Forms.Label Speler1Ronde;
+        private System.Windows.Forms.Label Speler2Ronde;
     }
 }
 

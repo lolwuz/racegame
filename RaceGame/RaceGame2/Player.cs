@@ -58,9 +58,6 @@ namespace RaceGame2
         private Bitmap map;
         private Color color;
 
-        private string _leftAxis;
-        private string _rightAxis;
-        private string _buttons;
         private Controller _controller;
 
 
@@ -79,12 +76,12 @@ namespace RaceGame2
             }
 
 
-            map = new Bitmap(Properties.Resources.Baan2colormap);
+            map = new Bitmap(Properties.Resources.Baan2color1);
             speed = 0;
 
             _controller = new Controller(UserIndex.One);
             if (_controller.IsConnected) return;
-            MessageBox.Show("Game Controller is not connected ... you know ;)");
+            MessageBox.Show("Geen controller gevonden.");
           
         }
 
@@ -237,12 +234,15 @@ namespace RaceGame2
                     }
                 }
 
-                if(color.G == checkPointColor)
+               
+
+                if(color.R == 0 && color.G == checkPointColor && color.B == 0)
                 {
                     checkPointColor -= 5;
                     checkPointCount += 1;
 
                     Console.WriteLine("Check Point: " + checkPointCount);
+                    Console.WriteLine("Next checkpointcolor: " + checkPointColor);
 
                     if (checkPointCount == 7)
                     {

@@ -121,8 +121,11 @@
   <data name="Baan2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Baan2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Baan2colormap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Baan2colormap.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Baan2color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Baan2color.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Baan2color1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Baan2color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="basicTrack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\basicTrack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

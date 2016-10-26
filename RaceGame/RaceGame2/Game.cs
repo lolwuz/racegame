@@ -27,7 +27,7 @@ namespace RaceGame2
         public Game(String moederSelectP1, String moederSelectP2, String mapSelect)
         {
             // Window full screen
-            this.WindowState = FormWindowState.Maximized;
+            // this.WindowState = FormWindowState.Maximized;
 
             // Window style   
             this.SetStyle(
@@ -115,6 +115,10 @@ namespace RaceGame2
             Invalidate();
             pictureBox1.Invalidate();
             pictureBox2.Invalidate();
+             
+            Speler1Ronde.Location = new Point(0, 50);
+            Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
+            
                   
             //Tijd.Text = System.DateTime.Now.Second.ToString();
         }
