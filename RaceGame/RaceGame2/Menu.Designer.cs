@@ -138,7 +138,7 @@
             this.lblStartGame.BackColor = System.Drawing.Color.Transparent;
             this.lblStartGame.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStartGame.ForeColor = System.Drawing.Color.Black;
-            this.lblStartGame.Location = new System.Drawing.Point(352, 438);
+            this.lblStartGame.Location = new System.Drawing.Point(352, 435);
             this.lblStartGame.Name = "lblStartGame";
             this.lblStartGame.Size = new System.Drawing.Size(244, 63);
             this.lblStartGame.TabIndex = 8;
@@ -167,7 +167,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::RaceGame2.Properties.Resources.menu_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.panel1);
