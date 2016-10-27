@@ -21,6 +21,8 @@ namespace RaceGame2
 
         public Player p1;
         public Player p2;
+        public Player p3;
+        public Player p4;
 
         public Map map;
 
@@ -71,9 +73,33 @@ namespace RaceGame2
             p2.keyUp = Keys.W;
             p2.keySpecial = Keys.E;
 
+            p3 = new Player(this, 3);
+            p3.posX = 1150;
+            p3.posY = 1690;
+            p3.accel = 0.1f;
+            p3.maxSpeed = 6;
+            p3.keyLeft = Keys.F;
+            p3.keyRight = Keys.H;
+            p3.keyDown = Keys.G;
+            p3.keyUp = Keys.T;
+            p3.keySpecial = Keys.Y;
+
+            p4 = new Player(this, 4);
+            p4.posX = 1150;
+            p4.posY = 1760;
+            p4.accel = 0.1f;
+            p4.maxSpeed = 6;
+            p4.keyLeft = Keys.J;
+            p4.keyRight = Keys.L;
+            p4.keyDown = Keys.K;
+            p4.keyUp = Keys.I;
+            p4.keySpecial = Keys.O;
+
             // Add players to List
             playerList.Add(p1);
             playerList.Add(p2);
+            playerList.Add(p3);
+            playerList.Add(p4);
 
             Start();
         }
@@ -115,7 +141,9 @@ namespace RaceGame2
             Invalidate();
             pictureBox1.Invalidate();
             pictureBox2.Invalidate();
-             
+            pictureBox3.Invalidate();
+            pictureBox4.Invalidate();
+
             Speler1Ronde.Location = new Point(0, 50);          
             Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
             Speler1Speed.Location = new Point(0, ClientSize.Height - 50);
@@ -137,28 +165,71 @@ namespace RaceGame2
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {        
             pictureBox1.Width = ClientSize.Width/2;
-            pictureBox1.Height = ClientSize.Height;
+            pictureBox1.Height = ClientSize.Height / 2;
             pictureBox1.Location = new Point(0,0);
-
             map.Draw(e.Graphics, p1, pictureBox1.Width / 2, pictureBox1.Height / 2);
 
             p1.Draw(e.Graphics, projectileList, pictureBox2.Width / 2, pictureBox2.Height / 2);
-            p2.Draw(e.Graphics, projectileList,
-                pictureBox2.Width / 2 + (p2.posX - p1.posX), 
-                pictureBox2.Height / 2 + (p2.posY - p1.posY));     
+            foreach (Player p in playerList)
+            {
+                if (p != p1)
+                {
+                    p.Draw(e.Graphics, projectileList, pictureBox1.Width / 2 + (p.posX - p1.posX), pictureBox1.Height / 2 + (p.posY - p1.posY));
+                }
+            }
         }
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
             pictureBox2.Width = ClientSize.Width / 2;
-            pictureBox2.Height = ClientSize.Height;
+            pictureBox2.Height = ClientSize.Height / 2;
             pictureBox2.Location = new Point(ClientSize.Width / 2, 0);
-
             map.Draw(e.Graphics,p2 ,pictureBox2.Width / 2, pictureBox2.Height / 2);
 
             p2.Draw(e.Graphics, projectileList, pictureBox2.Width/2, pictureBox2.Height/2);
-            p1.Draw(e.Graphics, projectileList,
-                pictureBox2.Width / 2 + (p1.posX - p2.posX), 
-                pictureBox2.Height / 2 + (p1.posY - p2.posY));
+
+            foreach (Player p in playerList)
+            {
+                if (p != p2)
+                {
+                    p.Draw(e.Graphics, projectileList, pictureBox2.Width / 2 + (p.posX - p2.posX), pictureBox2.Height / 2 + (p.posY - p2.posY));
+                }
+            }
+        }
+
+        private void pictureBox3_Paint(object sender, PaintEventArgs e)
+        {
+            pictureBox3.Width = ClientSize.Width / 2;
+            pictureBox3.Height = ClientSize.Height / 2;
+            pictureBox3.Location = new Point(0, Convert.ToInt16(ClientSize.Height/2));
+            map.Draw(e.Graphics, p3, pictureBox1.Width / 2, pictureBox1.Height / 2);
+
+            p3.Draw(e.Graphics, projectileList, pictureBox3.Width / 2, pictureBox3.Height / 2);
+
+            foreach(Player p in playerList)
+            {
+                if(p != p3)
+                {
+                    p.Draw(e.Graphics, projectileList, pictureBox3.Width / 2 + (p.posX - p3.posX), pictureBox3.Height / 2 + (p.posY - p3.posY));
+                }
+            }          
+        }
+
+        private void pictureBox4_Paint(object sender, PaintEventArgs e)
+        {
+            pictureBox4.Width = ClientSize.Width / 2;
+            pictureBox4.Height = ClientSize.Height / 2;
+            pictureBox4.Location = new Point(ClientSize.Width / 2, Convert.ToInt16(ClientSize.Height / 2));
+            map.Draw(e.Graphics, p4, pictureBox4.Width / 2, pictureBox4.Height / 2);
+
+            p4.Draw(e.Graphics, projectileList, pictureBox4.Width / 2, pictureBox4.Height / 2);
+
+            foreach (Player p in playerList)
+            {
+                if (p != p4)
+                {
+                    p.Draw(e.Graphics, projectileList, pictureBox4.Width / 2 + (p.posX - p4.posX), pictureBox4.Height / 2 + (p.posY - p4.posY));
+                }
+            }
         }
 
         // press escape to go back to menu
