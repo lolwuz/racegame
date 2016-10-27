@@ -133,18 +133,7 @@ namespace RaceGame2
             Collision(playerList);
             Special(playerList, projectileList);
         }
-        private void Fuel()
-        {
-            if (fuel < 0)
-            {
-                speed = 2;
-            }
-            else
-            {
-                fuel -= 0.005f * speed;
-                Console.WriteLine(fuel);
-            }
-        }
+        
 
         private void Move()
         {
@@ -300,13 +289,24 @@ namespace RaceGame2
             posX = (frontWheelX + backWheelX) / 2;
             posY = (frontWheelY + backWheelY) / 2;            
         }
+        private void Fuel()
+        {
+            if (fuel < 0)
+            {
+                maxSpeed = 2;
+            }
+            else
+            {
+                fuel -= 0.005f * speed;
+            }
+        }
+
         private void Collision(List<Player> playerList)
         {
             CheckPlayerCollision(playerList);
             CheckSpecialCollision(playerList);
             CheckColorCollision();
         }
-
         private void CheckPlayerCollision(List<Player> playerList)
         {
             foreach (Player p in playerList)
@@ -346,12 +346,23 @@ namespace RaceGame2
             // Note: achtergrond kleur is per map verschillend.
             // Brug: RGB (192, 192, 192) 
             // Pitstop: RGB (143, 143, 142)
+            // Obstakel: RGB(77, 1, 1) 
 
             try
             {
                 color = map.GetPixel(Convert.ToInt16(posX), Convert.ToInt16(posY));
             }
             catch { } // Komt buiten de map
+
+            if(color.R == 77 && color.G == 1 && color.B == 1)
+            {
+                speed = -speed;
+            }
+
+            if(color.R == 143 && color.G == 143 && color.B == 143)
+            {
+                fuel += fuel + 0.01;
+            }
 
             if (color.R == 182 && color.G == 255 && color.B == 254)
             {
