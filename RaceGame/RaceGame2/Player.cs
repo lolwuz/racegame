@@ -100,7 +100,7 @@ namespace RaceGame2
             gasShake.LeftMotorSpeed = 0;
             gasShake.RightMotorSpeed = 0;
 
-            map = new Bitmap(Properties.Resources.Baan2color1);
+            map = new Bitmap(Properties.Resources.Baan2colormap);
             speed = 0;
 
             if (player == 1)
