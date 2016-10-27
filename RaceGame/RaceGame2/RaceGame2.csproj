@@ -121,6 +121,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\MoederKoen.png" />
+    <None Include="Resources\MoederJorrit.png" />
+    <None Include="Resources\MoederSimon.png" />
+    <None Include="Resources\MartenMoeder.png" />
     <None Include="Resources\Baan2.png" />
     <None Include="Resources\powerup.png" />
     <None Include="Resources\Baan2colormap.png" />
