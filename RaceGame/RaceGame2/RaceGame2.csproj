@@ -121,6 +121,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\baan2_thumb.png" />
+    <None Include="Resources\baan1_thumb.png" />
     <None Include="Resources\Baan2.png" />
     <None Include="Resources\powerup.png" />
     <None Include="Resources\Baan2colormap.png" />
