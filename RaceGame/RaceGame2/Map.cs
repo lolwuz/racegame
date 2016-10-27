@@ -63,6 +63,7 @@ namespace RaceGame2
 
         public enum type {projectile, oil, fuelDrain };
         public static Random rnd = new Random();
+        private Bitmap pickUpBlock = new Bitmap(Properties.Resources.powerup);
 
         public PickUp(int x, int y)
         {
@@ -77,10 +78,7 @@ namespace RaceGame2
         }
         public void Draw(Graphics g, Player p, double width, double height)
         {
-            g.DrawRectangle(new Pen(Color.Red, 5),
-                    Convert.ToInt32(width + (position.X - p.posX)),
-                    Convert.ToInt32(height + (position.Y - p.posY)),
-                    10, 10);
+            g.DrawImage(pickUpBlock, new Point(Convert.ToInt32(width+ position.X - p.posX - (pickUpBlock.Width / 2)), Convert.ToInt32(height + position.Y - p.posY - (pickUpBlock.Height / 2))));
         }
     }
 }

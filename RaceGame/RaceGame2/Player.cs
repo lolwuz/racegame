@@ -40,6 +40,8 @@ namespace RaceGame2
         public double maxSteerAngle { get; set; } = 0.4;
         private float slipAngle = 0;
 
+        public double fuel = 100;
+
         // Collsion vars
         private double distance;
 
@@ -113,7 +115,10 @@ namespace RaceGame2
 
             if(player == 2)
             {
-
+                isUsingController = true;
+                _controller = new Controller(UserIndex.Two);
+                if (_controller.IsConnected) return;
+                MessageBox.Show("Geen controller gevonden.");
             }
 
             else
@@ -126,7 +131,19 @@ namespace RaceGame2
         {
             Move();
             Collision(playerList);
-            Special(playerList, projectileList);      
+            Special(playerList, projectileList);
+        }
+        private void Fuel()
+        {
+            if (fuel < 0)
+            {
+                speed = 2;
+            }
+            else
+            {
+                fuel -= 0.005f * speed;
+                Console.WriteLine(fuel);
+            }
         }
 
         private void Move()
@@ -265,6 +282,7 @@ namespace RaceGame2
                     slipAngle += 1f;
                 }
             }
+            Fuel();
 
             // Verplaatsing berekenen.
             angle = Math.PI * rotation / 180.0;
