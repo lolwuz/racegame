@@ -16,8 +16,8 @@ namespace RaceGame2
     public partial class Game : Form
     {
         Bitmap Backbuffer;
-        public static List<Player> playerList = new List<Player>();
-        public static List<Projectile> projectileList = new List<Projectile>();
+        public List<Player> playerList = new List<Player>();
+        public List<Projectile> projectileList = new List<Projectile>();
 
         public Player p1;
         public Player p2;
@@ -60,7 +60,7 @@ namespace RaceGame2
             p1.posX = 1300;
             p1.posY = 1690;
             p1.accel = 0.1f;
-            p1.maxSpeed = 6;
+            p1.maxSpeed = 9;
 
             p2 = new Player(this, 2);
             p2.posX = 1300;
@@ -136,28 +136,35 @@ namespace RaceGame2
         {
             foreach (Player p in playerList)
             {
-                p.Update(playerList, projectileList);
+                p.Update(projectileList);
             }
-            Invalidate();
+                       
             pictureBox1.Invalidate();
             pictureBox2.Invalidate();
             pictureBox3.Invalidate();
             pictureBox4.Invalidate();
+            Invalidate();
 
             Speler1Ronde.Location = new Point(0, 50);          
             Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
-            Speler1Speed.Location = new Point(0, ClientSize.Height - 50);
-            Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), ClientSize.Height - 50);
-            
+            Speler3Ronde.Location = new Point(0, ClientSize.Height / 2 + 50);
+            Speler4Ronde.Location = new Point(ClientSize.Width - (Speler4Ronde.Width), (ClientSize.Height / 2) + 50);
 
 
+            Speler1Speed.Location = new Point(0, (ClientSize.Height / 2) - 50);
+            Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), (ClientSize.Height / 2) - 50);
+            Speler3Speed.Location = new Point(0, ClientSize.Height - 50);
+            Speler4Speed.Location = new Point(ClientSize.Width - (Speler4Speed.Width), ClientSize.Height - 50);
 
-            Speler1Ronde.Text = "Ronde: " + p1.round + "/ 5";
-            Speler2Ronde.Text = "Ronde: " + p2.round + "/ 5";
-
+            Speler1Ronde.Text = "Ronde: " + p1.round + "/5";
+            Speler2Ronde.Text = "Ronde: " + p2.round + "/5";
+            Speler3Ronde.Text = "Ronde: " + p3.round + "/5";
+            Speler4Ronde.Text = "Ronde: " + p4.round + "/5";
 
             Speler1Speed.Text = "Snelheid: " + p1.displaySpeed + "km/h";
             Speler2Speed.Text = "Snelheid: " + p2.displaySpeed + "km/h";
+            Speler3Speed.Text = "Snelheid: " + p3.displaySpeed + "km/h";
+            Speler4Speed.Text = "Snelheid: " + p4.displaySpeed + "km/h";
 
             //Tijd.Text = System.DateTime.Now.Second.ToString();
         }
@@ -250,7 +257,7 @@ namespace RaceGame2
 
             // Game timer
             Timer GameTimer = new Timer();
-            GameTimer.Interval = 1;
+            GameTimer.Interval = 1000 / 60 ; // FPS is hier dus 60, even zien hoe dat loopt.
             GameTimer.Tick += new EventHandler(GameTimer_Tick);
             GameTimer.Start();
 

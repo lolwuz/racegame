@@ -36,6 +36,10 @@
             this.Speler2Speed = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.Speler3Ronde = new System.Windows.Forms.Label();
+            this.Speler4Ronde = new System.Windows.Forms.Label();
+            this.Speler3Speed = new System.Windows.Forms.Label();
+            this.Speler4Speed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -139,12 +143,68 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox4_Paint);
             // 
+            // Speler3Ronde
+            // 
+            this.Speler3Ronde.AutoSize = true;
+            this.Speler3Ronde.BackColor = System.Drawing.Color.Black;
+            this.Speler3Ronde.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speler3Ronde.ForeColor = System.Drawing.Color.White;
+            this.Speler3Ronde.Location = new System.Drawing.Point(0, 324);
+            this.Speler3Ronde.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Speler3Ronde.Name = "Speler3Ronde";
+            this.Speler3Ronde.Size = new System.Drawing.Size(104, 36);
+            this.Speler3Ronde.TabIndex = 8;
+            this.Speler3Ronde.Text = "Ronde";
+            // 
+            // Speler4Ronde
+            // 
+            this.Speler4Ronde.AutoSize = true;
+            this.Speler4Ronde.BackColor = System.Drawing.Color.Black;
+            this.Speler4Ronde.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speler4Ronde.ForeColor = System.Drawing.Color.White;
+            this.Speler4Ronde.Location = new System.Drawing.Point(492, 324);
+            this.Speler4Ronde.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Speler4Ronde.Name = "Speler4Ronde";
+            this.Speler4Ronde.Size = new System.Drawing.Size(104, 36);
+            this.Speler4Ronde.TabIndex = 9;
+            this.Speler4Ronde.Text = "Ronde";
+            // 
+            // Speler3Speed
+            // 
+            this.Speler3Speed.AutoSize = true;
+            this.Speler3Speed.BackColor = System.Drawing.Color.Black;
+            this.Speler3Speed.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speler3Speed.ForeColor = System.Drawing.Color.White;
+            this.Speler3Speed.Location = new System.Drawing.Point(0, 549);
+            this.Speler3Speed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Speler3Speed.Name = "Speler3Speed";
+            this.Speler3Speed.Size = new System.Drawing.Size(132, 36);
+            this.Speler3Speed.TabIndex = 10;
+            this.Speler3Speed.Text = "Snelheid";
+            // 
+            // Speler4Speed
+            // 
+            this.Speler4Speed.AutoSize = true;
+            this.Speler4Speed.BackColor = System.Drawing.Color.Black;
+            this.Speler4Speed.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speler4Speed.ForeColor = System.Drawing.Color.White;
+            this.Speler4Speed.Location = new System.Drawing.Point(464, 549);
+            this.Speler4Speed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Speler4Speed.Name = "Speler4Speed";
+            this.Speler4Speed.Size = new System.Drawing.Size(132, 36);
+            this.Speler4Speed.TabIndex = 11;
+            this.Speler4Speed.Text = "Snelheid";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(600, 594);
+            this.Controls.Add(this.Speler4Speed);
+            this.Controls.Add(this.Speler3Speed);
+            this.Controls.Add(this.Speler4Ronde);
+            this.Controls.Add(this.Speler3Ronde);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.Speler2Speed);
@@ -182,6 +242,10 @@
         private System.Windows.Forms.Label Speler2Speed;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label Speler3Ronde;
+        private System.Windows.Forms.Label Speler4Ronde;
+        private System.Windows.Forms.Label Speler3Speed;
+        private System.Windows.Forms.Label Speler4Speed;
     }
 }
 

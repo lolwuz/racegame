@@ -61,6 +61,7 @@ namespace RaceGame2
         public enum type {projectile, oil, fuelDrain };
         public static Random rnd = new Random();
         private Bitmap pickUpBlock = new Bitmap(Properties.Resources.powerup);
+        public string ret;
 
         public PickUp(int x, int y)
         {
@@ -69,7 +70,7 @@ namespace RaceGame2
 
             string[] types = Enum.GetNames(typeof(type));
             int randomEnum = rnd.Next(types.Length);
-            var ret = Enum.Parse(typeof(type), types[randomEnum]);
+            ret = Convert.ToString(Enum.Parse(typeof(type), types[randomEnum]));
             Console.WriteLine(ret);
         }
         public void Draw(Graphics g, Player p, double width, double height)
