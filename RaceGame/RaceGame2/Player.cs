@@ -85,11 +85,19 @@ namespace RaceGame2
         public Player(Game form, int player)
         {
             workingMap = form.map;    
-            int caseSwitch = 1;
-            switch (caseSwitch)
+            switch (player)
             {
                 case 1:
-                    image = new Bitmap(Properties.Resources.car2);
+                    image = new Bitmap(Properties.Resources.MartenMoeder);
+                    break;
+                case 2:
+                    image = new Bitmap(Properties.Resources.MoederJorrit);
+                    break;
+                case 3:
+                    image = new Bitmap(Properties.Resources.MoederSimon);
+                    break;
+                case 4:
+                    image = new Bitmap(Properties.Resources.MoederKoen);
                     break;
                 default:
                     break;

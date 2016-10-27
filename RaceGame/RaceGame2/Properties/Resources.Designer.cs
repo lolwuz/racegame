@@ -113,9 +113,9 @@ namespace RaceGame2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap car2 {
+        internal static System.Drawing.Bitmap MartenMoeder {
             get {
-                object obj = ResourceManager.GetObject("car2", resourceCulture);
+                object obj = ResourceManager.GetObject("MartenMoeder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +126,36 @@ namespace RaceGame2.Properties {
         internal static System.Drawing.Bitmap menu_background {
             get {
                 object obj = ResourceManager.GetObject("menu_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MoederJorrit {
+            get {
+                object obj = ResourceManager.GetObject("MoederJorrit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MoederKoen {
+            get {
+                object obj = ResourceManager.GetObject("MoederKoen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MoederSimon {
+            get {
+                object obj = ResourceManager.GetObject("MoederSimon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
