@@ -29,14 +29,9 @@ namespace RaceGame2
         {
             // Window full screen
             // this.WindowState = FormWindowState.Maximized;
-
             // Window style   
-            this.SetStyle(
-            ControlStyles.UserPaint |
-            ControlStyles.AllPaintingInWmPaint |
-            ControlStyles.OptimizedDoubleBuffer, true);
-            this.ResizeEnd += new EventHandler(Form1_CreateBackBuffer);
-            this.Load += new EventHandler(Form1_CreateBackBuffer);
+            
+
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MinimumSize = new Size(1024, 768);
 
@@ -126,11 +121,7 @@ namespace RaceGame2
             }
         }
 
-        void Form1_CreateBackBuffer(object sender, EventArgs e)
-        {
-            if (Backbuffer != null) { Backbuffer.Dispose(); }
-            Backbuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
-        }
+  
         void GameTimer_Tick(object sender, EventArgs e)
         {
             
