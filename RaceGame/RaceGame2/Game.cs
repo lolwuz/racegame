@@ -35,6 +35,8 @@ namespace RaceGame2
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MinimumSize = new Size(1024, 768);
 
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             // Selecteer moeder. 
             if (moederSelectP1 == "Aafke")
             {
@@ -54,13 +56,13 @@ namespace RaceGame2
             p1.posX = 1300;
             p1.posY = 1690;
             p1.accel = 0.1f;
-            p1.maxSpeed = 5;
+            p1.maxSpeed = 10;
 
             p2 = new Player(this, 2);
             p2.posX = 1300;
             p2.posY = 1760;
             p2.accel = 0.1f;
-            p2.maxSpeed = 5;
+            p2.maxSpeed = 10;
             p2.keyLeft = Keys.A;
             p2.keyRight = Keys.D;
             p2.keyDown = Keys.S;
@@ -71,7 +73,7 @@ namespace RaceGame2
             p3.posX = 1150;
             p3.posY = 1690;
             p3.accel = 0.1f;
-            p3.maxSpeed = 5;
+            p3.maxSpeed = 10;
             p3.keyLeft = Keys.F;
             p3.keyRight = Keys.H;
             p3.keyDown = Keys.G;
@@ -82,7 +84,7 @@ namespace RaceGame2
             p4.posX = 1150;
             p4.posY = 1760;
             p4.accel = 0.1f;
-            p4.maxSpeed = 5;
+            p4.maxSpeed = 10;
             p4.keyLeft = Keys.J;
             p4.keyRight = Keys.L;
             p4.keyDown = Keys.K;
@@ -219,7 +221,9 @@ namespace RaceGame2
         {
             while (IsApplicationIdle())
             {
-                Update();
+                gameUpdate();
+
+                // Render is te sloom. Veelste sloom.
                 Render();           
             }
         }
@@ -228,7 +232,7 @@ namespace RaceGame2
             NativeMessage result;
             return PeekMessage(out result, IntPtr.Zero, (uint)0, (uint)0, (uint)0) == 0;
         }
-        void Update()
+        void gameUpdate()
         {
             foreach (Player p in playerList)
             {
