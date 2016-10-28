@@ -7,7 +7,6 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RaceGame2
@@ -78,7 +77,6 @@ namespace RaceGame2
         public State controllerState;
         private Controller _controller;
         private Vibration fullShake;
-        private Vibration noShake;
         private Vibration gasShake;
         private bool isUsingController;
 
@@ -107,8 +105,7 @@ namespace RaceGame2
 
             fullShake.LeftMotorSpeed = 40000;
             fullShake.RightMotorSpeed = 40000;
-            noShake.LeftMotorSpeed = 0;
-            noShake.RightMotorSpeed = 0;
+        
             gasShake.LeftMotorSpeed = 0;
             gasShake.RightMotorSpeed = 0;
 
@@ -124,6 +121,22 @@ namespace RaceGame2
             }
 
             if(player == 2)
+            {
+                isUsingController = true;
+                _controller = new Controller(UserIndex.Two);
+                if (_controller.IsConnected) return;
+                MessageBox.Show("Geen controller gevonden.");
+            }
+
+            if (player == 3)
+            {
+                isUsingController = true;
+                _controller = new Controller(UserIndex.Two);
+                if (_controller.IsConnected) return;
+                MessageBox.Show("Geen controller gevonden.");
+            }
+
+            if (player == 4)
             {
                 isUsingController = true;
                 _controller = new Controller(UserIndex.Two);
