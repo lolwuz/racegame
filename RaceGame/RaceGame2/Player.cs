@@ -425,9 +425,7 @@ namespace RaceGame2
             {
                 checkPointColor -= 5;
                 checkPointCount += 1;
-                Console.WriteLine("Check Point: " + checkPointCount);
-                Console.WriteLine("Next checkpointcolor: " + checkPointColor);
-
+               
                 if (checkPointCount == 8)
                 {
                     round += 1;

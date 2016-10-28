@@ -35,7 +35,11 @@ namespace RaceGame2
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MinimumSize = new Size(1024, 768);
 
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
+            this.SetStyle(
+            ControlStyles.UserPaint |
+            ControlStyles.AllPaintingInWmPaint |
+            ControlStyles.OptimizedDoubleBuffer, true);
 
             // Selecteer moeder. 
             if (moederSelectP1 == "Aafke")
@@ -211,10 +215,11 @@ namespace RaceGame2
         }
 
         public void Start()
-        {
-
+        { 
             Application.Idle += HandleApplicationIdle;   
             InitializeComponent();
+
+            
         }
 
         void HandleApplicationIdle(object sender, EventArgs e)
