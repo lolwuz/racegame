@@ -71,6 +71,7 @@ namespace RaceGame2
         private Bitmap map;
         private Color color;
         private Map workingMap;
+        private Game workingGame;
         
 
         // Controller
@@ -82,9 +83,10 @@ namespace RaceGame2
         private bool isUsingController;
 
         
-        public Player(Game form, int player)
+        public Player(Game game, int player)
         {
-            workingMap = form.map;    
+            workingMap = game.map;
+            workingGame = game;
             switch (player)
             {
                 case 1:
@@ -103,8 +105,8 @@ namespace RaceGame2
                     break;
             }
 
-            fullShake.LeftMotorSpeed = 65535;
-            fullShake.RightMotorSpeed = 65535;
+            fullShake.LeftMotorSpeed = 40000;
+            fullShake.RightMotorSpeed = 40000;
             noShake.LeftMotorSpeed = 0;
             noShake.RightMotorSpeed = 0;
             gasShake.LeftMotorSpeed = 0;
@@ -135,11 +137,11 @@ namespace RaceGame2
                 //_controller = new Controller(UserIndex.Two);
             }       
         }
-        public void Update(List<Player> playerList, List<Projectile> projectileList)
+        public void Update(List<Projectile> projectileList)
         {
             Move();
-            Collision(playerList);
-            Special(playerList, projectileList);
+            Collision();
+            Special(projectileList);
         }
         
 
@@ -309,15 +311,15 @@ namespace RaceGame2
             }
         }
 
-        private void Collision(List<Player> playerList)
+        private void Collision()
         {
-            CheckPlayerCollision(playerList);
-            CheckSpecialCollision(playerList);
+            CheckPlayerCollision();
+            CheckSpecialCollision();
             CheckColorCollision();
         }
-        private void CheckPlayerCollision(List<Player> playerList)
+        private void CheckPlayerCollision()
         {
-            foreach (Player p in playerList)
+            foreach (Player p in workingGame.playerList)
             {
                 if (p != this)
                 {
@@ -331,18 +333,36 @@ namespace RaceGame2
                 }
             }
         }
-        private void CheckSpecialCollision(List<Player> playerList)
+        private void CheckSpecialCollision()
         {
-            foreach (Player p in playerList)
+            foreach (Player p in workingGame.playerList)
             {
                 if (p != this)
                 {
-                    foreach (PickUp pick in workingMap.pickUpList)
+                    //PickUp pick in workingMap.pickUpList
+                    for (int i = 0; i < workingMap.pickUpList.Count; i++)
                     {
-                        distance = Math.Sqrt(Math.Pow((pick.position.X - this.posX), 2) + Math.Pow((pick.position.Y - this.posY), 2));
+                        distance = Math.Sqrt(Math.Pow((workingMap.pickUpList[i].position.X - this.posX), 2) + Math.Pow((workingMap.pickUpList[i].position.Y - this.posY), 2));
                         if (distance < 50)
                         {
-                            Console.WriteLine("Botsing met PickUP"); 
+                            
+                            int newPickPositionX = workingMap.pickUpList[i].position.X;
+                            int newPickPositionY = workingMap.pickUpList[i].position.Y;
+
+                            Task.Factory.StartNew(() =>
+                            {
+                                System.Threading.Thread.Sleep(10000);
+                                Console.WriteLine("New Pickup");
+
+                                workingMap.pickUpList.Add(new PickUp(newPickPositionX, newPickPositionY));
+                            });
+
+                            if (workingMap.pickUpList[i].ret == "projectile")
+                            {
+                                // Als projectiel is.
+                            }
+                            workingMap.pickUpList.RemoveAt(i);
+                            Console.WriteLine("Botsing met PickUP");                                                                        
                         }
                     }
                 }
@@ -358,19 +378,25 @@ namespace RaceGame2
 
             try
             {
-                color = map.GetPixel(Convert.ToInt16(posX), Convert.ToInt16(posY));
+                angle = Math.PI * rotation / 180.0;
+                color = map.GetPixel(Convert.ToInt32(posX + 50 * Math.Cos(angle)), Convert.ToInt32(posY + 50 * Math.Sin(angle)));
             }
             catch { } // Komt buiten de map
 
             if(color.R == 77 && color.G == 1 && color.B == 1)
             {
-                speed = -speed;
+                speed = -1;
             }
 
-            if(color.R == 143 && color.G == 143 && color.B == 143)
+            
+            if (color.R == 143 && color.G == 143 && color.B == 143)
             {
-                fuel += fuel + 0.01;
+                if (fuel < 100)
+                {
+                    fuel += 0.5;
+                }
             }
+          
 
             if (color.R == 182 && color.G == 255 && color.B == 254)
             {
@@ -392,18 +418,17 @@ namespace RaceGame2
                     _controller.SetVibration(gasShake);
                 }
             }
-
+   
             // Checken voor checkpoints.
             // Checkpoint1: groen: RGB(0, 255, 0) , checkpoint2: RGB(0, 250, 0), enzovoorts. 
             if (color.R == 0 && color.G == checkPointColor && color.B == 0)
             {
                 checkPointColor -= 5;
                 checkPointCount += 1;
-
                 Console.WriteLine("Check Point: " + checkPointCount);
                 Console.WriteLine("Next checkpointcolor: " + checkPointColor);
 
-                if (checkPointCount == 7)
+                if (checkPointCount == 8)
                 {
                     round += 1;
                     checkPointCount = 0;
@@ -412,14 +437,14 @@ namespace RaceGame2
             }
         }
 
-        private void Special(List<Player> playerList, List<Projectile> projectileList)
+        private void Special(List<Projectile> projectileList)
         {
             if(isSpecial && !isShooting)
             {
                 projectileList.Add(new Projectile(this.posX, this.posY, rotation));
             }
 
-            foreach(Player p in playerList)
+            foreach(Player p in workingGame.playerList)
             {
                 if(p != this)
                 {
@@ -464,14 +489,12 @@ namespace RaceGame2
         public double posX { get; set; }
         public double posY { get; set; }
         public double angle { get; set; }
-
+ 
         public Projectile(double X, double Y, double rotation)
         {
             angle = Math.PI * rotation / 180.0;
-
             posX = X + 50 * Math.Cos(angle); 
-            posY = Y + 50 * Math.Sin(angle);
-            
+            posY = Y + 50 * Math.Sin(angle);        
         }
         public void Draw(Graphics g, Player p, double width, double height)
         {
@@ -483,8 +506,8 @@ namespace RaceGame2
 
         public void Update()
         {
-            posX += 6 * Math.Cos(angle);
-            posY += 6 * Math.Sin(angle);
+            posX += 2 * Math.Cos(angle);
+            posY += 2 * Math.Sin(angle);
         }
     }
 

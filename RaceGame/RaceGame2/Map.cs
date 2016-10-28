@@ -26,7 +26,6 @@ namespace RaceGame2
                     map1 = new Bitmap(Properties.Resources.basicTrack);
                     pickUpList.Add(new PickUp(10, 20));
                     break;
-
                 case 2:
                     map1 = new Bitmap(Properties.Resources.Baan2);
                     pickUpList.Add(new PickUp(684, 1000));
@@ -49,7 +48,6 @@ namespace RaceGame2
         public void Draw(Graphics g, Player p, double width, double height)
         {
             g.DrawImage(map1,Convert.ToSingle(-p.posX + width), Convert.ToSingle(-p.posY + height));
-
             foreach(PickUp pick in pickUpList)
             {
                 pick.Draw(g, p, width, height);
@@ -60,20 +58,19 @@ namespace RaceGame2
     public class PickUp
     {
         public Point position;
-
         public enum type {projectile, oil, fuelDrain };
         public static Random rnd = new Random();
         private Bitmap pickUpBlock = new Bitmap(Properties.Resources.powerup);
+        public string ret;
 
         public PickUp(int x, int y)
         {
-
             position.X = x;
             position.Y = y;
 
             string[] types = Enum.GetNames(typeof(type));
             int randomEnum = rnd.Next(types.Length);
-            var ret = Enum.Parse(typeof(type), types[randomEnum]);
+            ret = Convert.ToString(Enum.Parse(typeof(type), types[randomEnum]));
             Console.WriteLine(ret);
         }
         public void Draw(Graphics g, Player p, double width, double height)
