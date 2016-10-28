@@ -219,8 +219,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
-            this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -8,8 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace RaceGame2
 {
@@ -42,15 +41,15 @@ namespace RaceGame2
             this.MinimumSize = new Size(1024, 768);
 
             // Selecteer moeder. 
-            if(moederSelectP1 == "Aafke")
-            {
-                
-            }
-            if(moederSelectP2 == "Aafke")
+            if (moederSelectP1 == "Aafke")
             {
 
             }
-            if(mapSelect == "MoederTrack")
+            if (moederSelectP2 == "Aafke")
+            {
+
+            }
+            if (mapSelect == "MoederTrack")
             {
                 map = new Map();
             }
@@ -60,13 +59,13 @@ namespace RaceGame2
             p1.posX = 1300;
             p1.posY = 1690;
             p1.accel = 0.1f;
-            p1.maxSpeed = 9;
+            p1.maxSpeed = 5;
 
             p2 = new Player(this, 2);
             p2.posX = 1300;
             p2.posY = 1760;
             p2.accel = 0.1f;
-            p2.maxSpeed = 6;
+            p2.maxSpeed = 5;
             p2.keyLeft = Keys.A;
             p2.keyRight = Keys.D;
             p2.keyDown = Keys.S;
@@ -77,7 +76,7 @@ namespace RaceGame2
             p3.posX = 1150;
             p3.posY = 1690;
             p3.accel = 0.1f;
-            p3.maxSpeed = 6;
+            p3.maxSpeed = 5;
             p3.keyLeft = Keys.F;
             p3.keyRight = Keys.H;
             p3.keyDown = Keys.G;
@@ -88,7 +87,7 @@ namespace RaceGame2
             p4.posX = 1150;
             p4.posY = 1760;
             p4.accel = 0.1f;
-            p4.maxSpeed = 6;
+            p4.maxSpeed = 5;
             p4.keyLeft = Keys.J;
             p4.keyRight = Keys.L;
             p4.keyDown = Keys.K;
@@ -123,7 +122,7 @@ namespace RaceGame2
                 if (e.KeyCode == p.keyLeft) { p.left = false; }
                 if (e.KeyCode == p.keyDown) { p.isDown = false; }
                 if (e.KeyCode == p.keyUp) { p.isUp = false; }
-                if (e.KeyCode == p.keySpecial) { p.isSpecial = false;}
+                if (e.KeyCode == p.keySpecial) { p.isSpecial = false; }
             }
         }
 
@@ -134,46 +133,14 @@ namespace RaceGame2
         }
         void GameTimer_Tick(object sender, EventArgs e)
         {
-            foreach (Player p in playerList)
-            {
-                p.Update(projectileList);
-            }
-                       
-            pictureBox1.Invalidate();
-            pictureBox2.Invalidate();
-            pictureBox3.Invalidate();
-            pictureBox4.Invalidate();
-            Invalidate();
-
-            Speler1Ronde.Location = new Point(0, 50);          
-            Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
-            Speler3Ronde.Location = new Point(0, ClientSize.Height / 2 + 50);
-            Speler4Ronde.Location = new Point(ClientSize.Width - (Speler4Ronde.Width), (ClientSize.Height / 2) + 50);
-
-
-            Speler1Speed.Location = new Point(0, (ClientSize.Height / 2) - 50);
-            Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), (ClientSize.Height / 2) - 50);
-            Speler3Speed.Location = new Point(0, ClientSize.Height - 50);
-            Speler4Speed.Location = new Point(ClientSize.Width - (Speler4Speed.Width), ClientSize.Height - 50);
-
-            Speler1Ronde.Text = "Ronde: " + p1.round + "/5";
-            Speler2Ronde.Text = "Ronde: " + p2.round + "/5";
-            Speler3Ronde.Text = "Ronde: " + p3.round + "/5";
-            Speler4Ronde.Text = "Ronde: " + p4.round + "/5";
-
-            Speler1Speed.Text = "Snelheid: " + p1.displaySpeed + "km/h";
-            Speler2Speed.Text = "Snelheid: " + p2.displaySpeed + "km/h";
-            Speler3Speed.Text = "Snelheid: " + p3.displaySpeed + "km/h";
-            Speler4Speed.Text = "Snelheid: " + p4.displaySpeed + "km/h";
-
-            //Tijd.Text = System.DateTime.Now.Second.ToString();
+            
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {        
-            pictureBox1.Width = ClientSize.Width/2;
+        {
+            pictureBox1.Width = ClientSize.Width / 2;
             pictureBox1.Height = ClientSize.Height / 2;
-            pictureBox1.Location = new Point(0,0);
+            pictureBox1.Location = new Point(0, 0);
             map.Draw(e.Graphics, p1, pictureBox1.Width / 2, pictureBox1.Height / 2);
 
             p1.Draw(e.Graphics, projectileList, pictureBox2.Width / 2, pictureBox2.Height / 2);
@@ -190,9 +157,9 @@ namespace RaceGame2
             pictureBox2.Width = ClientSize.Width / 2;
             pictureBox2.Height = ClientSize.Height / 2;
             pictureBox2.Location = new Point(ClientSize.Width / 2, 0);
-            map.Draw(e.Graphics,p2 ,pictureBox2.Width / 2, pictureBox2.Height / 2);
+            map.Draw(e.Graphics, p2, pictureBox2.Width / 2, pictureBox2.Height / 2);
 
-            p2.Draw(e.Graphics, projectileList, pictureBox2.Width/2, pictureBox2.Height/2);
+            p2.Draw(e.Graphics, projectileList, pictureBox2.Width / 2, pictureBox2.Height / 2);
 
             foreach (Player p in playerList)
             {
@@ -202,25 +169,23 @@ namespace RaceGame2
                 }
             }
         }
-
         private void pictureBox3_Paint(object sender, PaintEventArgs e)
         {
             pictureBox3.Width = ClientSize.Width / 2;
             pictureBox3.Height = ClientSize.Height / 2;
-            pictureBox3.Location = new Point(0, Convert.ToInt16(ClientSize.Height/2));
+            pictureBox3.Location = new Point(0, Convert.ToInt16(ClientSize.Height / 2));
             map.Draw(e.Graphics, p3, pictureBox1.Width / 2, pictureBox1.Height / 2);
 
             p3.Draw(e.Graphics, projectileList, pictureBox3.Width / 2, pictureBox3.Height / 2);
 
-            foreach(Player p in playerList)
+            foreach (Player p in playerList)
             {
-                if(p != p3)
+                if (p != p3)
                 {
                     p.Draw(e.Graphics, projectileList, pictureBox3.Width / 2 + (p.posX - p3.posX), pictureBox3.Height / 2 + (p.posY - p3.posY));
                 }
-            }          
+            }
         }
-
         private void pictureBox4_Paint(object sender, PaintEventArgs e)
         {
             pictureBox4.Width = ClientSize.Width / 2;
@@ -255,23 +220,71 @@ namespace RaceGame2
         public void Start()
         {
 
-            // Game timer
-            Timer GameTimer = new Timer();
-            GameTimer.Interval = 1000 / 60 ; // FPS is hier dus 60, even zien hoe dat loopt.
-            GameTimer.Tick += new EventHandler(GameTimer_Tick);
-            GameTimer.Start();
-
+            Application.Idle += HandleApplicationIdle;   
             InitializeComponent();
         }
 
-        private void Game_Load(object sender, EventArgs e)
+        void HandleApplicationIdle(object sender, EventArgs e)
         {
-
+            while (IsApplicationIdle())
+            {
+                Update();
+                Render();           
+            }
         }
-
-        private void Game_FormClosed(object sender, FormClosedEventArgs e)
+        bool IsApplicationIdle()
         {
+            NativeMessage result;
+            return PeekMessage(out result, IntPtr.Zero, (uint)0, (uint)0, (uint)0) == 0;
+        }
+        void Update()
+        {
+            foreach (Player p in playerList)
+            {
+                p.Update(projectileList);
+            } 
+        }
+        void Render()
+        {       
             
+            Refresh();
+
+            
+            Speler1Ronde.Location = new Point(0, 50);
+            Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
+            Speler3Ronde.Location = new Point(0, ClientSize.Height / 2 + 50);
+            Speler4Ronde.Location = new Point(ClientSize.Width - (Speler4Ronde.Width), (ClientSize.Height / 2) + 50);
+
+
+            Speler1Speed.Location = new Point(0, (ClientSize.Height / 2) - 50);
+            Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), (ClientSize.Height / 2) - 50);
+            Speler3Speed.Location = new Point(0, ClientSize.Height - 50);
+            Speler4Speed.Location = new Point(ClientSize.Width - (Speler4Speed.Width), ClientSize.Height - 50);
+
+            Speler1Ronde.Text = "Ronde: " + p1.round + "/5";
+            Speler2Ronde.Text = "Ronde: " + p2.round + "/5";
+            Speler3Ronde.Text = "Ronde: " + p3.round + "/5";
+            Speler4Ronde.Text = "Ronde: " + p4.round + "/5";
+
+            Speler1Speed.Text = "Snelheid: " + p1.displaySpeed + "km/h";
+            Speler2Speed.Text = "Snelheid: " + p2.displaySpeed + "km/h";
+            Speler3Speed.Text = "Snelheid: " + p3.displaySpeed + "km/h";
+            Speler4Speed.Text = "Snelheid: " + p4.displaySpeed + "km/h";
+            
+
+            //Tijd.Text = System.DateTime.Now.Second.ToString();
         }
+        [StructLayout(LayoutKind.Sequential)]
+        public struct NativeMessage
+        {
+            public IntPtr Handle;
+            public uint Message;
+            public IntPtr WParameter;
+            public IntPtr LParameter;
+            public uint Time;
+            public Point Location;
+        }
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int PeekMessage(out NativeMessage message, IntPtr window, uint filterMin, uint filterMax, uint remove);
     }
 }
