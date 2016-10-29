@@ -58,7 +58,7 @@ namespace RaceGame2
     public class PickUp
     {
         public Point position;
-        public enum type {projectile, oil, fuelDrain };
+        public enum type {projectile, oil, fueldrain, speed};
         public static Random rnd = new Random();
         private Bitmap pickUpBlock = new Bitmap(Properties.Resources.powerup);
         public string ret;

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RaceGame2
@@ -60,6 +59,7 @@ namespace RaceGame2
 
         // Items
         private bool isShooting = false;
+        public string equiped = "null";
 
         // Checkpoints
         private int checkPointColor = 255;
@@ -120,7 +120,7 @@ namespace RaceGame2
                 isUsingController = true;
                 _controller = new Controller(UserIndex.One);
                 if (_controller.IsConnected) return;
-                MessageBox.Show("Geen controller gevonden.");
+                Console.WriteLine("Speler " + player + "Gebruikt geen controller");
             }
 
             if(player == 2)
@@ -128,7 +128,21 @@ namespace RaceGame2
                 isUsingController = true;
                 _controller = new Controller(UserIndex.Two);
                 if (_controller.IsConnected) return;
-                MessageBox.Show("Geen controller gevonden.");
+                Console.WriteLine("Speler " + player + "Gebruikt geen controller");
+            }
+            if (player == 3)
+            {
+                isUsingController = true;
+                _controller = new Controller(UserIndex.Three);
+                if (_controller.IsConnected) return;
+                Console.WriteLine("Speler " + player + "Gebruikt geen controller");
+            }
+            if (player == 4)
+            {
+                isUsingController = true;
+                _controller = new Controller(UserIndex.Four);
+                if (_controller.IsConnected) return;
+                Console.WriteLine("Speler " + player + "Gebruikt geen controller");
             }
 
             else
@@ -137,14 +151,18 @@ namespace RaceGame2
                 //_controller = new Controller(UserIndex.Two);
             }       
         }
-        public void Update(List<Projectile> projectileList)
+        public void Update()
         {
+            // Speler beweging
             Move();
-            Collision();
-            Special(projectileList);
+            // Collision Checks
+            CheckPlayerCollision();
+            CheckSpecialCollision();
+            CheckColorCollision();
+            // Special box
+            Special();
         }
         
-
         private void Move()
         {
             if (isUsingController)
@@ -311,12 +329,6 @@ namespace RaceGame2
             }
         }
 
-        private void Collision()
-        {
-            CheckPlayerCollision();
-            CheckSpecialCollision();
-            CheckColorCollision();
-        }
         private void CheckPlayerCollision()
         {
             foreach (Player p in workingGame.playerList)
@@ -357,12 +369,15 @@ namespace RaceGame2
                                 workingMap.pickUpList.Add(new PickUp(newPickPositionX, newPickPositionY));
                             });
 
-                            if (workingMap.pickUpList[i].ret == "projectile")
+                            
+                            if(equiped == "null")
                             {
-                                // Als projectiel is.
+                                equiped = workingMap.pickUpList[i].ret;
+                                
                             }
+
                             workingMap.pickUpList.RemoveAt(i);
-                            Console.WriteLine("Botsing met PickUP");                                                                        
+                            Console.WriteLine("Equiped: " + equiped);                                                                        
                         }
                     }
                 }
@@ -435,40 +450,61 @@ namespace RaceGame2
             }
         }
 
-        private void Special(List<Projectile> projectileList)
+        private void Special()
         {
-            if(isSpecial && !isShooting)
+            if(isSpecial)
             {
-                projectileList.Add(new Projectile(this.posX, this.posY, rotation));
-            }
-
-            foreach(Player p in workingGame.playerList)
-            {
-                if(p != this)
+                if(equiped == "projectile")
                 {
-                    foreach (Projectile projectile in projectileList)
-                    {
-                        projectile.Update();
-                        distance = Math.Sqrt(Math.Pow((posX - projectile.posX), 2) + Math.Pow((posY - projectile.posY), 2));
+                    Console.WriteLine("New project" );
+                    workingGame.projectileList.Add(new Projectile(this.posX, this.posY, rotation));
+                    equiped = "null";
+                } 
 
-                        if (distance < 25)
-                        {
-                            speed = 0;
-                        }              
-                    }
+                if(equiped == "oil")
+                {
+                    workingGame.oilList.Add(new Oil(this.posX, this.posY, rotation));
+                    equiped = "null";
                 }
-            }           
+
+                if (equiped == "speed")
+                {
+                    Task.Factory.StartNew(() =>
+                    {
+                        speed = 12;
+                    });
+                    equiped = "null";
+                }
+
+                if (equiped == "fueldrain")
+                {
+                    foreach(Player p in workingGame.playerList)
+                    {
+                        if(p != this)
+                        {
+                            fuel = fuel / 2;
+                        }                  
+                    }
+                    equiped = "null";
+                }
+
+            }
         }
   
         public void Draw(Graphics g, List<Projectile> projectileList, double width, double height)
         {
-            //g.TranslateTransform((float)positionX, (float)positionY);
-
+            //Projectielen tekenen
             foreach (Projectile projectile in projectileList)
             {
                 projectile.Draw(g, this, width, height);
             }
 
+            foreach(Oil oil in workingGame.oilList)
+            {
+                oil.Draw(g, this, width, height);
+            }
+
+            // Noodzakelijk kwaad om de auto te laten draaien
             g.TranslateTransform(Convert.ToSingle(width), Convert.ToSingle(height));
             g.RotateTransform((float)rotation);
             g.DrawImage(image, -image.Width/2, -image.Height / 2);
@@ -479,19 +515,18 @@ namespace RaceGame2
         }
     }
 
-    /// <summary>
-    /// Geschoten projectiel. 
-    /// </summary>
+   
     public class Projectile
     {
         public double posX { get; set; }
         public double posY { get; set; }
         public double angle { get; set; }
- 
+
+      
         public Projectile(double X, double Y, double rotation)
         {
             angle = Math.PI * rotation / 180.0;
-            posX = X + 50 * Math.Cos(angle); 
+            posX = X + 50 * Math.Cos(angle); // 50 pixels voor de auto
             posY = Y + 50 * Math.Sin(angle);        
         }
         public void Draw(Graphics g, Player p, double width, double height)
@@ -509,6 +544,25 @@ namespace RaceGame2
         }
     }
 
+    public class Oil
+    {
+        public double posX { get; set; }
+        public double posY { get; set; }
+        public double angle { get; set; }
+        public Oil(double X, double Y, double rotation)
+        {
+            angle = Math.PI * rotation / 180.0;
+            posX = X - 50 * Math.Cos(angle); // 50 pixels achter de auto
+            posY = Y - 50 * Math.Sin(angle);
+        }
+        public void Draw(Graphics g, Player p, double width, double height)
+        {
+            g.DrawRectangle(new Pen(Color.Cyan, 3),
+                    Convert.ToInt32(width + (posX - p.posX)),
+                    Convert.ToInt32(height + (posY - p.posY)),
+                    10, 10);
+        }
+    }
 }
 
  

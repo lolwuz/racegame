@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -17,6 +18,7 @@ namespace RaceGame2
         Bitmap Backbuffer;
         public List<Player> playerList = new List<Player>();
         public List<Projectile> projectileList = new List<Projectile>();
+        public List<Oil> oilList = new List<Oil>();
 
         public Player p1;
         public Player p2;
@@ -24,6 +26,7 @@ namespace RaceGame2
         public Player p4;
 
         public Map map;
+        static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
 
         public Game(String moederSelectP1, String moederSelectP2, String mapSelect)
         {
@@ -40,6 +43,8 @@ namespace RaceGame2
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint |
             ControlStyles.OptimizedDoubleBuffer, true);
+
+            DoubleBuffered = true;
 
             // Selecteer moeder. 
             if (moederSelectP1 == "Aafke")
@@ -60,13 +65,13 @@ namespace RaceGame2
             p1.posX = 1300;
             p1.posY = 1690;
             p1.accel = 0.1f;
-            p1.maxSpeed = 10;
+            p1.maxSpeed = 8;
 
             p2 = new Player(this, 2);
             p2.posX = 1300;
             p2.posY = 1760;
             p2.accel = 0.1f;
-            p2.maxSpeed = 10;
+            p2.maxSpeed = 8;
             p2.keyLeft = Keys.A;
             p2.keyRight = Keys.D;
             p2.keyDown = Keys.S;
@@ -77,7 +82,7 @@ namespace RaceGame2
             p3.posX = 1150;
             p3.posY = 1690;
             p3.accel = 0.1f;
-            p3.maxSpeed = 10;
+            p3.maxSpeed = 8;
             p3.keyLeft = Keys.F;
             p3.keyRight = Keys.H;
             p3.keyDown = Keys.G;
@@ -88,7 +93,7 @@ namespace RaceGame2
             p4.posX = 1150;
             p4.posY = 1760;
             p4.accel = 0.1f;
-            p4.maxSpeed = 10;
+            p4.maxSpeed = 8;
             p4.keyLeft = Keys.J;
             p4.keyRight = Keys.L;
             p4.keyDown = Keys.K;
@@ -125,12 +130,6 @@ namespace RaceGame2
                 if (e.KeyCode == p.keyUp) { p.isUp = false; }
                 if (e.KeyCode == p.keySpecial) { p.isSpecial = false; }
             }
-        }
-
-  
-        void GameTimer_Tick(object sender, EventArgs e)
-        {
-            
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -216,45 +215,30 @@ namespace RaceGame2
 
         public void Start()
         { 
-            Application.Idle += HandleApplicationIdle;   
-            InitializeComponent();
+            //CheckForIllegalCrossThreadCalls = false;
+            // var renderThread = new Thread(Render);
+            // InitializeComponent();
+            // renderThread.Start();
 
-            
+            myTimer.Tick += new EventHandler(TimerEventProcessor);
+            myTimer.Interval = 1000 / 60; // 60 FPS 
+            myTimer.Start();
+            InitializeComponent();          
         }
 
-        void HandleApplicationIdle(object sender, EventArgs e)
+        private void TimerEventProcessor(Object myObject,
+                                            EventArgs myEventArgs)
         {
-            while (IsApplicationIdle())
-            {
-                gameUpdate();
+            pictureBox1.Invalidate();
+            pictureBox2.Invalidate();
+            pictureBox3.Invalidate();
+            pictureBox4.Invalidate();
+            Update();
 
-                // Render is te sloom. Veelste sloom.
-                Render();           
-            }
-        }
-        bool IsApplicationIdle()
-        {
-            NativeMessage result;
-            return PeekMessage(out result, IntPtr.Zero, (uint)0, (uint)0, (uint)0) == 0;
-        }
-        void gameUpdate()
-        {
-            foreach (Player p in playerList)
-            {
-                p.Update(projectileList);
-            } 
-        }
-        void Render()
-        {       
-            
-            Refresh();
-
-            
             Speler1Ronde.Location = new Point(0, 50);
             Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
             Speler3Ronde.Location = new Point(0, ClientSize.Height / 2 + 50);
             Speler4Ronde.Location = new Point(ClientSize.Width - (Speler4Ronde.Width), (ClientSize.Height / 2) + 50);
-
 
             Speler1Speed.Location = new Point(0, (ClientSize.Height / 2) - 50);
             Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), (ClientSize.Height / 2) - 50);
@@ -270,21 +254,24 @@ namespace RaceGame2
             Speler2Speed.Text = "Snelheid: " + p2.displaySpeed + "km/h";
             Speler3Speed.Text = "Snelheid: " + p3.displaySpeed + "km/h";
             Speler4Speed.Text = "Snelheid: " + p4.displaySpeed + "km/h";
-            
-
-            //Tijd.Text = System.DateTime.Now.Second.ToString();
+            gameUpdate();
         }
-        [StructLayout(LayoutKind.Sequential)]
-        public struct NativeMessage
+  
+        void gameUpdate()
         {
-            public IntPtr Handle;
-            public uint Message;
-            public IntPtr WParameter;
-            public IntPtr LParameter;
-            public uint Time;
-            public Point Location;
-        }
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern int PeekMessage(out NativeMessage message, IntPtr window, uint filterMin, uint filterMax, uint remove);
+            foreach (Player p in playerList)
+            {
+                p.Update();
+            }
+
+            foreach (Player p in playerList)
+            {
+                
+                foreach (Projectile projectile in projectileList)
+                {
+                    projectile.Update();       
+                }            
+            }
+        }     
     }
 }
