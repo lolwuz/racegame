@@ -21,7 +21,7 @@ namespace RaceGame2
         {
             get
             {
-                return Convert.ToInt16(speed * 40);
+                return Convert.ToInt16(speed * 10);
             }
         }
 
@@ -58,7 +58,6 @@ namespace RaceGame2
         public Keys keySpecial = Keys.Enter;
 
         // Items
-        private bool isShooting = false;
         public string equiped = "null";
 
         // Checkpoints
@@ -78,7 +77,6 @@ namespace RaceGame2
         public State controllerState;
         private Controller _controller;
         private Vibration fullShake;
-        private Vibration noShake;
         private Vibration gasShake;
         private bool isUsingController;
 
@@ -107,8 +105,7 @@ namespace RaceGame2
 
             fullShake.LeftMotorSpeed = 40000;
             fullShake.RightMotorSpeed = 40000;
-            noShake.LeftMotorSpeed = 0;
-            noShake.RightMotorSpeed = 0;
+         
             gasShake.LeftMotorSpeed = 0;
             gasShake.RightMotorSpeed = 0;
 
@@ -372,8 +369,7 @@ namespace RaceGame2
                             
                             if(equiped == "null")
                             {
-                                equiped = workingMap.pickUpList[i].ret;
-                                
+                                equiped = workingMap.pickUpList[i].ret;              
                             }
 
                             workingMap.pickUpList.RemoveAt(i);
@@ -457,7 +453,7 @@ namespace RaceGame2
                 if(equiped == "projectile")
                 {
                     Console.WriteLine("New project" );
-                    workingGame.projectileList.Add(new Projectile(this.posX, this.posY, rotation));
+                    workingGame.projectileList.Add(new Projectile(this.posX, this.posY, rotation, workingGame.playerList, this));
                     equiped = "null";
                 } 
 
@@ -482,7 +478,7 @@ namespace RaceGame2
                     {
                         if(p != this)
                         {
-                            fuel = fuel / 2;
+                            p.fuel -= 20.0f; 
                         }                  
                     }
                     equiped = "null";
@@ -512,55 +508,6 @@ namespace RaceGame2
             g.RotateTransform(-(float)rotation);
             g.ResetTransform();
             g.RotateTransform(0);        
-        }
-    }
-
-   
-    public class Projectile
-    {
-        public double posX { get; set; }
-        public double posY { get; set; }
-        public double angle { get; set; }
-
-      
-        public Projectile(double X, double Y, double rotation)
-        {
-            angle = Math.PI * rotation / 180.0;
-            posX = X + 50 * Math.Cos(angle); // 50 pixels voor de auto
-            posY = Y + 50 * Math.Sin(angle);        
-        }
-        public void Draw(Graphics g, Player p, double width, double height)
-        {
-            g.DrawRectangle(new Pen(Color.Blue, 3),
-                    Convert.ToInt32(width + (posX - p.posX)),
-                    Convert.ToInt32(height + (posY - p.posY)),
-                    10, 10);
-        }
-
-        public void Update()
-        {
-            posX += 2 * Math.Cos(angle);
-            posY += 2 * Math.Sin(angle);
-        }
-    }
-
-    public class Oil
-    {
-        public double posX { get; set; }
-        public double posY { get; set; }
-        public double angle { get; set; }
-        public Oil(double X, double Y, double rotation)
-        {
-            angle = Math.PI * rotation / 180.0;
-            posX = X - 50 * Math.Cos(angle); // 50 pixels achter de auto
-            posY = Y - 50 * Math.Sin(angle);
-        }
-        public void Draw(Graphics g, Player p, double width, double height)
-        {
-            g.DrawRectangle(new Pen(Color.Cyan, 3),
-                    Convert.ToInt32(width + (posX - p.posX)),
-                    Convert.ToInt32(height + (posY - p.posY)),
-                    10, 10);
         }
     }
 }

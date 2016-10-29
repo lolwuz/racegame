@@ -54,28 +54,4 @@ namespace RaceGame2
             }
         }
     }
-
-    public class PickUp
-    {
-        public Point position;
-        public enum type {projectile, oil, fueldrain, speed};
-        public static Random rnd = new Random();
-        private Bitmap pickUpBlock = new Bitmap(Properties.Resources.powerup);
-        public string ret;
-
-        public PickUp(int x, int y)
-        {
-            position.X = x;
-            position.Y = y;
-
-            string[] types = Enum.GetNames(typeof(type));
-            int randomEnum = rnd.Next(types.Length);
-            ret = Convert.ToString(Enum.Parse(typeof(type), types[randomEnum]));
-            Console.WriteLine(ret);
-        }
-        public void Draw(Graphics g, Player p, double width, double height)
-        {
-            g.DrawImage(pickUpBlock, new Point(Convert.ToInt32(width+ position.X - p.posX - (pickUpBlock.Width / 2)), Convert.ToInt32(height + position.Y - p.posY - (pickUpBlock.Height / 2))));
-        }
-    }
 }

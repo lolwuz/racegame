@@ -80,6 +80,7 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="PickUp.cs" />
     <Compile Include="ScoreSystem.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
@@ -133,13 +134,6 @@
     <None Include="Resources\basicTrack.png" />
     <None Include="Resources\Baan1.jpg" />
     <None Include="Resources\menu_background.jpg" />
-    <None Include="bigracemap.jpg" />
-    <Content Include="car.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="racetrack.jpg" />
-    <None Include="car2.png" />
-    <None Include="formula.jpg" />
     <None Include="Resources\backGround.png" />
   </ItemGroup>
   <ItemGroup>

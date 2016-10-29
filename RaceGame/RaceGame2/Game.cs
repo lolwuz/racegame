@@ -15,7 +15,6 @@ namespace RaceGame2
 {
     public partial class Game : Form
     {
-        Bitmap Backbuffer;
         public List<Player> playerList = new List<Player>();
         public List<Projectile> projectileList = new List<Projectile>();
         public List<Oil> oilList = new List<Oil>();
@@ -200,45 +199,41 @@ namespace RaceGame2
             }
         }
 
-        // press escape to go back to menu
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == Keys.Escape)
-            {
-                Menu menuForm = new Menu();
-                menuForm.Show();
-                this.Close();
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
+       
 
         public void Start()
         { 
+            
             //CheckForIllegalCrossThreadCalls = false;
             // var renderThread = new Thread(Render);
             // InitializeComponent();
             // renderThread.Start();
 
             myTimer.Tick += new EventHandler(TimerEventProcessor);
-            myTimer.Interval = 1000 / 60; // 60 FPS 
+            myTimer.Interval = 1000 / 120; // als de paint event niet zo sloom zou zijn is dit nu 120 FPS. 
             myTimer.Start();
             InitializeComponent();          
         }
 
-        private void TimerEventProcessor(Object myObject,
-                                            EventArgs myEventArgs)
+        private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
+            // Hier gaat de boel sloom
             pictureBox1.Invalidate();
             pictureBox2.Invalidate();
             pictureBox3.Invalidate();
             pictureBox4.Invalidate();
-            Update();
+            Update();         
 
-            Speler1Ronde.Location = new Point(0, 50);
-            Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 50);
-            Speler3Ronde.Location = new Point(0, ClientSize.Height / 2 + 50);
-            Speler4Ronde.Location = new Point(ClientSize.Width - (Speler4Ronde.Width), (ClientSize.Height / 2) + 50);
+            // Geen impact op performance. Label voor fuel enzo: 
+            Speler1Ronde.Location = new Point(0, 20);
+            Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 20);
+            Speler3Ronde.Location = new Point(0, ClientSize.Height / 2 + 20); 
+            Speler4Ronde.Location = new Point(ClientSize.Width - (Speler4Ronde.Width), (ClientSize.Height / 2) + 20);
+
+            fuel1.Location = new Point(0, 50);
+            fuel2.Location = new Point(ClientSize.Width - (fuel2.Width), 50);
+            fuel3.Location = new Point(0, ClientSize.Height / 2 + 50);
+            fuel4.Location = new Point(ClientSize.Width - (fuel4.Width), (ClientSize.Height / 2) + 50);
 
             Speler1Speed.Location = new Point(0, (ClientSize.Height / 2) - 50);
             Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), (ClientSize.Height / 2) - 50);
@@ -254,6 +249,11 @@ namespace RaceGame2
             Speler2Speed.Text = "Snelheid: " + p2.displaySpeed + "km/h";
             Speler3Speed.Text = "Snelheid: " + p3.displaySpeed + "km/h";
             Speler4Speed.Text = "Snelheid: " + p4.displaySpeed + "km/h";
+
+            fuel1.Text = "Fuel: " + Convert.ToInt16(p1.fuel) + " liter";
+            fuel2.Text = "Fuel: " + Convert.ToInt16(p2.fuel) + " liter";
+            fuel3.Text = "Fuel: " + Convert.ToInt16(p3.fuel) + " liter";
+            fuel4.Text = "Fuel: " + Convert.ToInt16(p4.fuel) + " liter";
             gameUpdate();
         }
   
@@ -263,15 +263,23 @@ namespace RaceGame2
             {
                 p.Update();
             }
-
-            foreach (Player p in playerList)
+             
+            foreach (Projectile projectile in projectileList)
             {
-                
-                foreach (Projectile projectile in projectileList)
-                {
-                    projectile.Update();       
-                }            
+                projectile.Update();       
+            }                    
+        }
+        // press escape to go back to menu
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                Menu menuForm = new Menu();
+                menuForm.Show();
+                this.Close();
+                return true;
             }
-        }     
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }
