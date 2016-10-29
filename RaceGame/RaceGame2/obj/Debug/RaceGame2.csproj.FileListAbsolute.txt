@@ -77,3 +77,4 @@ C:\Users\Simon MemeMachine\Desktop\racegame\racegame\RaceGame\RaceGame2\obj\Debu
 C:\Users\Simon MemeMachine\Desktop\racegame\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.Menu.resources
 C:\Users\Simon MemeMachine\Desktop\racegame\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.Properties.Resources.resources
 C:\Users\Simon MemeMachine\Desktop\racegame\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.csproj.GenerateResource.Cache
+C:\Users\Marten Hoekstra\Documents\GitHub\racegame\RaceGame\RaceGame2\obj\Debug\RaceGame2.csprojResolveAssemblyReference.cache

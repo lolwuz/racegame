@@ -322,6 +322,7 @@ namespace RaceGame2
             }
             else
             {
+                maxSpeed = 8;
                 fuel -= 0.005f * speed;
             }
         }
@@ -384,7 +385,7 @@ namespace RaceGame2
             // Collision op basis van bitmap GetPixel() functie
             // Note: achtergrond kleur is per map verschillend.
             // Brug: RGB (192, 192, 192) 
-            // Pitstop: RGB (143, 143, 142)
+            // Pitstop: RGB (143, 143, 143)
             // Obstakel: RGB(77, 1, 1) 
 
             try
@@ -404,7 +405,7 @@ namespace RaceGame2
             {
                 if (fuel < 100)
                 {
-                    fuel += 0.5;
+                    fuel += 0.5f;
                 }
             }
           
