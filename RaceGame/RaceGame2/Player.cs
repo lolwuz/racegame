@@ -68,7 +68,8 @@ namespace RaceGame2
         // Grafisch
         private Bitmap image;
         private Bitmap map;
-        private Color color;
+        private Color colorFront;
+        private Color colorBack;
         private Map workingMap;
         private Game workingGame;
         
@@ -149,15 +150,12 @@ namespace RaceGame2
             }       
         }
         public void Update()
-        {
-            // Speler beweging
-            Move();
-            // Collision Checks
-            CheckPlayerCollision();
+        {    
+            Move(); // Speler beweging
+            CheckPlayerCollision(); // Collision Checks
             CheckSpecialCollision();
             CheckColorCollision();
-            // Special box
-            Special();
+            Special(); // Special box
         }
         
         private void Move()
@@ -333,12 +331,15 @@ namespace RaceGame2
             {
                 if (p != this)
                 {
-                    distance = Math.Sqrt(Math.Pow((p.posX - this.posX), 2) + Math.Pow((p.posY - this.posY), 2));
-
-                    if (distance < 25)
+                    // this.Voorkant/ p.achterkant
+                    distance = Math.Sqrt(
+                        Math.Pow(((p.posX - Math.Cos(p.angle) * -25) - (this.posX - Math.Cos(angle) * 25)), 2) +
+                        Math.Pow(((p.posY - Math.Sin(p.angle) * -25) - (this.posY - Math.Sin(angle) * 25)), 2)
+                        );
+                    if (distance < 45)
                     {
-                        p.speed = speed;
-                        speed = speed / 2;
+                        p.speed = -speed / 2;
+                        speed = 1;                  
                     }
                 }
             }
@@ -349,7 +350,6 @@ namespace RaceGame2
             {
                 if (p != this)
                 {
-                    //PickUp pick in workingMap.pickUpList
                     for (int i = 0; i < workingMap.pickUpList.Count; i++)
                     {
                         distance = Math.Sqrt(Math.Pow((workingMap.pickUpList[i].position.X - this.posX), 2) + Math.Pow((workingMap.pickUpList[i].position.Y - this.posY), 2));
@@ -387,21 +387,26 @@ namespace RaceGame2
             // Brug: RGB (192, 192, 192) 
             // Pitstop: RGB (143, 143, 143)
             // Obstakel: RGB(77, 1, 1) 
-
             try
             {
                 angle = Math.PI * rotation / 180.0;
-                color = map.GetPixel(Convert.ToInt32(posX + 50 * Math.Cos(angle)), Convert.ToInt32(posY + 50 * Math.Sin(angle)));
+                colorFront = map.GetPixel(Convert.ToInt32(posX + 50 * Math.Cos(angle)), Convert.ToInt32(posY + 50 * Math.Sin(angle)));
+                colorBack = map.GetPixel(Convert.ToInt32(posX - 50 * Math.Cos(angle)), Convert.ToInt32(posY - 50 * Math.Sin(angle))); 
             }
-            catch { } // Komt buiten de map
+            catch(Exception) { } // Komt buiten de map
 
-            if(color.R == 77 && color.G == 1 && color.B == 1)
+            // Collision met obstakel. Voor en achter.
+            if(colorFront.R == 77 && colorFront.G == 1 && colorFront.B == 1)
             {
                 speed = -1;
             }
+            if (colorBack.R == 77 && colorBack.G == 1 && colorBack.B == 1)
+            {
+                speed = 1;
+            }
 
-            
-            if (color.R == 143 && color.G == 143 && color.B == 143)
+            // Pitstop check.
+            if (colorFront.R == 143 && colorFront.G == 143 && colorFront.B == 143)
             {
                 if (fuel < 100)
                 {
@@ -409,8 +414,8 @@ namespace RaceGame2
                 }
             }
           
-
-            if (color.R == 182 && color.G == 255 && color.B == 254)
+            // Offroad check. Volle stillstand als de speler van de weg geraakt. :-)
+            if (colorFront.R == 182 && colorFront.G == 255 && colorFront.B == 254)
             {
                 if (isUsingController)
                 {
@@ -422,18 +427,17 @@ namespace RaceGame2
                     speed -= 0.2f;
                 }
             }
-
             else
             {
                 if (isUsingController)
                 {
-                    _controller.SetVibration(gasShake);
+                    _controller.SetVibration(gasShake); 
                 }
             }
    
             // Checken voor checkpoints.
             // Checkpoint1: groen: RGB(0, 255, 0) , checkpoint2: RGB(0, 250, 0), enzovoorts. 
-            if (color.R == 0 && color.G == checkPointColor && color.B == 0)
+            if (colorFront.R == 0 && colorFront.G == checkPointColor && colorFront.B == 0)
             {
                 checkPointColor -= 5;
                 checkPointCount += 1;

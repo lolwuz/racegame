@@ -199,11 +199,8 @@ namespace RaceGame2
             }
         }
 
-       
-
         public void Start()
-        { 
-            
+        {       
             //CheckForIllegalCrossThreadCalls = false;
             // var renderThread = new Thread(Render);
             // InitializeComponent();
@@ -240,6 +237,11 @@ namespace RaceGame2
             Speler3Speed.Location = new Point(0, ClientSize.Height - 50);
             Speler4Speed.Location = new Point(ClientSize.Width - (Speler4Speed.Width), ClientSize.Height - 50);
 
+            equiped1.Location = new Point(0, (ClientSize.Height / 2) - 100);
+            equiped2.Location = new Point(ClientSize.Width - (equiped2.Width), (ClientSize.Height / 2) - 100);
+            equiped3.Location = new Point(0, ClientSize.Height - 100);
+            equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height -100);
+
             Speler1Ronde.Text = "Ronde: " + p1.round + "/5";
             Speler2Ronde.Text = "Ronde: " + p2.round + "/5";
             Speler3Ronde.Text = "Ronde: " + p3.round + "/5";
@@ -250,10 +252,16 @@ namespace RaceGame2
             Speler3Speed.Text = "Snelheid: " + p3.displaySpeed + "km/h";
             Speler4Speed.Text = "Snelheid: " + p4.displaySpeed + "km/h";
 
+            equiped1.Text = p1.equiped;
+            equiped2.Text = p2.equiped;
+            equiped3.Text = p3.equiped;
+            equiped4.Text = p4.equiped;
+
             fuel1.Text = "Fuel: " + Convert.ToInt16(p1.fuel) + " liter";
             fuel2.Text = "Fuel: " + Convert.ToInt16(p2.fuel) + " liter";
             fuel3.Text = "Fuel: " + Convert.ToInt16(p3.fuel) + " liter";
             fuel4.Text = "Fuel: " + Convert.ToInt16(p4.fuel) + " liter";
+            
             gameUpdate();
         }
   
