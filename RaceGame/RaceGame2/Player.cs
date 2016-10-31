@@ -84,11 +84,11 @@ namespace RaceGame2
         private bool isUsingController;
 
         
-        public Player(Game game, int player)
+        public Player(Game game, int player, int car)
         {
             workingMap = game.map;
             workingGame = game;
-            switch (player)
+            switch (car)
             {
                 case 1:
                     image = new Bitmap(Properties.Resources.MartenMoeder);

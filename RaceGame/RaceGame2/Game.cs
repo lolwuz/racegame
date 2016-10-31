@@ -158,13 +158,13 @@ namespace RaceGame2
             }
 
 
-            p1 = new Player(this, car1);
+            p1 = new Player(this, 1, car1);
             p1.posX = 1300;
             p1.posY = 1690;
             p1.accel = 0.1f;
             p1.maxSpeed = 8;
 
-            p2 = new Player(this, car2);
+            p2 = new Player(this, 2, car2);
             p2.posX = 1300;
             p2.posY = 1760;
             p2.accel = 0.1f;
@@ -175,7 +175,7 @@ namespace RaceGame2
             p2.keyUp = Keys.W;
             p2.keySpecial = Keys.E;
 
-            p3 = new Player(this, car3);
+            p3 = new Player(this, 3, car3);
             p3.posX = 1150;
             p3.posY = 1690;
             p3.accel = 0.1f;
@@ -186,7 +186,7 @@ namespace RaceGame2
             p3.keyUp = Keys.T;
             p3.keySpecial = Keys.Y;
 
-            p4 = new Player(this, car4);
+            p4 = new Player(this, 4, car4);
             p4.posX = 1150;
             p4.posY = 1760;
             p4.accel = 0.1f;
@@ -341,7 +341,7 @@ namespace RaceGame2
             equiped3.Location = new Point(0, ClientSize.Height - 100);
             equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height -100);
 
-            equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height - 100);
+            stoplicht.Location = new Point(ClientSize.Width / 2 - stoplicht.Width / 2, ClientSize.Height / 2 - stoplicht.Height / 2);
 
             Speler1Ronde.Text = "Ronde: " + p1.round + "/5";
             Speler2Ronde.Text = "Ronde: " + p2.round + "/5";
@@ -369,12 +369,39 @@ namespace RaceGame2
             }
             else
             {
-                Thread.Sleep(1500);
-                isStarted = true;
+                starter.Start();
             }
             
         }
-  
+
+        int counter = 0;
+        private void starter_Tick(object sender, EventArgs e)
+        {
+            if (counter == 4)
+            {
+                starter.Stop();
+            }
+
+            if (counter == 0)
+            {
+                stoplicht.Image = Properties.Resources.roodlicht;
+            }
+            else if (counter == 1)
+            {
+                stoplicht.Image = Properties.Resources.oranje_licht;
+            } 
+            else if (counter == 2)
+            {
+                stoplicht.Image = Properties.Resources.groenlicht;
+            } 
+            else if (counter == 3)
+            {
+                stoplicht.Visible = false;
+                isStarted = true;
+            }
+            counter++;
+        }
+
         void gameUpdate()
         {
             foreach (Player p in playerList)
@@ -387,7 +414,7 @@ namespace RaceGame2
                 projectile.Update();       
             }                    
         }
-
+        
         private Image getEquiped (string equiped)
         {
             switch (equiped)
@@ -441,7 +468,7 @@ namespace RaceGame2
             equiped3.Location = new Point(0, ClientSize.Height - 100);
             equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height - 100);
 
-            equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height - 100);
+            stoplicht.Location = new Point(ClientSize.Width / 2 - stoplicht.Width / 2, ClientSize.Height / 2 - stoplicht.Height / 2);
         }
     }
 }
