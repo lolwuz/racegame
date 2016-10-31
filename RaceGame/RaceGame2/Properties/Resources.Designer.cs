@@ -123,6 +123,26 @@ namespace RaceGame2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap geenlicht {
+            get {
+                object obj = ResourceManager.GetObject("geenlicht", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap groenlicht {
+            get {
+                object obj = ResourceManager.GetObject("groenlicht", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MartenMoeder {
             get {
                 object obj = ResourceManager.GetObject("MartenMoeder", resourceCulture);
@@ -193,6 +213,16 @@ namespace RaceGame2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap oranje_licht {
+            get {
+                object obj = ResourceManager.GetObject("oranje_licht", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap powerup {
             get {
                 object obj = ResourceManager.GetObject("powerup", resourceCulture);
@@ -216,6 +246,16 @@ namespace RaceGame2.Properties {
         internal static System.Drawing.Bitmap projectile_ingame {
             get {
                 object obj = ResourceManager.GetObject("projectile_ingame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap roodlicht {
+            get {
+                object obj = ResourceManager.GetObject("roodlicht", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -166,6 +166,18 @@
   <ItemGroup>
     <None Include="Resources\speedboost.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\geenlicht.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\groenlicht.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oranje licht.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roodlicht.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
