@@ -44,14 +44,18 @@
             this.fuel4 = new System.Windows.Forms.Label();
             this.fuel2 = new System.Windows.Forms.Label();
             this.fuel1 = new System.Windows.Forms.Label();
-            this.equiped1 = new System.Windows.Forms.Label();
-            this.equiped2 = new System.Windows.Forms.Label();
-            this.equiped3 = new System.Windows.Forms.Label();
-            this.equiped4 = new System.Windows.Forms.Label();
+            this.equiped4 = new System.Windows.Forms.PictureBox();
+            this.equiped1 = new System.Windows.Forms.PictureBox();
+            this.equiped2 = new System.Windows.Forms.PictureBox();
+            this.equiped3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped3)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -255,57 +259,41 @@
             this.fuel1.TabIndex = 15;
             this.fuel1.Text = "Fuel";
             // 
+            // equiped4
+            // 
+            this.equiped4.BackColor = System.Drawing.Color.Transparent;
+            this.equiped4.Location = new System.Drawing.Point(549, 473);
+            this.equiped4.Name = "equiped4";
+            this.equiped4.Size = new System.Drawing.Size(40, 40);
+            this.equiped4.TabIndex = 20;
+            this.equiped4.TabStop = false;
+            // 
             // equiped1
             // 
-            this.equiped1.AutoSize = true;
-            this.equiped1.BackColor = System.Drawing.Color.Black;
-            this.equiped1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equiped1.ForeColor = System.Drawing.Color.White;
-            this.equiped1.Location = new System.Drawing.Point(6, 183);
-            this.equiped1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.equiped1.BackColor = System.Drawing.Color.Transparent;
+            this.equiped1.Location = new System.Drawing.Point(2, 182);
             this.equiped1.Name = "equiped1";
-            this.equiped1.Size = new System.Drawing.Size(80, 24);
-            this.equiped1.TabIndex = 16;
-            this.equiped1.Text = "equiped";
+            this.equiped1.Size = new System.Drawing.Size(40, 40);
+            this.equiped1.TabIndex = 21;
+            this.equiped1.TabStop = false;
             // 
             // equiped2
             // 
-            this.equiped2.AutoSize = true;
-            this.equiped2.BackColor = System.Drawing.Color.Black;
-            this.equiped2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equiped2.ForeColor = System.Drawing.Color.White;
-            this.equiped2.Location = new System.Drawing.Point(513, 183);
-            this.equiped2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.equiped2.BackColor = System.Drawing.Color.Transparent;
+            this.equiped2.Location = new System.Drawing.Point(549, 182);
             this.equiped2.Name = "equiped2";
-            this.equiped2.Size = new System.Drawing.Size(80, 24);
-            this.equiped2.TabIndex = 17;
-            this.equiped2.Text = "equiped";
+            this.equiped2.Size = new System.Drawing.Size(40, 40);
+            this.equiped2.TabIndex = 22;
+            this.equiped2.TabStop = false;
             // 
             // equiped3
             // 
-            this.equiped3.AutoSize = true;
-            this.equiped3.BackColor = System.Drawing.Color.Black;
-            this.equiped3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equiped3.ForeColor = System.Drawing.Color.White;
-            this.equiped3.Location = new System.Drawing.Point(-2, 480);
-            this.equiped3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.equiped3.BackColor = System.Drawing.Color.Transparent;
+            this.equiped3.Location = new System.Drawing.Point(2, 473);
             this.equiped3.Name = "equiped3";
-            this.equiped3.Size = new System.Drawing.Size(80, 24);
-            this.equiped3.TabIndex = 18;
-            this.equiped3.Text = "equiped";
-            // 
-            // equiped4
-            // 
-            this.equiped4.AutoSize = true;
-            this.equiped4.BackColor = System.Drawing.Color.Black;
-            this.equiped4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equiped4.ForeColor = System.Drawing.Color.White;
-            this.equiped4.Location = new System.Drawing.Point(513, 488);
-            this.equiped4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.equiped4.Name = "equiped4";
-            this.equiped4.Size = new System.Drawing.Size(80, 24);
-            this.equiped4.TabIndex = 19;
-            this.equiped4.Text = "equiped";
+            this.equiped3.Size = new System.Drawing.Size(40, 40);
+            this.equiped3.TabIndex = 23;
+            this.equiped3.TabStop = false;
             // 
             // Game
             // 
@@ -313,10 +301,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(591, 543);
-            this.Controls.Add(this.equiped4);
             this.Controls.Add(this.equiped3);
             this.Controls.Add(this.equiped2);
             this.Controls.Add(this.equiped1);
+            this.Controls.Add(this.equiped4);
             this.Controls.Add(this.fuel1);
             this.Controls.Add(this.fuel2);
             this.Controls.Add(this.fuel4);
@@ -334,10 +322,9 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Game";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Game_Load);
@@ -347,6 +334,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,10 +361,10 @@
         private System.Windows.Forms.Label fuel4;
         private System.Windows.Forms.Label fuel2;
         private System.Windows.Forms.Label fuel1;
-        private System.Windows.Forms.Label equiped1;
-        private System.Windows.Forms.Label equiped2;
-        private System.Windows.Forms.Label equiped3;
-        private System.Windows.Forms.Label equiped4;
+        private System.Windows.Forms.PictureBox equiped4;
+        private System.Windows.Forms.PictureBox equiped1;
+        private System.Windows.Forms.PictureBox equiped2;
+        private System.Windows.Forms.PictureBox equiped3;
     }
 }
 

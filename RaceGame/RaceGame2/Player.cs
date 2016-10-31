@@ -60,6 +60,8 @@ namespace RaceGame2
         // Items
         public string equiped = "null";
 
+        public Image equipedd = null;
+
         // Checkpoints
         private int checkPointColor = 255;
         private int checkPointCount = 0;
