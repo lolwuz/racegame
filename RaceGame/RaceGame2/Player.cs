@@ -69,7 +69,6 @@ namespace RaceGame2
 
         // Grafisch
         private Bitmap image;
-        private Bitmap map;
         private Color colorFront;
         private Color colorBack;
         private Map workingMap;
@@ -112,7 +111,7 @@ namespace RaceGame2
             gasShake.LeftMotorSpeed = 0;
             gasShake.RightMotorSpeed = 0;
 
-            map = new Bitmap(Properties.Resources.Baan2colormap);
+            
             speed = 0;
 
             if (player == 1)
@@ -392,8 +391,8 @@ namespace RaceGame2
             try
             {
                 angle = Math.PI * rotation / 180.0;
-                colorFront = map.GetPixel(Convert.ToInt32(posX + 50 * Math.Cos(angle)), Convert.ToInt32(posY + 50 * Math.Sin(angle)));
-                colorBack = map.GetPixel(Convert.ToInt32(posX - 50 * Math.Cos(angle)), Convert.ToInt32(posY - 50 * Math.Sin(angle))); 
+                colorFront = workingMap.map2.GetPixel(Convert.ToInt32(posX + 50 * Math.Cos(angle)), Convert.ToInt32(posY + 50 * Math.Sin(angle)));
+                colorBack = workingMap.map2.GetPixel(Convert.ToInt32(posX - 50 * Math.Cos(angle)), Convert.ToInt32(posY - 50 * Math.Sin(angle))); 
             }
             catch(Exception) { } // Komt buiten de map
 

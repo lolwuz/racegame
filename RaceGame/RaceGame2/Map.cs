@@ -13,21 +13,24 @@ namespace RaceGame2
     public class Map 
     {
         public Bitmap map1;
+        public Bitmap map2;
         public List<PickUp> pickUpList = new List<PickUp>();
 
         public Map()
         {
-            int caseSwitch = 2;
+            int caseSwitch = 1;
 
             // Baan keuze + pickUp's voor de baan + (extra's?)
             switch (caseSwitch)
             {
                 case 1:
                     map1 = new Bitmap(Properties.Resources.basicTrack);
+                    map2 = new Bitmap(Properties.Resources.basicTrack);
                     pickUpList.Add(new PickUp(10, 20));
                     break;
                 case 2:
                     map1 = new Bitmap(Properties.Resources.Baan2);
+                    map2 = new Bitmap(Properties.Resources.Baan2colormap);
                     pickUpList.Add(new PickUp(684, 1000));
                     pickUpList.Add(new PickUp(755, 1000));
 
@@ -47,6 +50,7 @@ namespace RaceGame2
 
         public void Draw(Graphics g, Player p, double width, double height)
         {
+            
             g.DrawImage(map1,Convert.ToSingle(-p.posX + width), Convert.ToSingle(-p.posY + height));
             foreach(PickUp pick in pickUpList)
             {
