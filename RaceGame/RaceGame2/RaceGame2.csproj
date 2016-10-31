@@ -178,6 +178,54 @@
   <ItemGroup>
     <None Include="Resources\roodlicht.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\203.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\210.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\211.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\212.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\213.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\220.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\222.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\223.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\230.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\231.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\233.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
