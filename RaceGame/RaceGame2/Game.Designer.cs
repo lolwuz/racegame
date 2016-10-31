@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Speler1Ronde = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.equiped1 = new System.Windows.Forms.PictureBox();
             this.equiped2 = new System.Windows.Forms.PictureBox();
             this.equiped3 = new System.Windows.Forms.PictureBox();
+            this.stoplicht = new System.Windows.Forms.PictureBox();
+            this.starter = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -56,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.equiped1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equiped2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equiped3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stoplicht)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -295,12 +299,27 @@
             this.equiped3.TabIndex = 23;
             this.equiped3.TabStop = false;
             // 
+            // stoplicht
+            // 
+            this.stoplicht.Image = global::RaceGame2.Properties.Resources.geenlicht;
+            this.stoplicht.Location = new System.Drawing.Point(200, 76);
+            this.stoplicht.Name = "stoplicht";
+            this.stoplicht.Size = new System.Drawing.Size(200, 400);
+            this.stoplicht.TabIndex = 24;
+            this.stoplicht.TabStop = false;
+            // 
+            // starter
+            // 
+            this.starter.Interval = 1000;
+            this.starter.Tick += new System.EventHandler(this.starter_Tick);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(591, 543);
+            this.Controls.Add(this.stoplicht);
             this.Controls.Add(this.equiped3);
             this.Controls.Add(this.equiped2);
             this.Controls.Add(this.equiped1);
@@ -338,6 +357,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.equiped1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equiped2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equiped3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stoplicht)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,6 +385,8 @@
         private System.Windows.Forms.PictureBox equiped1;
         private System.Windows.Forms.PictureBox equiped2;
         private System.Windows.Forms.PictureBox equiped3;
+        private System.Windows.Forms.PictureBox stoplicht;
+        private System.Windows.Forms.Timer starter;
     }
 }
 
