@@ -24,6 +24,8 @@ namespace RaceGame2
         public Player p3;
         public Player p4;
 
+        private bool isStarted = false;
+
         private int car1, car2, car3, car4;
 
         public Map map;
@@ -31,8 +33,8 @@ namespace RaceGame2
 
         public Game(int moederSelectP1, int moederSelectP2, int moederSelectP3, int moederSelectP4, int mapSelect)
         {
-            // Window full screen
-            // this.WindowState = FormWindowState.Maximized;
+            //Window full screen
+            this.WindowState = FormWindowState.Maximized;
             // Window style   
             
 
@@ -296,16 +298,17 @@ namespace RaceGame2
         }
 
         public void Start()
-        {       
+        {
             //CheckForIllegalCrossThreadCalls = false;
             // var renderThread = new Thread(Render);
             // InitializeComponent();
             // renderThread.Start();
+            //InitializeComponent();
 
             myTimer.Tick += new EventHandler(TimerEventProcessor);
             myTimer.Interval = 1000 / 120; // als de paint event niet zo sloom zou zijn is dit nu 120 FPS. 
             myTimer.Start();
-            InitializeComponent();          
+            InitializeComponent();
         }
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
@@ -315,7 +318,7 @@ namespace RaceGame2
             pictureBox2.Invalidate();
             pictureBox3.Invalidate();
             pictureBox4.Invalidate();
-            Update();         
+            Update();
 
             // Geen impact op performance. Label voor fuel enzo: 
             Speler1Ronde.Location = new Point(0, 20);
@@ -360,7 +363,16 @@ namespace RaceGame2
             fuel3.Text = "Fuel: " + Convert.ToInt16(p3.fuel) + " liter";
             fuel4.Text = "Fuel: " + Convert.ToInt16(p4.fuel) + " liter";
             
-            gameUpdate();
+            if (isStarted)
+            {
+                gameUpdate();
+            }
+            else
+            {
+                Thread.Sleep(1500);
+                isStarted = true;
+            }
+            
         }
   
         void gameUpdate()
@@ -386,7 +398,7 @@ namespace RaceGame2
                     return Properties.Resources.fueldrain;
                 case "projectile":
                     return Properties.Resources.projectile;
-                case "oilleak":
+                case "oil":
                     return Properties.Resources.oilleak;
                 default:
                     return null;
@@ -408,7 +420,28 @@ namespace RaceGame2
 
         private void Game_Load(object sender, EventArgs e)
         {
+            // Geen impact op performance. Label voor fuel enzo: 
+            Speler1Ronde.Location = new Point(0, 20);
+            Speler2Ronde.Location = new Point(ClientSize.Width - (Speler1Ronde.Width), 20);
+            Speler3Ronde.Location = new Point(0, ClientSize.Height / 2 + 20);
+            Speler4Ronde.Location = new Point(ClientSize.Width - (Speler4Ronde.Width), (ClientSize.Height / 2) + 20);
 
+            fuel1.Location = new Point(0, 50);
+            fuel2.Location = new Point(ClientSize.Width - (fuel2.Width), 50);
+            fuel3.Location = new Point(0, ClientSize.Height / 2 + 50);
+            fuel4.Location = new Point(ClientSize.Width - (fuel4.Width), (ClientSize.Height / 2) + 50);
+
+            Speler1Speed.Location = new Point(0, (ClientSize.Height / 2) - 50);
+            Speler2Speed.Location = new Point(ClientSize.Width - (Speler2Speed.Width), (ClientSize.Height / 2) - 50);
+            Speler3Speed.Location = new Point(0, ClientSize.Height - 50);
+            Speler4Speed.Location = new Point(ClientSize.Width - (Speler4Speed.Width), ClientSize.Height - 50);
+
+            equiped1.Location = new Point(0, (ClientSize.Height / 2) - 100);
+            equiped2.Location = new Point(ClientSize.Width - (equiped2.Width), (ClientSize.Height / 2) - 100);
+            equiped3.Location = new Point(0, ClientSize.Height - 100);
+            equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height - 100);
+
+            equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height - 100);
         }
     }
 }
