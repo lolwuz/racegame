@@ -29,14 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Speler1Ronde = new System.Windows.Forms.Label();
             this.Speler2Ronde = new System.Windows.Forms.Label();
             this.Speler1Speed = new System.Windows.Forms.Label();
             this.Speler2Speed = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.Speler3Ronde = new System.Windows.Forms.Label();
             this.Speler4Ronde = new System.Windows.Forms.Label();
             this.Speler3Speed = new System.Windows.Forms.Label();
@@ -45,44 +41,26 @@
             this.fuel4 = new System.Windows.Forms.Label();
             this.fuel2 = new System.Windows.Forms.Label();
             this.fuel1 = new System.Windows.Forms.Label();
-            this.equiped4 = new System.Windows.Forms.PictureBox();
-            this.equiped1 = new System.Windows.Forms.PictureBox();
-            this.equiped2 = new System.Windows.Forms.PictureBox();
-            this.equiped3 = new System.Windows.Forms.PictureBox();
-            this.stoplicht = new System.Windows.Forms.PictureBox();
             this.starter = new System.Windows.Forms.Timer(this.components);
+            this.stoplicht = new System.Windows.Forms.PictureBox();
+            this.equiped3 = new System.Windows.Forms.PictureBox();
+            this.equiped2 = new System.Windows.Forms.PictureBox();
+            this.equiped1 = new System.Windows.Forms.PictureBox();
+            this.equiped4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.stoplicht)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stoplicht)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.pictureBox2.Location = new System.Drawing.Point(296, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(300, 300);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // Speler1Ronde
             // 
@@ -136,28 +114,6 @@
             this.Speler2Speed.Size = new System.Drawing.Size(85, 24);
             this.Speler2Speed.TabIndex = 5;
             this.Speler2Speed.Text = "Snelheid";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.pictureBox3.Location = new System.Drawing.Point(-4, 300);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(300, 300);
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.pictureBox4.Location = new System.Drawing.Point(296, 300);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(300, 300);
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox4_Paint);
             // 
             // Speler3Ronde
             // 
@@ -263,32 +219,20 @@
             this.fuel1.TabIndex = 15;
             this.fuel1.Text = "Fuel";
             // 
-            // equiped4
+            // starter
             // 
-            this.equiped4.BackColor = System.Drawing.Color.Transparent;
-            this.equiped4.Location = new System.Drawing.Point(549, 473);
-            this.equiped4.Name = "equiped4";
-            this.equiped4.Size = new System.Drawing.Size(40, 40);
-            this.equiped4.TabIndex = 20;
-            this.equiped4.TabStop = false;
+            this.starter.Interval = 1000;
+            this.starter.Tick += new System.EventHandler(this.starter_Tick);
             // 
-            // equiped1
+            // stoplicht
             // 
-            this.equiped1.BackColor = System.Drawing.Color.Transparent;
-            this.equiped1.Location = new System.Drawing.Point(2, 182);
-            this.equiped1.Name = "equiped1";
-            this.equiped1.Size = new System.Drawing.Size(40, 40);
-            this.equiped1.TabIndex = 21;
-            this.equiped1.TabStop = false;
-            // 
-            // equiped2
-            // 
-            this.equiped2.BackColor = System.Drawing.Color.Transparent;
-            this.equiped2.Location = new System.Drawing.Point(549, 182);
-            this.equiped2.Name = "equiped2";
-            this.equiped2.Size = new System.Drawing.Size(40, 40);
-            this.equiped2.TabIndex = 22;
-            this.equiped2.TabStop = false;
+            this.stoplicht.BackColor = System.Drawing.Color.Transparent;
+            this.stoplicht.Image = global::RaceGame2.Properties.Resources.geenlicht;
+            this.stoplicht.Location = new System.Drawing.Point(200, 76);
+            this.stoplicht.Name = "stoplicht";
+            this.stoplicht.Size = new System.Drawing.Size(176, 389);
+            this.stoplicht.TabIndex = 24;
+            this.stoplicht.TabStop = false;
             // 
             // equiped3
             // 
@@ -299,19 +243,76 @@
             this.equiped3.TabIndex = 23;
             this.equiped3.TabStop = false;
             // 
-            // stoplicht
+            // equiped2
             // 
-            this.stoplicht.Image = global::RaceGame2.Properties.Resources.geenlicht;
-            this.stoplicht.Location = new System.Drawing.Point(200, 76);
-            this.stoplicht.Name = "stoplicht";
-            this.stoplicht.Size = new System.Drawing.Size(200, 400);
-            this.stoplicht.TabIndex = 24;
-            this.stoplicht.TabStop = false;
+            this.equiped2.BackColor = System.Drawing.Color.Transparent;
+            this.equiped2.Location = new System.Drawing.Point(549, 182);
+            this.equiped2.Name = "equiped2";
+            this.equiped2.Size = new System.Drawing.Size(40, 40);
+            this.equiped2.TabIndex = 22;
+            this.equiped2.TabStop = false;
             // 
-            // starter
+            // equiped1
             // 
-            this.starter.Interval = 1000;
-            this.starter.Tick += new System.EventHandler(this.starter_Tick);
+            this.equiped1.BackColor = System.Drawing.Color.Transparent;
+            this.equiped1.Location = new System.Drawing.Point(2, 182);
+            this.equiped1.Name = "equiped1";
+            this.equiped1.Size = new System.Drawing.Size(40, 40);
+            this.equiped1.TabIndex = 21;
+            this.equiped1.TabStop = false;
+            // 
+            // equiped4
+            // 
+            this.equiped4.BackColor = System.Drawing.Color.Transparent;
+            this.equiped4.Location = new System.Drawing.Point(549, 473);
+            this.equiped4.Name = "equiped4";
+            this.equiped4.Size = new System.Drawing.Size(40, 40);
+            this.equiped4.TabIndex = 20;
+            this.equiped4.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.pictureBox4.Location = new System.Drawing.Point(296, 300);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox4.TabIndex = 7;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox4_Paint);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.pictureBox3.Location = new System.Drawing.Point(-4, 300);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.pictureBox2.Location = new System.Drawing.Point(296, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.pictureBox1.Location = new System.Drawing.Point(-4, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // Game
             // 
@@ -349,15 +350,15 @@
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.stoplicht)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.equiped4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equiped3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stoplicht)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
