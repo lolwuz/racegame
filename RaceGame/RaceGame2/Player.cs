@@ -95,10 +95,10 @@ namespace RaceGame2
                     image = new Bitmap(Properties.Resources.MoederJorrit);
                     break;
                 case 3:
-                    image = new Bitmap(Properties.Resources.MoederSimon);
+                    image = new Bitmap(Properties.Resources.MoederKoen);
                     break;
                 case 4:
-                    image = new Bitmap(Properties.Resources.MoederKoen);
+                    image = new Bitmap(Properties.Resources.MoederSimon);
                     break;
                 default:
                     break;

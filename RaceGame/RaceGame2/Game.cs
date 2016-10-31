@@ -24,6 +24,8 @@ namespace RaceGame2
         public Player p3;
         public Player p4;
 
+        private int car1, car2, car3, car4;
+
         public Map map;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
 
@@ -50,15 +52,19 @@ namespace RaceGame2
             {
                 case 1:
                     // gebruik MartenMoeder
+                    this.car1 = 1;
                     break;
                 case 2:
                     // gebruik MoederJorrit
+                    this.car1 = 2;
                     break;
                 case 3:
                     // gebruik MoederKoen
+                    this.car1 = 3;
                     break;
                 case 4:
                     // gebruik MoederSimon
+                    this.car1 = 4;
                     break;
                 default:
                     break;
@@ -68,16 +74,20 @@ namespace RaceGame2
             switch (moederSelectP2)
             {
                 case 1:
-                    // gebruik MartenMoeder                    
+                    // gebruik MartenMoeder
+                    this.car2 = 1;
                     break;
                 case 2:
                     // gebruik MoederJorrit
+                    this.car2 = 2;
                     break;
                 case 3:
                     // gebruik MoederKoen
+                    this.car2 = 3;
                     break;
                 case 4:
                     // gebruik MoederSimon
+                    this.car2 = 4;
                     break;
                 default:
                     break;
@@ -87,16 +97,20 @@ namespace RaceGame2
             switch (moederSelectP3)
             {
                 case 1:
-                    // gebruik MartenMoeder                    
+                    // gebruik MartenMoeder
+                    this.car3 = 1;
                     break;
                 case 2:
                     // gebruik MoederJorrit
+                    this.car3 = 2;
                     break;
                 case 3:
                     // gebruik MoederKoen
+                    this.car3 = 3;
                     break;
                 case 4:
                     // gebruik MoederSimon
+                    this.car3 = 4;
                     break;
                 default:
                     break;
@@ -107,15 +121,19 @@ namespace RaceGame2
             {
                 case 1:
                     // gebruik MartenMoeder                    
+                    this.car4 = 1;
                     break;
                 case 2:
                     // gebruik MoederJorrit
+                    this.car4 = 2;
                     break;
                 case 3:
                     // gebruik MoederKoen
+                    this.car4 = 3;
                     break;
                 case 4:
                     // gebruik MoederSimon
+                    this.car4 = 4;
                     break;
                 default:
                     break;
@@ -138,13 +156,13 @@ namespace RaceGame2
             }
 
 
-            p1 = new Player(this, 1);
+            p1 = new Player(this, car1);
             p1.posX = 1300;
             p1.posY = 1690;
             p1.accel = 0.1f;
             p1.maxSpeed = 8;
 
-            p2 = new Player(this, 2);
+            p2 = new Player(this, car2);
             p2.posX = 1300;
             p2.posY = 1760;
             p2.accel = 0.1f;
@@ -155,7 +173,7 @@ namespace RaceGame2
             p2.keyUp = Keys.W;
             p2.keySpecial = Keys.E;
 
-            p3 = new Player(this, 3);
+            p3 = new Player(this, car3);
             p3.posX = 1150;
             p3.posY = 1690;
             p3.accel = 0.1f;
@@ -166,7 +184,7 @@ namespace RaceGame2
             p3.keyUp = Keys.T;
             p3.keySpecial = Keys.Y;
 
-            p4 = new Player(this, 4);
+            p4 = new Player(this, car4);
             p4.posX = 1150;
             p4.posY = 1760;
             p4.accel = 0.1f;
