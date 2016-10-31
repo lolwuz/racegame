@@ -104,8 +104,8 @@ namespace RaceGame2
                     break;
             }
 
-            fullShake.LeftMotorSpeed = 40000;
-            fullShake.RightMotorSpeed = 40000;
+            fullShake.LeftMotorSpeed = 65000;
+            fullShake.RightMotorSpeed = 65000;
          
             gasShake.LeftMotorSpeed = 0;
             gasShake.RightMotorSpeed = 0;
@@ -419,6 +419,8 @@ namespace RaceGame2
             {
                 if (isUsingController)
                 {
+                    fullShake.LeftMotorSpeed = (ushort)(speed  * 8000);
+                    fullShake.RightMotorSpeed = (ushort)(speed * 8000) ;
                     _controller.SetVibration(fullShake);
                 }
 
