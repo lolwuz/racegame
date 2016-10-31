@@ -13,7 +13,7 @@ namespace RaceGame2
     public partial class Menu : Form
     {
 
-        private int car1, car2, track;
+        private int car1, car2, car3, car4, track;
 
         public Menu()
         {
@@ -36,11 +36,17 @@ namespace RaceGame2
         {
             // default auto's en racetrack in picture boxes...
 
-            //picBoxCar1.Image = Properties.Resources.car1_thumb;
+            picBoxCar1.Image = Properties.Resources.MartenMoeder;
             this.car1 = 1;
 
-            //picBoxCar2.Image = Properties.Resources.car2_thumb;
+            picBoxCar2.Image = Properties.Resources.MoederJorrit;
             this.car2 = 2;
+
+            picBoxCar3.Image = Properties.Resources.MoederKoen;
+            this.car3 = 3;
+
+            picBoxCar4.Image = Properties.Resources.MoederSimon;
+            this.car4 = 4;
 
             picBoxRaceTrack.Image = Properties.Resources.baan1_thumb;
             this.track = 1;
@@ -64,7 +70,7 @@ namespace RaceGame2
 
         private void lblStartGame_Click(object sender, EventArgs e)
         {
-            Game gameForm = new Game("Aafke", "Aafke", "MoederTrack");
+            Game gameForm = new Game(car1, car2, car3, car4, track);
             gameForm.Show();
             this.Close();
         }
@@ -81,19 +87,19 @@ namespace RaceGame2
             {
                 case 1:
                     this.car1 = 4;
-                    //picBoxCar1.Image = Properties.Resources.car4_thumb;
+                    picBoxCar1.Image = Properties.Resources.MoederSimon;
                     break;
                 case 2:
                     this.car1 = 1;
-                    //picBoxCar1.Image = Properties.Resources.car1_thumb;
+                    picBoxCar1.Image = Properties.Resources.MartenMoeder;
                     break;
                 case 3:
                     this.car1 = 2;
-                    //picBoxCar1.Image = Properties.Resources.car2_thumb;
+                    picBoxCar1.Image = Properties.Resources.MoederJorrit;
                     break;
                 case 4:
                     this.car1 = 3;
-                    //picBoxCar1.Image = Properties.Resources.car3_thumb;
+                    picBoxCar1.Image = Properties.Resources.MoederKoen;
                     break;
                 default:
                     break;
@@ -106,19 +112,19 @@ namespace RaceGame2
             {
                 case 1:
                     this.car1 = 2;
-                    //picBoxCar1.Image = Properties.Resources.car2_thumb;
+                    picBoxCar1.Image = Properties.Resources.MoederJorrit;
                     break;
                 case 2:
                     this.car1 = 3;
-                    //picBoxCar1.Image = Properties.Resources.car3_thumb;
+                    picBoxCar1.Image = Properties.Resources.MoederKoen;
                     break;
                 case 3:
                     this.car1 = 4;
-                    //picBoxCar1.Image = Properties.Resources.car4_thumb;
+                    picBoxCar1.Image = Properties.Resources.MoederSimon;
                     break;
                 case 4:
                     this.car1 = 1;
-                    //picBoxCar1.Image = Properties.Resources.car1_thumb;
+                    picBoxCar1.Image = Properties.Resources.MartenMoeder;
                     break;
                 default:
                     break;
@@ -175,19 +181,19 @@ namespace RaceGame2
             {
                 case 1:
                     this.car2 = 4;
-                    //picBoxCar2.Image = Properties.Resources.car4_thumb;
+                    picBoxCar2.Image = Properties.Resources.MoederSimon;
                     break;
                 case 2:
                     this.car2 = 1;
-                    //picBoxCar2.Image = Properties.Resources.car1_thumb;
+                    picBoxCar2.Image = Properties.Resources.MartenMoeder;
                     break;
                 case 3:
                     this.car2 = 2;
-                    //picBoxCar2.Image = Properties.Resources.car2_thumb;
+                    picBoxCar2.Image = Properties.Resources.MoederJorrit;
                     break;
                 case 4:
                     this.car2 = 3;
-                    //picBoxCar2.Image = Properties.Resources.car3_thumb;
+                    picBoxCar2.Image = Properties.Resources.MoederKoen;
                     break;
                 default:
                     break;
@@ -200,23 +206,126 @@ namespace RaceGame2
             {
                 case 1:
                     this.car2 = 2;
-                    //picBoxCar2.Image = Properties.Resources.car2_thumb;
+                    picBoxCar2.Image = Properties.Resources.MoederJorrit;
                     break;
                 case 2:
                     this.car2 = 3;
-                    //picBoxCar2.Image = Properties.Resources.car3_thumb;
+                    picBoxCar2.Image = Properties.Resources.MoederKoen;
                     break;
                 case 3:
                     this.car2 = 4;
-                    //picBoxCar2.Image = Properties.Resources.car4_thumb;
+                    picBoxCar2.Image = Properties.Resources.MoederSimon;
                     break;
                 case 4:
                     this.car2 = 1;
-                    //picBoxCar2.Image = Properties.Resources.car1_thumb;
+                    picBoxCar2.Image = Properties.Resources.MartenMoeder;
                     break;
                 default:
                     break;
             }
         }
+                
+        // auto 3 kiezen
+        private void lblCar3Back_Click(object sender, EventArgs e)
+        {
+            switch (this.car3)
+            {
+                case 1:
+                    this.car3 = 4;
+                    picBoxCar3.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 2:
+                    this.car3 = 1;
+                    picBoxCar3.Image = Properties.Resources.MartenMoeder;
+                    break;
+                case 3:
+                    this.car3 = 2;
+                    picBoxCar3.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 4:
+                    this.car3 = 3;
+                    picBoxCar3.Image = Properties.Resources.MoederKoen;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void lblCar3Next_Click(object sender, EventArgs e)
+        {
+            switch (this.car3)
+            {
+                case 1:
+                    this.car3 = 2;
+                    picBoxCar3.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 2:
+                    this.car3 = 3;
+                    picBoxCar3.Image = Properties.Resources.MoederKoen;
+                    break;
+                case 3:
+                    this.car3 = 4;
+                    picBoxCar3.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 4:
+                    this.car3 = 1;
+                    picBoxCar3.Image = Properties.Resources.MartenMoeder;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // auto 4 kiezen
+        private void lblCar4Back_Click(object sender, EventArgs e)
+        {
+            switch (this.car4)
+            {
+                case 1:
+                    this.car4 = 4;
+                    picBoxCar4.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 2:
+                    this.car4 = 1;
+                    picBoxCar4.Image = Properties.Resources.MartenMoeder;
+                    break;
+                case 3:
+                    this.car4 = 2;
+                    picBoxCar4.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 4:
+                    this.car4 = 3;
+                    picBoxCar4.Image = Properties.Resources.MoederKoen;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void lblCar4Next_Click(object sender, EventArgs e)
+        {
+            switch (this.car4)
+            {
+                case 1:
+                    this.car4 = 2;
+                    picBoxCar4.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 2:
+                    this.car4 = 3;
+                    picBoxCar4.Image = Properties.Resources.MoederKoen;
+                    break;
+                case 3:
+                    this.car4 = 4;
+                    picBoxCar4.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 4:
+                    this.car4 = 1;
+                    picBoxCar4.Image = Properties.Resources.MartenMoeder;
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 }

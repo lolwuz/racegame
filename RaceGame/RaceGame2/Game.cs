@@ -27,7 +27,7 @@ namespace RaceGame2
         public Map map;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
 
-        public Game(String moederSelectP1, String moederSelectP2, String mapSelect)
+        public Game(int moederSelectP1, int moederSelectP2, int moederSelectP3, int moederSelectP4, int mapSelect)
         {
             // Window full screen
             // this.WindowState = FormWindowState.Maximized;
@@ -45,18 +45,96 @@ namespace RaceGame2
 
             DoubleBuffered = true;
 
-            // Selecteer moeder. 
-            if (moederSelectP1 == "Aafke")
+            // Selecteer auto voor moeder1 
+            switch (moederSelectP1)
             {
-
+                case 1:
+                    // gebruik MartenMoeder
+                    break;
+                case 2:
+                    // gebruik MoederJorrit
+                    break;
+                case 3:
+                    // gebruik MoederKoen
+                    break;
+                case 4:
+                    // gebruik MoederSimon
+                    break;
+                default:
+                    break;
             }
-            if (moederSelectP2 == "Aafke")
-            {
 
-            }
-            if (mapSelect == "MoederTrack")
+            // Selecter auto voor moeder2
+            switch (moederSelectP2)
             {
-                map = new Map();
+                case 1:
+                    // gebruik MartenMoeder                    
+                    break;
+                case 2:
+                    // gebruik MoederJorrit
+                    break;
+                case 3:
+                    // gebruik MoederKoen
+                    break;
+                case 4:
+                    // gebruik MoederSimon
+                    break;
+                default:
+                    break;
+            }
+
+            // Selecter auto voor moeder3
+            switch (moederSelectP3)
+            {
+                case 1:
+                    // gebruik MartenMoeder                    
+                    break;
+                case 2:
+                    // gebruik MoederJorrit
+                    break;
+                case 3:
+                    // gebruik MoederKoen
+                    break;
+                case 4:
+                    // gebruik MoederSimon
+                    break;
+                default:
+                    break;
+            }
+
+            // Selecter auto voor moeder4
+            switch (moederSelectP4)
+            {
+                case 1:
+                    // gebruik MartenMoeder                    
+                    break;
+                case 2:
+                    // gebruik MoederJorrit
+                    break;
+                case 3:
+                    // gebruik MoederKoen
+                    break;
+                case 4:
+                    // gebruik MoederSimon
+                    break;
+                default:
+                    break;
+            }
+
+            // Selecteer map
+            switch (mapSelect)
+            {
+                case 1:
+                    map = new Map();
+                    break;
+                case 2:
+                    map = new Map();
+                    break;
+                case 3:
+                    map = new Map();
+                    break;
+                default:
+                    break;
             }
 
 
@@ -288,6 +366,11 @@ namespace RaceGame2
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
