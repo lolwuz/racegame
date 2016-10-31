@@ -148,6 +148,24 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fueldrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oileleak_ingame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oilleak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectile_ingame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speedboost.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
