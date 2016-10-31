@@ -162,13 +162,13 @@ namespace RaceGame2
             p1.posX = 1300;
             p1.posY = 1690;
             p1.accel = 0.1f;
-            p1.maxSpeed = 8;
+            p1.maxSpeed = 4;
 
             p2 = new Player(this, 2, car2);
             p2.posX = 1300;
             p2.posY = 1760;
             p2.accel = 0.1f;
-            p2.maxSpeed = 8;
+            p2.maxSpeed = 4;
             p2.keyLeft = Keys.A;
             p2.keyRight = Keys.D;
             p2.keyDown = Keys.S;
@@ -179,7 +179,7 @@ namespace RaceGame2
             p3.posX = 1150;
             p3.posY = 1690;
             p3.accel = 0.1f;
-            p3.maxSpeed = 8;
+            p3.maxSpeed = 4;
             p3.keyLeft = Keys.F;
             p3.keyRight = Keys.H;
             p3.keyDown = Keys.G;
@@ -190,7 +190,7 @@ namespace RaceGame2
             p4.posX = 1150;
             p4.posY = 1760;
             p4.accel = 0.1f;
-            p4.maxSpeed = 8;
+            p4.maxSpeed = 4;
             p4.keyLeft = Keys.J;
             p4.keyRight = Keys.L;
             p4.keyDown = Keys.K;

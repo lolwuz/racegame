@@ -36,7 +36,7 @@ namespace RaceGame2
         private double backWheelX, backWheelY, frontWheelX, frontWheelY;
         private double wheelBase = 80;
         private double steerAngle = 0;
-        public double maxSteerAngle { get; set; } = 0.4;
+        public double maxSteerAngle { get; set; } = 0.2;
         private float slipAngle = 0;
 
         public double fuel = 100;
@@ -58,8 +58,7 @@ namespace RaceGame2
         public Keys keySpecial = Keys.Enter;
 
         // Items
-        public string equiped = "null";
-
+        public string equiped = "null"; 
         public Image equipedd = null;
 
         // Checkpoints
@@ -81,7 +80,6 @@ namespace RaceGame2
         private Vibration fullShake;
         private Vibration gasShake;
         private bool isUsingController;
-
         
         public Player(Game game, int player, int car)
         {
@@ -174,7 +172,7 @@ namespace RaceGame2
 
                 string[] words = System.Text.RegularExpressions.Regex.Split(controllerState.Gamepad.Buttons.ToString(), ", ");
 
-                steerAngle = controllerState.Gamepad.LeftThumbX / 81920.0f;
+                steerAngle = controllerState.Gamepad.LeftThumbX / 163840.0f;
 
              
                 if (speed < maxSpeed)
@@ -197,6 +195,15 @@ namespace RaceGame2
                         {
                             if (speed > -maxSpeed / 2) { speed -= accel / 2; }
                         }
+                    }
+
+                    if(word== "A")
+                    {
+                        isSpecial = true;
+                    }
+                    else
+                    {
+                        isSpecial = false;
                     }
                 }
 
@@ -268,14 +275,14 @@ namespace RaceGame2
 
             // Bij een bepaalde stuurhoek gaan de achterbanden slippen.
             if (steerAngle > 0.2)
-            {                
-                if (slipAngle < 20)
+            {
+                if (slipAngle < 20 && speed > 0)
                 {
                     slipAngle += 0.5f;
                 }
             }
 
-            else if (steerAngle < -0.2)
+            else if (steerAngle < -0.2 && speed > 0)
             {
                
                 if (slipAngle > -20)
@@ -359,6 +366,11 @@ namespace RaceGame2
                             
                             int newPickPositionX = workingMap.pickUpList[i].position.X;
                             int newPickPositionY = workingMap.pickUpList[i].position.Y;
+                            if (equiped == "null")
+                            {
+                                equiped = workingMap.pickUpList[i].ret;
+                            }
+                            workingMap.pickUpList.RemoveAt(i);
 
                             Task.Factory.StartNew(() =>
                             {
@@ -369,12 +381,9 @@ namespace RaceGame2
                             });
 
                             
-                            if(equiped == "null")
-                            {
-                                equiped = workingMap.pickUpList[i].ret;              
-                            }
+                            
 
-                            workingMap.pickUpList.RemoveAt(i);
+                            
                             Console.WriteLine("Equiped: " + equiped);                                                                        
                         }
                     }
@@ -491,7 +500,6 @@ namespace RaceGame2
                     }
                     equiped = "null";
                 }
-
             }
         }
   
