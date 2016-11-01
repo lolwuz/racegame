@@ -77,7 +77,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(1485, 96);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Je Moeder Kart";
+            this.lblTitle.Text = "Moeder Kart";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblCloseMenu

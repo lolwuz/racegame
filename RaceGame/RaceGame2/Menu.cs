@@ -215,6 +215,8 @@ namespace RaceGame2
         // Controller selection for car 1 and race track
         bool player1Selected = false;
         bool mapSelected = false;
+        Image tempCar1;
+        Image tempMap;
         private void SelectCar1andTrack()
         {
             if (isUsingController1)
@@ -236,7 +238,6 @@ namespace RaceGame2
                     {
                         if (button.Equals("DPadRight"))
                         {
-                            
                             car1Next();
                         }
                         else if (button.Equals("DPadLeft"))
@@ -245,6 +246,8 @@ namespace RaceGame2
                         }
                         else if (button.Equals("A"))
                         {
+                            tempCar1 = picBoxCar1.Image;
+                            picBoxCar1.Image = Properties.Resources.selected;
                             player1Selected = true;
                         }
                     }
@@ -263,10 +266,13 @@ namespace RaceGame2
                         }
                         else if (button.Equals("B"))
                         {
+                            picBoxCar1.Image = tempCar1;
                             player1Selected = false;
                         }
                         else if (button.Equals("A"))
                         {
+                            tempMap = picBoxRaceTrack.Image;
+                            picBoxRaceTrack.Image = Properties.Resources.selected;
                             mapSelected = true;
                         }
                     }
@@ -277,6 +283,7 @@ namespace RaceGame2
                     {
                         if (button.Equals("B"))
                         {
+                            picBoxRaceTrack.Image = tempMap;
                             mapSelected = false;
                         }
                     }
@@ -287,6 +294,7 @@ namespace RaceGame2
 
         // Controller selection for other cars
         bool player2Selected = false;
+        Image tempCar2;
         private void SelectCar2()
         {
             if (isUsingController2)
@@ -317,6 +325,8 @@ namespace RaceGame2
                         }
                         else if (button.Equals("A"))
                         {
+                            tempCar2 = picBoxCar2.Image;
+                            picBoxCar2.Image = Properties.Resources.selected;
                             player2Selected = true;
                         }
                     }
@@ -327,6 +337,7 @@ namespace RaceGame2
                     {
                         if (button.Equals("B"))
                         {
+                            picBoxCar3.Image = tempCar2;
                             player2Selected = false;
                         }
                     }
@@ -336,6 +347,7 @@ namespace RaceGame2
             }
         }
         bool player3Selected = false;
+        Image tempCar3;
         private void SelectCar3()
         {
             if (isUsingController3)
@@ -355,8 +367,7 @@ namespace RaceGame2
                 {
                     foreach (string button in controllerbuttons)
                     {
-                        if (button.Equals("DPadRight"))
-                        {
+                        if (button.Equals("DPadRight"))                        {
 
                             car3Next();
                         }
@@ -366,6 +377,8 @@ namespace RaceGame2
                         }
                         else if (button.Equals("A"))
                         {
+                            tempCar3 = picBoxCar3.Image;
+                            picBoxCar3.Image = Properties.Resources.selected;
                             player3Selected = true;
                         }
                     }
@@ -376,6 +389,7 @@ namespace RaceGame2
                     {
                         if (button.Equals("B"))
                         {
+                            picBoxCar3.Image = tempCar3;
                             player3Selected = false;
                         }
                     }
@@ -385,6 +399,7 @@ namespace RaceGame2
             }
         }
         bool player4Selected = false;
+        Image tempCar4;
         private void SelectCar4()
         {
             if (isUsingController4)
@@ -414,6 +429,8 @@ namespace RaceGame2
                         }
                         else if (button.Equals("A"))
                         {
+                            tempCar4 = picBoxCar4.Image;
+                            picBoxCar4.Image = Properties.Resources.selected;
                             player4Selected = true;
                         }
                     }
@@ -424,6 +441,7 @@ namespace RaceGame2
                     {
                         if (button.Equals("B"))
                         {
+                            picBoxCar4.Image = tempCar4;
                             player4Selected = false;
                         }
                     }
