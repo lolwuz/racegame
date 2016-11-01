@@ -13,8 +13,11 @@ namespace RaceGame2
 {
     public partial class Menu : Form
     {
-
+        // cars and track
         private int car1, car2, car3, car4, track;
+
+        // music player
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
 
         // Controller
         public State controller1State, controller2State, controller3State, controller4State;
@@ -59,6 +62,11 @@ namespace RaceGame2
             // controller 4
             isUsingController4 = true;
             _controller4 = new Controller(UserIndex.Four);
+
+            // background music
+            
+            player.Stream = Properties.Resources.MenuMusic;
+            player.Play();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -106,6 +114,7 @@ namespace RaceGame2
 
         private void startGame()
         {
+            player.Stop();
             Game gameForm = new Game(car1, car2, car3, car4, track);
             gameForm.Show();
             this.Close();
