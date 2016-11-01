@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SharpDX.XInput;
 
 namespace RaceGame2
 {
@@ -14,6 +15,11 @@ namespace RaceGame2
     {
 
         private int car1, car2, car3, car4, track;
+
+        // Controller
+        public State controller1State, controller2State, controller3State, controller4State;
+        private Controller _controller1, _controller2, _controller3, _controller4;
+        private bool isUsingController1, isUsingController2, isUsingController3, isUsingController4;
 
         public Menu()
         {
@@ -26,16 +32,38 @@ namespace RaceGame2
             memoryGraphics.DrawImage(BackImg, 0, 0, BackImg.Width, BackImg.Height);
             BackgroundImage = BackBmp;
 
+            // style
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
+
+            // center panel in form
+            panel1.Location = new Point(
+            this.ClientSize.Width / 2 - panel1.Size.Width / 2,
+            this.ClientSize.Height / 2 - panel1.Size.Height / 2);
+            panel1.Anchor = AnchorStyles.None;
 
             // maximize
             this.WindowState = FormWindowState.Maximized;
+
+            // controller 1
+            isUsingController1 = true;
+            _controller1 = new Controller(UserIndex.One);
+
+            // controller 2 
+            isUsingController2 = true;
+            _controller2 = new Controller(UserIndex.Two);
+
+            // controller 3
+            isUsingController3 = true;
+            _controller3 = new Controller(UserIndex.Three);
+
+            // controller 4
+            isUsingController4 = true;
+            _controller4 = new Controller(UserIndex.Four);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // default auto's en racetrack in picture boxes...
-
             picBoxCar1.Image = Properties.Resources.MartenMoeder;
             this.car1 = 1;
 
@@ -50,6 +78,9 @@ namespace RaceGame2
 
             picBoxRaceTrack.Image = Properties.Resources.baan1_thumb;
             this.track = 1;
+
+            // start controller selection timer...
+            timer2.Start();
 
         }
 
@@ -70,9 +101,46 @@ namespace RaceGame2
 
         private void lblStartGame_Click(object sender, EventArgs e)
         {
+            startGame();
+        }
+
+        private void startGame()
+        {
             Game gameForm = new Game(car1, car2, car3, car4, track);
             gameForm.Show();
             this.Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (lblTitle.ForeColor == Color.Black)
+            {
+                lblTitle.ForeColor = Color.Turquoise;
+            }
+            else if (lblTitle.ForeColor == Color.Turquoise)
+            {
+                lblTitle.ForeColor = Color.Fuchsia;
+            }
+            else
+            {
+                lblTitle.ForeColor = Color.Black;
+            }
+        }
+
+        // timer for controller selection
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            SelectCar1andTrack();
+            SelectCar2();
+            SelectCar3();
+            SelectCar4();
+
+            // if all players selected a car and the map is selected (by player 1) start the game...
+            if (player1Selected && mapSelected && player2Selected && player3Selected && player4Selected)
+            {
+                startGame();
+                timer2.Stop();
+            }
         }
 
         private void Menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -83,202 +151,472 @@ namespace RaceGame2
         // auto 1 kiezen
         private void lblCar1Back_Click(object sender, EventArgs e)
         {
-            switch (this.car1)
-            {
-                case 1:
-                    this.car1 = 4;
-                    picBoxCar1.Image = Properties.Resources.MoederSimon;
-                    break;
-                case 2:
-                    this.car1 = 1;
-                    picBoxCar1.Image = Properties.Resources.MartenMoeder;
-                    break;
-                case 3:
-                    this.car1 = 2;
-                    picBoxCar1.Image = Properties.Resources.MoederJorrit;
-                    break;
-                case 4:
-                    this.car1 = 3;
-                    picBoxCar1.Image = Properties.Resources.MoederKoen;
-                    break;
-                default:
-                    break;
-            }
+            car1Back();
         }
 
         private void lblCar1Next_Click(object sender, EventArgs e)
         {
-            switch (this.car1)
-            {
-                case 1:
-                    this.car1 = 2;
-                    picBoxCar1.Image = Properties.Resources.MoederJorrit;
-                    break;
-                case 2:
-                    this.car1 = 3;
-                    picBoxCar1.Image = Properties.Resources.MoederKoen;
-                    break;
-                case 3:
-                    this.car1 = 4;
-                    picBoxCar1.Image = Properties.Resources.MoederSimon;
-                    break;
-                case 4:
-                    this.car1 = 1;
-                    picBoxCar1.Image = Properties.Resources.MartenMoeder;
-                    break;
-                default:
-                    break;
-            }
+            car1Next();
         }
 
         // race baan kiezen
         private void lblTrackBack_Click(object sender, EventArgs e)
         {
-            switch (this.track)
-            {
-                case 1:
-                    this.track = 3;
-                    //picBoxRaceTrack.Image = Properties.Resources.baan3_thumb;
-                    break;
-                case 2:
-                    this.track = 1;
-                    picBoxRaceTrack.Image = Properties.Resources.baan1_thumb;
-                    break;
-                case 3:
-                    this.track = 2;
-                    picBoxRaceTrack.Image = Properties.Resources.baan2_thumb;
-                    break;
-                default:
-                    break;
-            }
+            raceTrackBack();
         }
 
         private void lblTrackNext_Click(object sender, EventArgs e)
         {
-            switch (this.track)
-            {
-                case 1:
-                    this.track = 2;
-                    picBoxRaceTrack.Image = Properties.Resources.baan2_thumb;
-                    break;
-                case 2:
-                    this.track = 3;
-                    //picBoxRaceTrack.Image = Properties.Resources.baan3_thumb;
-                    break;
-                case 3:
-                    this.track = 1;
-                    picBoxRaceTrack.Image = Properties.Resources.baan1_thumb;
-                    break;
-                default:
-                    break;
-            }
+            raceTrackNext();
         }
 
         // auto 2 kiezen
         private void lblCar2Back_Click(object sender, EventArgs e)
         {
-            switch (this.car2)
-            {
-                case 1:
-                    this.car2 = 4;
-                    picBoxCar2.Image = Properties.Resources.MoederSimon;
-                    break;
-                case 2:
-                    this.car2 = 1;
-                    picBoxCar2.Image = Properties.Resources.MartenMoeder;
-                    break;
-                case 3:
-                    this.car2 = 2;
-                    picBoxCar2.Image = Properties.Resources.MoederJorrit;
-                    break;
-                case 4:
-                    this.car2 = 3;
-                    picBoxCar2.Image = Properties.Resources.MoederKoen;
-                    break;
-                default:
-                    break;
-            }
+            car2Back();
         }
 
         private void lblCar2Next_Click(object sender, EventArgs e)
         {
-            switch (this.car2)
-            {
-                case 1:
-                    this.car2 = 2;
-                    picBoxCar2.Image = Properties.Resources.MoederJorrit;
-                    break;
-                case 2:
-                    this.car2 = 3;
-                    picBoxCar2.Image = Properties.Resources.MoederKoen;
-                    break;
-                case 3:
-                    this.car2 = 4;
-                    picBoxCar2.Image = Properties.Resources.MoederSimon;
-                    break;
-                case 4:
-                    this.car2 = 1;
-                    picBoxCar2.Image = Properties.Resources.MartenMoeder;
-                    break;
-                default:
-                    break;
-            }
+            car2Next();
         }
-                
+
         // auto 3 kiezen
         private void lblCar3Back_Click(object sender, EventArgs e)
         {
-            switch (this.car3)
-            {
-                case 1:
-                    this.car3 = 4;
-                    picBoxCar3.Image = Properties.Resources.MoederSimon;
-                    break;
-                case 2:
-                    this.car3 = 1;
-                    picBoxCar3.Image = Properties.Resources.MartenMoeder;
-                    break;
-                case 3:
-                    this.car3 = 2;
-                    picBoxCar3.Image = Properties.Resources.MoederJorrit;
-                    break;
-                case 4:
-                    this.car3 = 3;
-                    picBoxCar3.Image = Properties.Resources.MoederKoen;
-                    break;
-                default:
-                    break;
-            }
+            car3Back();
         }
 
         private void lblCar3Next_Click(object sender, EventArgs e)
         {
-            switch (this.car3)
-            {
-                case 1:
-                    this.car3 = 2;
-                    picBoxCar3.Image = Properties.Resources.MoederJorrit;
-                    break;
-                case 2:
-                    this.car3 = 3;
-                    picBoxCar3.Image = Properties.Resources.MoederKoen;
-                    break;
-                case 3:
-                    this.car3 = 4;
-                    picBoxCar3.Image = Properties.Resources.MoederSimon;
-                    break;
-                case 4:
-                    this.car3 = 1;
-                    picBoxCar3.Image = Properties.Resources.MartenMoeder;
-                    break;
-                default:
-                    break;
-            }
+            car3Next();
         }
 
         // auto 4 kiezen
         private void lblCar4Back_Click(object sender, EventArgs e)
         {
+            car4Back();
+        }
+
+        private void lblCar4Next_Click(object sender, EventArgs e)
+        {
+            car4Next();
+        }
+
+        // Controller selection for car 1 and race track
+        bool player1Selected = false;
+        bool mapSelected = false;
+        private void SelectCar1andTrack()
+        {
+            if (isUsingController1)
+            {
+                try
+                {
+                    controller1State = _controller1.GetState();
+                }
+                catch
+                {
+                    isUsingController1 = false;
+                }
+
+                string[] controllerbuttons = System.Text.RegularExpressions.Regex.Split(controller1State.Gamepad.Buttons.ToString(), ", ");
+
+                if (!player1Selected)
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("DPadRight"))
+                        {
+                            
+                            car1Next();
+                        }
+                        else if (button.Equals("DPadLeft"))
+                        {
+                            car1Back();
+                        }
+                        else if (button.Equals("A"))
+                        {
+                            player1Selected = true;
+                        }
+                    }
+                } 
+                else if (!mapSelected)
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("DPadRight"))
+                        {
+                            raceTrackNext();
+                        }
+                        else if (button.Equals("DPadLeft"))
+                        {
+                            raceTrackBack();
+                        }
+                        else if (button.Equals("B"))
+                        {
+                            player1Selected = false;
+                        }
+                        else if (button.Equals("A"))
+                        {
+                            mapSelected = true;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("B"))
+                        {
+                            mapSelected = false;
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        // Controller selection for other cars
+        bool player2Selected = false;
+        private void SelectCar2()
+        {
+            if (isUsingController2)
+            {
+                try
+                {
+                    controller2State = _controller2.GetState();
+                }
+                catch
+                {
+                    isUsingController2 = false;
+                }
+
+                string[] controllerbuttons = System.Text.RegularExpressions.Regex.Split(controller2State.Gamepad.Buttons.ToString(), ", ");
+
+                if (!player2Selected)
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("DPadRight"))
+                        {
+
+                            car2Next();
+                        }
+                        else if (button.Equals("DPadLeft"))
+                        {
+                            car2Back();
+                        }
+                        else if (button.Equals("A"))
+                        {
+                            player2Selected = true;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("B"))
+                        {
+                            player2Selected = false;
+                        }
+                    }
+                }
+                
+
+            }
+        }
+        bool player3Selected = false;
+        private void SelectCar3()
+        {
+            if (isUsingController3)
+            {
+                try
+                {
+                    controller3State = _controller3.GetState();
+                }
+                catch
+                {
+                    isUsingController3 = false;
+                }
+
+                string[] controllerbuttons = System.Text.RegularExpressions.Regex.Split(controller3State.Gamepad.Buttons.ToString(), ", ");
+
+                if(!player3Selected)
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("DPadRight"))
+                        {
+
+                            car3Next();
+                        }
+                        else if (button.Equals("DPadLeft"))
+                        {
+                            car3Back();
+                        }
+                        else if (button.Equals("A"))
+                        {
+                            player3Selected = true;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("B"))
+                        {
+                            player3Selected = false;
+                        }
+                    }
+                }
+                
+
+            }
+        }
+        bool player4Selected = false;
+        private void SelectCar4()
+        {
+            if (isUsingController4)
+            {
+                try
+                {
+                    controller4State = _controller4.GetState();
+                }
+                catch
+                {
+                    isUsingController4 = false;
+                }
+
+                string[] controllerbuttons = System.Text.RegularExpressions.Regex.Split(controller4State.Gamepad.Buttons.ToString(), ", ");
+
+                if (!player4Selected)
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("DPadRight"))
+                        {
+                            car4Next();
+                        }
+                        else if (button.Equals("DPadLeft"))
+                        {
+                            car4Back();
+                        }
+                        else if (button.Equals("A"))
+                        {
+                            player4Selected = true;
+                        }
+                    }
+                } 
+                else
+                {
+                    foreach (string button in controllerbuttons)
+                    {
+                        if (button.Equals("B"))
+                        {
+                            player4Selected = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        // auto 1 kies methodes
+        private void car1Back()
+        {
+            switch (this.car1)
+            {
+                case 1:
+                    this.car1 = 4;
+                    picBoxCar1.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 2:
+                    this.car1 = 1;
+                    picBoxCar1.Image = Properties.Resources.MartenMoeder;
+                    break;
+                case 3:
+                    this.car1 = 2;
+                    picBoxCar1.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 4:
+                    this.car1 = 3;
+                    picBoxCar1.Image = Properties.Resources.MoederKoen;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void car1Next()
+        {
+            switch (this.car1)
+            {
+                case 1:
+                    this.car1 = 2;
+                    picBoxCar1.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 2:
+                    this.car1 = 3;
+                    picBoxCar1.Image = Properties.Resources.MoederKoen;
+                    break;
+                case 3:
+                    this.car1 = 4;
+                    picBoxCar1.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 4:
+                    this.car1 = 1;
+                    picBoxCar1.Image = Properties.Resources.MartenMoeder;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // race track kies methodes
+        private void raceTrackBack()
+        {
+            switch (this.track)
+            {
+                case 1:
+                    this.track = 3;
+                    //picBoxRaceTrack.Image = Properties.Resources.baan3_thumb;
+                    break;
+                case 2:
+                    this.track = 1;
+                    picBoxRaceTrack.Image = Properties.Resources.baan1_thumb;
+                    break;
+                case 3:
+                    this.track = 2;
+                    picBoxRaceTrack.Image = Properties.Resources.baan2_thumb;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void raceTrackNext()
+        {
+            switch (this.track)
+            {
+                case 1:
+                    this.track = 2;
+                    picBoxRaceTrack.Image = Properties.Resources.baan2_thumb;
+                    break;
+                case 2:
+                    this.track = 3;
+                    //picBoxRaceTrack.Image = Properties.Resources.baan3_thumb;
+                    break;
+                case 3:
+                    this.track = 1;
+                    picBoxRaceTrack.Image = Properties.Resources.baan1_thumb;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // auto 2 kies methodes
+        private void car2Back()
+        {
+            switch (this.car2)
+            {
+                case 1:
+                    this.car2 = 4;
+                    picBoxCar2.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 2:
+                    this.car2 = 1;
+                    picBoxCar2.Image = Properties.Resources.MartenMoeder;
+                    break;
+                case 3:
+                    this.car2 = 2;
+                    picBoxCar2.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 4:
+                    this.car2 = 3;
+                    picBoxCar2.Image = Properties.Resources.MoederKoen;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void car2Next()
+        {
+            switch (this.car2)
+            {
+                case 1:
+                    this.car2 = 2;
+                    picBoxCar2.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 2:
+                    this.car2 = 3;
+                    picBoxCar2.Image = Properties.Resources.MoederKoen;
+                    break;
+                case 3:
+                    this.car2 = 4;
+                    picBoxCar2.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 4:
+                    this.car2 = 1;
+                    picBoxCar2.Image = Properties.Resources.MartenMoeder;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // auto 3 kies methodes
+        private void car3Back()
+        {
+            switch (this.car3)
+            {
+                case 1:
+                    this.car3 = 4;
+                    picBoxCar3.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 2:
+                    this.car3 = 1;
+                    picBoxCar3.Image = Properties.Resources.MartenMoeder;
+                    break;
+                case 3:
+                    this.car3 = 2;
+                    picBoxCar3.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 4:
+                    this.car3 = 3;
+                    picBoxCar3.Image = Properties.Resources.MoederKoen;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void car3Next()
+        {
+            switch (this.car3)
+            {
+                case 1:
+                    this.car3 = 2;
+                    picBoxCar3.Image = Properties.Resources.MoederJorrit;
+                    break;
+                case 2:
+                    this.car3 = 3;
+                    picBoxCar3.Image = Properties.Resources.MoederKoen;
+                    break;
+                case 3:
+                    this.car3 = 4;
+                    picBoxCar3.Image = Properties.Resources.MoederSimon;
+                    break;
+                case 4:
+                    this.car3 = 1;
+                    picBoxCar3.Image = Properties.Resources.MartenMoeder;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // auto 4 kies methodes
+        private void car4Back()
+        {
             switch (this.car4)
             {
                 case 1:
@@ -301,8 +639,7 @@ namespace RaceGame2
                     break;
             }
         }
-
-        private void lblCar4Next_Click(object sender, EventArgs e)
+        private void car4Next()
         {
             switch (this.car4)
             {
@@ -325,7 +662,6 @@ namespace RaceGame2
                 default:
                     break;
             }
-        }
-
+        } 
     }
 }
