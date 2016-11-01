@@ -110,10 +110,7 @@ namespace RaceGame2
         }
         public void Draw(Graphics g, Player p, double width, double height)
         {
-            g.DrawRectangle(new Pen(Color.Cyan, 3),
-                    Convert.ToInt32(width + (posX - p.posX)),
-                    Convert.ToInt32(height + (posY - p.posY)),
-                    10, 10);
+            g.DrawImage(Properties.Resources.oileleak_ingame, new Point(Convert.ToInt32(width + (posX - p.posX) - Properties.Resources.oileleak_ingame.Width), Convert.ToInt32(height + (posY - p.posY))));
         }
     }
 }
