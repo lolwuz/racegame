@@ -226,7 +226,7 @@
             // 
             // stoplicht
             // 
-            this.stoplicht.BackColor = System.Drawing.Color.Transparent;
+            this.stoplicht.BackColor = System.Drawing.Color.Black;
             this.stoplicht.Image = global::RaceGame2.Properties.Resources.geenlicht;
             this.stoplicht.Location = new System.Drawing.Point(200, 76);
             this.stoplicht.Name = "stoplicht";
