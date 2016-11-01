@@ -353,40 +353,36 @@ namespace RaceGame2
             }
         }
         private void CheckSpecialCollision()
-        {
-            foreach (Player p in workingGame.playerList)
+        {          
+            for (int i = 0; i < workingMap.pickUpList.Count; i++)
             {
-                if (p != this)
-                {
-                    for (int i = 0; i < workingMap.pickUpList.Count; i++)
+                distance = Math.Sqrt(Math.Pow((workingMap.pickUpList[i].position.X - this.posX), 2) + Math.Pow((workingMap.pickUpList[i].position.Y - this.posY), 2));
+                if (distance < 50)
+                {                            
+                    int newPickPositionX = workingMap.pickUpList[i].position.X;
+                    int newPickPositionY = workingMap.pickUpList[i].position.Y;
+                    if (equiped == "null")
                     {
-                        distance = Math.Sqrt(Math.Pow((workingMap.pickUpList[i].position.X - this.posX), 2) + Math.Pow((workingMap.pickUpList[i].position.Y - this.posY), 2));
-                        if (distance < 50)
-                        {
-                            
-                            int newPickPositionX = workingMap.pickUpList[i].position.X;
-                            int newPickPositionY = workingMap.pickUpList[i].position.Y;
-                            if (equiped == "null")
-                            {
-                                equiped = workingMap.pickUpList[i].ret;
-                            }
-                            workingMap.pickUpList.RemoveAt(i);
-
-                            Task.Factory.StartNew(() =>
-                            {
-                                System.Threading.Thread.Sleep(10000);
-                                Console.WriteLine("New Pickup");
-
-                                workingMap.pickUpList.Add(new PickUp(newPickPositionX, newPickPositionY));
-                            });
-
-                            
-                            
-
-                            
-                            Console.WriteLine("Equiped: " + equiped);                                                                        
-                        }
+                        equiped = workingMap.pickUpList[i].ret;
                     }
+                    workingMap.pickUpList.RemoveAt(i);
+
+                    Task.Factory.StartNew(() =>
+                    {
+                        System.Threading.Thread.Sleep(10000);                
+                        workingMap.pickUpList.Add(new PickUp(newPickPositionX, newPickPositionY));
+                    });                                                                                                                               
+                }
+            }
+            
+
+            for (int i = 0; i < workingGame.oilList.Count; i++)
+            {
+                double oildistance = Math.Sqrt(Math.Pow((workingGame.oilList[i].posX - this.posX), 2) + Math.Pow((workingGame.oilList[i].posY - this.posY), 2));
+                if (oildistance < 40)
+                {
+                    speed = 0;
+                    workingGame.oilList.RemoveAt(i);
                 }
             }
         }

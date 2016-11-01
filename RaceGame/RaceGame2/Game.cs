@@ -145,13 +145,13 @@ namespace RaceGame2
             switch (mapSelect)
             {
                 case 1:
-                    map = new Map();
+                    map = new Map(this, 1);
                     break;
                 case 2:
-                    map = new Map();
+                    map = new Map(this, 2);
                     break;
                 case 3:
-                    map = new Map();
+                    map = new Map(this, 2);
                     break;
                 default:
                     break;
@@ -306,7 +306,7 @@ namespace RaceGame2
             //InitializeComponent();
 
             myTimer.Tick += new EventHandler(TimerEventProcessor);
-            myTimer.Interval = 1000 / 240; // als de paint event niet zo sloom zou zijn is dit nu 120 FPS. 
+            myTimer.Interval = 1000 / 120; // als de paint event niet zo sloom zou zijn is dit nu 120 FPS. 
             myTimer.Start();
             InitializeComponent();
         }

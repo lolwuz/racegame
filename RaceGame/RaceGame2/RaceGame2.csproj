@@ -226,6 +226,57 @@
   <ItemGroup>
     <None Include="Resources\233.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\112.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\113.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\122.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\130.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\131.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\133.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\102.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\103.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\110.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Baan1ColorMap.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
