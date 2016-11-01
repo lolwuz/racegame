@@ -172,7 +172,7 @@ namespace RaceGame2
 
                 string[] words = System.Text.RegularExpressions.Regex.Split(controllerState.Gamepad.Buttons.ToString(), ", ");
 
-                steerAngle = controllerState.Gamepad.LeftThumbX / 163840.0f;
+                steerAngle = controllerState.Gamepad.LeftThumbX / 81920.0f;
 
              
                 if (speed < maxSpeed)

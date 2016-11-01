@@ -38,26 +38,26 @@
             this.picBoxRaceTrack = new System.Windows.Forms.PictureBox();
             this.lblStartGame = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCar4Next = new System.Windows.Forms.Label();
+            this.lblCar4Back = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.picBoxCar4 = new System.Windows.Forms.PictureBox();
+            this.lblCar3Next = new System.Windows.Forms.Label();
+            this.lblCar3Back = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.picBoxCar3 = new System.Windows.Forms.PictureBox();
             this.lblCar2Next = new System.Windows.Forms.Label();
             this.lblTrackNext = new System.Windows.Forms.Label();
             this.lblCar2Back = new System.Windows.Forms.Label();
             this.lblTrackBack = new System.Windows.Forms.Label();
             this.lblCar1Next = new System.Windows.Forms.Label();
             this.lblCar1Back = new System.Windows.Forms.Label();
-            this.lblCar3Next = new System.Windows.Forms.Label();
-            this.lblCar3Back = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.picBoxCar3 = new System.Windows.Forms.PictureBox();
-            this.lblCar4Next = new System.Windows.Forms.Label();
-            this.lblCar4Back = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.picBoxCar4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxRaceTrack)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxCar3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCar3)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -157,7 +157,7 @@
             this.lblStartGame.AutoSize = true;
             this.lblStartGame.BackColor = System.Drawing.Color.Transparent;
             this.lblStartGame.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartGame.ForeColor = System.Drawing.Color.Black;
+            this.lblStartGame.ForeColor = System.Drawing.Color.White;
             this.lblStartGame.Location = new System.Drawing.Point(437, 437);
             this.lblStartGame.Name = "lblStartGame";
             this.lblStartGame.Size = new System.Drawing.Size(244, 63);
@@ -196,6 +196,104 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1119, 501);
             this.panel1.TabIndex = 9;
+            // 
+            // lblCar4Next
+            // 
+            this.lblCar4Next.AutoSize = true;
+            this.lblCar4Next.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar4Next.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar4Next.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar4Next.Location = new System.Drawing.Point(1033, 367);
+            this.lblCar4Next.Name = "lblCar4Next";
+            this.lblCar4Next.Size = new System.Drawing.Size(56, 77);
+            this.lblCar4Next.TabIndex = 22;
+            this.lblCar4Next.Text = ">";
+            this.lblCar4Next.Click += new System.EventHandler(this.lblCar4Next_Click);
+            // 
+            // lblCar4Back
+            // 
+            this.lblCar4Back.AutoSize = true;
+            this.lblCar4Back.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar4Back.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar4Back.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar4Back.Location = new System.Drawing.Point(810, 367);
+            this.lblCar4Back.Name = "lblCar4Back";
+            this.lblCar4Back.Size = new System.Drawing.Size(56, 77);
+            this.lblCar4Back.TabIndex = 21;
+            this.lblCar4Back.Text = "<";
+            this.lblCar4Back.Click += new System.EventHandler(this.lblCar4Back_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Violet;
+            this.label6.Location = new System.Drawing.Point(861, 263);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(200, 63);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Moeder 4";
+            // 
+            // picBoxCar4
+            // 
+            this.picBoxCar4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.picBoxCar4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBoxCar4.Location = new System.Drawing.Point(872, 329);
+            this.picBoxCar4.Name = "picBoxCar4";
+            this.picBoxCar4.Size = new System.Drawing.Size(155, 155);
+            this.picBoxCar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBoxCar4.TabIndex = 20;
+            this.picBoxCar4.TabStop = false;
+            // 
+            // lblCar3Next
+            // 
+            this.lblCar3Next.AutoSize = true;
+            this.lblCar3Next.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar3Next.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar3Next.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar3Next.Location = new System.Drawing.Point(234, 367);
+            this.lblCar3Next.Name = "lblCar3Next";
+            this.lblCar3Next.Size = new System.Drawing.Size(56, 77);
+            this.lblCar3Next.TabIndex = 18;
+            this.lblCar3Next.Text = ">";
+            this.lblCar3Next.Click += new System.EventHandler(this.lblCar3Next_Click);
+            // 
+            // lblCar3Back
+            // 
+            this.lblCar3Back.AutoSize = true;
+            this.lblCar3Back.BackColor = System.Drawing.Color.Transparent;
+            this.lblCar3Back.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar3Back.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCar3Back.Location = new System.Drawing.Point(11, 367);
+            this.lblCar3Back.Name = "lblCar3Back";
+            this.lblCar3Back.Size = new System.Drawing.Size(56, 77);
+            this.lblCar3Back.TabIndex = 17;
+            this.lblCar3Back.Text = "<";
+            this.lblCar3Back.Click += new System.EventHandler(this.lblCar3Back_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Azure;
+            this.label3.Location = new System.Drawing.Point(62, 263);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(200, 63);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Moeder 3";
+            // 
+            // picBoxCar3
+            // 
+            this.picBoxCar3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.picBoxCar3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBoxCar3.Location = new System.Drawing.Point(73, 329);
+            this.picBoxCar3.Name = "picBoxCar3";
+            this.picBoxCar3.Size = new System.Drawing.Size(155, 155);
+            this.picBoxCar3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBoxCar3.TabIndex = 16;
+            this.picBoxCar3.TabStop = false;
             // 
             // lblCar2Next
             // 
@@ -275,104 +373,6 @@
             this.lblCar1Back.Text = "<";
             this.lblCar1Back.Click += new System.EventHandler(this.lblCar1Back_Click);
             // 
-            // lblCar3Next
-            // 
-            this.lblCar3Next.AutoSize = true;
-            this.lblCar3Next.BackColor = System.Drawing.Color.Transparent;
-            this.lblCar3Next.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar3Next.ForeColor = System.Drawing.Color.Yellow;
-            this.lblCar3Next.Location = new System.Drawing.Point(234, 367);
-            this.lblCar3Next.Name = "lblCar3Next";
-            this.lblCar3Next.Size = new System.Drawing.Size(56, 77);
-            this.lblCar3Next.TabIndex = 18;
-            this.lblCar3Next.Text = ">";
-            this.lblCar3Next.Click += new System.EventHandler(this.lblCar3Next_Click);
-            // 
-            // lblCar3Back
-            // 
-            this.lblCar3Back.AutoSize = true;
-            this.lblCar3Back.BackColor = System.Drawing.Color.Transparent;
-            this.lblCar3Back.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar3Back.ForeColor = System.Drawing.Color.Yellow;
-            this.lblCar3Back.Location = new System.Drawing.Point(11, 367);
-            this.lblCar3Back.Name = "lblCar3Back";
-            this.lblCar3Back.Size = new System.Drawing.Size(56, 77);
-            this.lblCar3Back.TabIndex = 17;
-            this.lblCar3Back.Text = "<";
-            this.lblCar3Back.Click += new System.EventHandler(this.lblCar3Back_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Azure;
-            this.label3.Location = new System.Drawing.Point(62, 263);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 63);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Moeder 3";
-            // 
-            // picBoxCar3
-            // 
-            this.picBoxCar3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.picBoxCar3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxCar3.Location = new System.Drawing.Point(73, 329);
-            this.picBoxCar3.Name = "picBoxCar3";
-            this.picBoxCar3.Size = new System.Drawing.Size(155, 155);
-            this.picBoxCar3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picBoxCar3.TabIndex = 16;
-            this.picBoxCar3.TabStop = false;
-            // 
-            // lblCar4Next
-            // 
-            this.lblCar4Next.AutoSize = true;
-            this.lblCar4Next.BackColor = System.Drawing.Color.Transparent;
-            this.lblCar4Next.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar4Next.ForeColor = System.Drawing.Color.Yellow;
-            this.lblCar4Next.Location = new System.Drawing.Point(1033, 367);
-            this.lblCar4Next.Name = "lblCar4Next";
-            this.lblCar4Next.Size = new System.Drawing.Size(56, 77);
-            this.lblCar4Next.TabIndex = 22;
-            this.lblCar4Next.Text = ">";
-            this.lblCar4Next.Click += new System.EventHandler(this.lblCar4Next_Click);
-            // 
-            // lblCar4Back
-            // 
-            this.lblCar4Back.AutoSize = true;
-            this.lblCar4Back.BackColor = System.Drawing.Color.Transparent;
-            this.lblCar4Back.Font = new System.Drawing.Font("Agency FB", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar4Back.ForeColor = System.Drawing.Color.Yellow;
-            this.lblCar4Back.Location = new System.Drawing.Point(810, 367);
-            this.lblCar4Back.Name = "lblCar4Back";
-            this.lblCar4Back.Size = new System.Drawing.Size(56, 77);
-            this.lblCar4Back.TabIndex = 21;
-            this.lblCar4Back.Text = "<";
-            this.lblCar4Back.Click += new System.EventHandler(this.lblCar4Back_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Agency FB", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Violet;
-            this.label6.Location = new System.Drawing.Point(861, 263);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(200, 63);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Moeder 4";
-            // 
-            // picBoxCar4
-            // 
-            this.picBoxCar4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.picBoxCar4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxCar4.Location = new System.Drawing.Point(872, 329);
-            this.picBoxCar4.Name = "picBoxCar4";
-            this.picBoxCar4.Size = new System.Drawing.Size(155, 155);
-            this.picBoxCar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picBoxCar4.TabIndex = 20;
-            this.picBoxCar4.TabStop = false;
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,8 +397,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBoxRaceTrack)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxCar3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCar3)).EndInit();
             this.ResumeLayout(false);
 
         }
