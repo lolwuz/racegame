@@ -316,7 +316,6 @@ namespace RaceGame2
                     {
                         if (button.Equals("DPadRight"))
                         {
-
                             car2Next();
                         }
                         else if (button.Equals("DPadLeft"))
@@ -337,7 +336,7 @@ namespace RaceGame2
                     {
                         if (button.Equals("B"))
                         {
-                            picBoxCar3.Image = tempCar2;
+                            picBoxCar2.Image = tempCar2;
                             player2Selected = false;
                         }
                     }
