@@ -342,7 +342,7 @@ namespace RaceGame2
             equiped4.Location = new Point(ClientSize.Width - (equiped4.Width), ClientSize.Height -100);
 
             stoplicht.Location = new Point(ClientSize.Width / 2 - stoplicht.Width / 2, ClientSize.Height / 2 - stoplicht.Height / 2);
-
+            
             Speler1Ronde.Text = "Ronde: " + p1.round + "/5";
             Speler2Ronde.Text = "Ronde: " + p2.round + "/5";
             Speler3Ronde.Text = "Ronde: " + p3.round + "/5";
@@ -362,7 +362,43 @@ namespace RaceGame2
             fuel2.Text = "Fuel: " + Convert.ToInt16(p2.fuel) + " liter";
             fuel3.Text = "Fuel: " + Convert.ToInt16(p3.fuel) + " liter";
             fuel4.Text = "Fuel: " + Convert.ToInt16(p4.fuel) + " liter";
-            
+
+            // speler 1 wins
+            if (p1.round.Equals(5))
+            {                
+                lblWinner.Text = "De winnaar is moeder 1!";
+                lblWinner.Visible = true;
+                lblWinner.Location = new Point(ClientSize.Width / 2 - lblWinner.Width / 2, ClientSize.Height / 2 - lblWinner.Height / 2);
+                isStarted = false;
+            }
+
+            // speler 2 wins
+            if (p2.round.Equals(5))
+            {
+                lblWinner.Text = "De winnaar is moeder 2!";
+                lblWinner.Visible = true;
+                lblWinner.Location = new Point(ClientSize.Width / 2 - lblWinner.Width / 2, ClientSize.Height / 2 - lblWinner.Height / 2);
+                isStarted = false;
+            }
+
+            //speler 3 wins
+            if (p3.round.Equals(5))
+            {
+                lblWinner.Text = "De winnaar is moeder 3!";
+                lblWinner.Visible = true;
+                lblWinner.Location = new Point(ClientSize.Width / 2 - lblWinner.Width / 2, ClientSize.Height / 2 - lblWinner.Height / 2);
+                isStarted = false;
+            }
+
+            //speler 4 wins
+            if (p4.round.Equals(5))
+            {
+                lblWinner.Text = "De winnaar is moeder 4!";
+                lblWinner.Visible = true;
+                lblWinner.Location = new Point(ClientSize.Width / 2 - lblWinner.Width / 2, ClientSize.Height / 2 - lblWinner.Height / 2);
+                isStarted = false;
+            }
+
             if (isStarted)
             {
                 gameUpdate();

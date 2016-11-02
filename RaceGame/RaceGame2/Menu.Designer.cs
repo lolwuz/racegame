@@ -39,34 +39,34 @@
             this.lblCar4Next = new System.Windows.Forms.Label();
             this.lblCar4Back = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.picBoxCar4 = new System.Windows.Forms.PictureBox();
             this.lblCar3Next = new System.Windows.Forms.Label();
             this.lblCar3Back = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.picBoxCar3 = new System.Windows.Forms.PictureBox();
             this.lblCar2Next = new System.Windows.Forms.Label();
             this.lblTrackNext = new System.Windows.Forms.Label();
             this.lblCar2Back = new System.Windows.Forms.Label();
             this.lblTrackBack = new System.Windows.Forms.Label();
             this.lblCar1Next = new System.Windows.Forms.Label();
             this.lblCar1Back = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picBoxCar4 = new System.Windows.Forms.PictureBox();
-            this.picBoxCar3 = new System.Windows.Forms.PictureBox();
             this.picBoxRaceTrack = new System.Windows.Forms.PictureBox();
             this.picBoxCar1 = new System.Windows.Forms.PictureBox();
             this.picBoxCar2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxRaceTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar2)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -212,6 +212,17 @@
             this.label6.TabIndex = 19;
             this.label6.Text = "Moeder 4";
             // 
+            // picBoxCar4
+            // 
+            this.picBoxCar4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.picBoxCar4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBoxCar4.Location = new System.Drawing.Point(881, 320);
+            this.picBoxCar4.Name = "picBoxCar4";
+            this.picBoxCar4.Size = new System.Drawing.Size(155, 155);
+            this.picBoxCar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBoxCar4.TabIndex = 20;
+            this.picBoxCar4.TabStop = false;
+            // 
             // lblCar3Next
             // 
             this.lblCar3Next.AutoSize = true;
@@ -249,6 +260,17 @@
             this.label3.Size = new System.Drawing.Size(200, 63);
             this.label3.TabIndex = 15;
             this.label3.Text = "Moeder 3";
+            // 
+            // picBoxCar3
+            // 
+            this.picBoxCar3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.picBoxCar3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBoxCar3.Location = new System.Drawing.Point(82, 320);
+            this.picBoxCar3.Name = "picBoxCar3";
+            this.picBoxCar3.Size = new System.Drawing.Size(155, 155);
+            this.picBoxCar3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBoxCar3.TabIndex = 16;
+            this.picBoxCar3.TabStop = false;
             // 
             // lblCar2Next
             // 
@@ -328,60 +350,6 @@
             this.lblCar1Back.Text = "<";
             this.lblCar1Back.Click += new System.EventHandler(this.lblCar1Back_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 150;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 125;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Font = new System.Drawing.Font("Agency FB", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(482, 736);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(521, 130);
-            this.panel2.TabIndex = 10;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::RaceGame2.Properties.Resources.nhl_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(134, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 123);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // picBoxCar4
-            // 
-            this.picBoxCar4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.picBoxCar4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxCar4.Location = new System.Drawing.Point(881, 320);
-            this.picBoxCar4.Name = "picBoxCar4";
-            this.picBoxCar4.Size = new System.Drawing.Size(155, 155);
-            this.picBoxCar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picBoxCar4.TabIndex = 20;
-            this.picBoxCar4.TabStop = false;
-            // 
-            // picBoxCar3
-            // 
-            this.picBoxCar3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.picBoxCar3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxCar3.Location = new System.Drawing.Point(82, 320);
-            this.picBoxCar3.Name = "picBoxCar3";
-            this.picBoxCar3.Size = new System.Drawing.Size(155, 155);
-            this.picBoxCar3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picBoxCar3.TabIndex = 16;
-            this.picBoxCar3.TabStop = false;
-            // 
             // picBoxRaceTrack
             // 
             this.picBoxRaceTrack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -413,14 +381,28 @@
             this.picBoxCar2.TabIndex = 5;
             this.picBoxCar2.TabStop = false;
             // 
-            // label1
+            // timer1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 50);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Jorrit Heida\r\nKoen Lukkien";
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 150;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 125;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(482, 736);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(521, 130);
+            this.panel2.TabIndex = 10;
             // 
             // label2
             // 
@@ -430,6 +412,24 @@
             this.label2.Size = new System.Drawing.Size(113, 50);
             this.label2.TabIndex = 2;
             this.label2.Text = "Simon Rijpstra\r\nMarten Hoekstra\r\n";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 50);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Jorrit Heida\r\nKoen Lukkien";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::RaceGame2.Properties.Resources.nhl_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(134, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(249, 123);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Menu
             // 
@@ -453,14 +453,14 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxRaceTrack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCar2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -51,6 +51,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblWinner = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.stoplicht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equiped3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equiped2)).BeginInit();
@@ -314,12 +315,26 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
+            // lblWinner
+            // 
+            this.lblWinner.AutoSize = true;
+            this.lblWinner.BackColor = System.Drawing.Color.Black;
+            this.lblWinner.Font = new System.Drawing.Font("Agency FB", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWinner.ForeColor = System.Drawing.Color.Azure;
+            this.lblWinner.Location = new System.Drawing.Point(197, 9);
+            this.lblWinner.Name = "lblWinner";
+            this.lblWinner.Size = new System.Drawing.Size(196, 44);
+            this.lblWinner.TabIndex = 25;
+            this.lblWinner.Text = "De winnaar is: ";
+            this.lblWinner.Visible = false;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(591, 543);
+            this.Controls.Add(this.lblWinner);
             this.Controls.Add(this.stoplicht);
             this.Controls.Add(this.equiped3);
             this.Controls.Add(this.equiped2);
@@ -388,6 +403,7 @@
         private System.Windows.Forms.PictureBox equiped3;
         private System.Windows.Forms.PictureBox stoplicht;
         private System.Windows.Forms.Timer starter;
+        private System.Windows.Forms.Label lblWinner;
     }
 }
 
