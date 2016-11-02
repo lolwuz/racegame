@@ -40,9 +40,15 @@ namespace RaceGame2
 
             // center panel in form
             panel1.Location = new Point(
-            this.ClientSize.Width / 2 - panel1.Size.Width / 2,
-            this.ClientSize.Height / 2 - panel1.Size.Height / 2);
+                this.ClientSize.Width / 2 - panel1.Size.Width / 2,
+                this.ClientSize.Height / 2 - panel1.Size.Height / 2);
             panel1.Anchor = AnchorStyles.None;
+
+            // center panel2 (credits) down-middle
+            panel2.Location = new Point(
+                this.ClientSize.Width / 2 - panel2.Size.Width / 2,
+                this.ClientSize.Height - 100);
+            panel2.Anchor = AnchorStyles.None;
 
             // maximize
             this.WindowState = FormWindowState.Maximized;

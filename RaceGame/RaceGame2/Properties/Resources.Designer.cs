@@ -532,6 +532,16 @@ namespace RaceGame2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nhl_logo {
+            get {
+                object obj = ResourceManager.GetObject("nhl_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap oileleak_ingame {
             get {
                 object obj = ResourceManager.GetObject("oileleak_ingame", resourceCulture);
