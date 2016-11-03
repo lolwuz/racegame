@@ -495,7 +495,11 @@ namespace RaceGame2
                     {
                         if(p != this)
                         {
-                            p.fuel -= 20.0f; 
+                            if(fuel >= 10)
+                            {
+                                p.fuel -= 10.0f;
+                            }
+                             
                         }                  
                     }
                     equiped = "null";
