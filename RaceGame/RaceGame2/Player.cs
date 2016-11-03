@@ -328,8 +328,12 @@ namespace RaceGame2
             }
             else
             {
+                if (speed > 0)
+                {
+                    fuel -= 0.005f * speed;
+                }
                 maxSpeed = 8;
-                fuel -= 0.005f * speed;
+                
             }
         }
 
@@ -421,7 +425,7 @@ namespace RaceGame2
             }
           
             // Offroad check. Volle stillstand als de speler van de weg geraakt. :-)
-            if (colorFront.R == 182 && colorFront.G == 255 && colorFront.B == 254)
+            if ((colorFront.R == 182 && colorFront.G == 255 && colorFront.B == 254) || (colorFront.R == 39 && colorFront.G == 88 && colorFront.B == 64))
             {
                 if (isUsingController)
                 {

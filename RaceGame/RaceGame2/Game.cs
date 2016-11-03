@@ -141,10 +141,14 @@ namespace RaceGame2
                     break;
             }
 
+            
+
+            
+
             // Selecteer map
             switch (mapSelect)
             {
-                case 1:
+                case 1:            
                     map = new Map(this, 1);
                     break;
                 case 2:
@@ -156,7 +160,6 @@ namespace RaceGame2
                 default:
                     break;
             }
-
 
             p1 = new Player(this, 1, car1);
             p1.posX = 1300;
@@ -197,11 +200,42 @@ namespace RaceGame2
             p4.keyUp = Keys.I;
             p4.keySpecial = Keys.O;
 
+            switch (mapSelect)
+            {
+                case 1:
+                    p1.posX = 325;
+                    p1.posY = 1150;
+                    p1.rotation = 90;
+
+                    p2.posX = 255;
+                    p2.posY = 1150;
+                    p2.rotation = 90;
+
+                    p3.posX = 325;
+                    p3.posY = 1025;
+                    p3.rotation = 90;
+
+                    p4.posX = 255;
+                    p4.posY = 1025;
+                    p4.rotation = 90;
+
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                default:
+                    break;
+            }
+
             // Add players to List
             playerList.Add(p1);
             playerList.Add(p2);
             playerList.Add(p3);
             playerList.Add(p4);
+
 
             Start();
         }

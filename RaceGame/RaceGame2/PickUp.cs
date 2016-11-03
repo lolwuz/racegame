@@ -94,6 +94,12 @@ namespace RaceGame2
                 posX -= 8 * Math.Cos(angle);
                 posY -= 8 * Math.Sin(angle);
             }
+
+            _distance = Math.Sqrt(Math.Pow((followPlayer.posX - posX), 2) + Math.Pow((followPlayer.posY - posY), 2));
+            if (_distance < 20)
+            {
+                followPlayer.speed = 0;
+            }
         }
     }
 
@@ -110,7 +116,10 @@ namespace RaceGame2
         }
         public void Draw(Graphics g, Player p, double width, double height)
         {
-            g.DrawImage(Properties.Resources.oileleak_ingame, new Point(Convert.ToInt32(width + (posX - p.posX) - Properties.Resources.oileleak_ingame.Width), Convert.ToInt32(height + (posY - p.posY))));
+            g.DrawRectangle(new Pen(Color.Black, 12),
+                    Convert.ToInt32(width + (posX - p.posX)),
+                    Convert.ToInt32(height + (posY - p.posY)),
+                    10, 10);
         }
     }
 }
